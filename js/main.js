@@ -22,11 +22,13 @@ function updateAge() {
         age--;
     }
 
-    const ageElement = document.getElementById("age");
+    const ageElement =
+        document.getElementById("age");
 
     if (ageElement) {
         ageElement.textContent = age;
     }
+
 }
 
 updateAge();
@@ -38,7 +40,8 @@ updateAge();
 
 async function loadSection(containerId, file) {
 
-    const container = document.getElementById(containerId);
+    const container =
+        document.getElementById(containerId);
 
     if (!container) {
         return;
@@ -46,15 +49,19 @@ async function loadSection(containerId, file) {
 
     try {
 
-        const response = await fetch(file);
+        const response =
+            await fetch(file);
 
         if (!response.ok) {
+
             throw new Error(
                 `Failed to load ${file}`
             );
+
         }
 
-        const html = await response.text();
+        const html =
+            await response.text();
 
         container.innerHTML = html;
 
@@ -74,7 +81,9 @@ async function loadSection(containerId, file) {
         `;
 
         return false;
+
     }
+
 }
 
 
@@ -84,30 +93,68 @@ async function loadSection(containerId, file) {
 
 async function initWebsite() {
 
+
+    // ========================================
+    // SECRET NOTE
+    // ========================================
+
     const secretLoaded = await loadSection(
         "secret-note-container",
         "sections/secret-note.html"
     );
 
-    if (secretLoaded && typeof initSecretNote === "function") {
+    if (
+        secretLoaded &&
+        typeof initSecretNote === "function"
+    ) {
+
         initSecretNote();
+
     }
 
+
+    // ========================================
+    // ESCAPE GAME
+    // ========================================
 
     const escapeLoaded = await loadSection(
         "escape-container",
         "sections/escape.html"
     );
 
-    if (escapeLoaded && typeof initEscapeGame === "function") {
+    if (
+        escapeLoaded &&
+        typeof initEscapeGame === "function"
+    ) {
+
         initEscapeGame();
+
+    }
+
+
+    // ========================================
+    // DON'T CLICK GAME
+    // ========================================
+
+    const dontClickLoaded = await loadSection(
+        "dont-click-container",
+        "sections/dont-click.html"
+    );
+
+    if (
+        dontClickLoaded &&
+        typeof initDontClickGame === "function"
+    ) {
+
+        initDontClickGame();
+
     }
 
 }
 
 
 // ========================================
-// START
+// START WEBSITE
 // ========================================
 
 document.addEventListener(
