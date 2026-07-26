@@ -8,18 +8,25 @@
         <span>wly@home:~$</span> escape
     </p>
 
-<button class="terminal-btn" id="startEscape">
-    → masuk
-</button>
+    <button class="terminal-btn" id="startEscape">
+        → masuk
+    </button>
 
 </section>
 
+
+<!-- ==============================
+     ESCAPE SCREEN
+============================== -->
 
 <div class="escape-screen" id="escapeScreen">
 
     <div class="escape-window">
 
-        <!-- HEADER -->
+
+        <!-- ==============================
+             HEADER
+        =============================== -->
 
         <div class="escape-header">
 
@@ -32,7 +39,9 @@
         </div>
 
 
-        <!-- CONTENT -->
+        <!-- ==============================
+             CONTENT
+        =============================== -->
 
         <div class="escape-content">
 
@@ -92,7 +101,7 @@
                     class="terminal-btn"
                     id="submitCode"
                 >
-                    [ JALANKAN ]
+                    → jalankan
                 </button>
 
 
@@ -130,7 +139,7 @@
                 </p>
 
 
-                <!-- FILES -->
+                <!-- FILE LIST -->
 
                 <div class="file-list">
 
@@ -139,11 +148,8 @@
                         class="file-item"
                         data-file="system"
                     >
-
                         <span>[01]</span>
-
                         system.log
-
                     </button>
 
 
@@ -151,11 +157,8 @@
                         class="file-item"
                         data-file="memory"
                     >
-
                         <span>[02]</span>
-
                         memory.dat
-
                     </button>
 
 
@@ -163,11 +166,8 @@
                         class="file-item"
                         data-file="exit"
                     >
-
                         <span>[03]</span>
-
                         exit.key
-
                     </button>
 
 
@@ -175,211 +175,227 @@
                         class="file-item"
                         data-file="readme"
                     >
-
                         <span>[04]</span>
-
                         README.txt
-
                     </button>
 
 
                 </div>
 
 
-                <!-- OUTPUT -->
+                <!-- FILE OUTPUT -->
 
                 <div
                     class="file-output"
                     id="fileOutput"
                 >
-
                     &gt; pilih sebuah file
-
                 </div>
 
             </div>
 
 
-<!-- =====================
-     PUZZLE 03
-====================== -->
+            <!-- =====================
+                 PUZZLE 03
+            ====================== -->
 
-<div id="puzzle3" class="puzzle-hidden">
-
-    <p class="directory-line">
-        &gt; fragmen berhasil dipulihkan
-    </p>
-
-    <br>
-
-    <p class="escape-error">
-        &gt; PERINTAH RUSAK
-    </p>
-
-    <p>
-        Sistem menemukan sisa dari sebuah perintah.
-    </p>
-
-    <div class="escape-hint">
-
-        <span>FRAGMEN:</span>
-
-        <div class="broken-command">
-            E X _ T
-        </div>
-
-    </div>
-
-    <p>
-        Satu karakter hilang.
-        Pulihkan perintah tersebut.
-    </p>
-
-
-    <div class="code-area">
-
-        <label for="commandInput">
-            perintah:
-        </label>
-
-        <div class="code-input">
-
-            <span>&gt;</span>
-
-            <input
-                type="text"
-                id="commandInput"
-                autocomplete="off"
-                spellcheck="false"
-                placeholder="_"
+            <div
+                id="puzzle3"
+                class="puzzle-hidden"
             >
 
-        </div>
+                <p class="directory-line">
+                    &gt; fragmen berhasil dipulihkan
+                </p>
 
-    </div>
-
-
-    <button
-        class="terminal-btn"
-        id="submitCommand"
-    >
-        [ JALANKAN ]
-    </button>
+                <br>
 
 
-    <p
-        class="escape-status"
-        id="commandStatus"
-    ></p>
-
-</div>
+                <p class="escape-error">
+                    &gt; PERINTAH RUSAK
+                </p>
 
 
-        </div>
+                <p>
+                    Sistem menemukan sisa dari sebuah perintah.
+                </p>
 
 
-<!-- =====================
-     PUZZLE 04
-====================== -->
+                <div class="escape-hint">
 
-<div id="puzzle4" class="puzzle-hidden">
+                    <span>FRAGMEN:</span>
 
-    <p class="directory-line">
-        &gt; koneksi dipulihkan...
-    </p>
+                    <div class="broken-command">
+                        E X _ T
+                    </div>
 
-    <br>
-
-    <p class="escape-error">
-        &gt; EXIT GAGAL
-    </p>
-
-    <p>
-        Ada sesuatu yang menahanmu di sini.
-    </p>
-
-    <p>
-        Sistem meninggalkan satu proses terakhir.
-    </p>
+                </div>
 
 
-    <div class="escape-hint">
-
-        <span>LAST_PROCESS:</span>
-
-        <div class="process-order">
-            4 1 3 2
-        </div>
-
-    </div>
+                <p>
+                    Satu karakter hilang.
+                    Pulihkan perintah tersebut.
+                </p>
 
 
-    <div class="process-list">
+                <div class="code-area">
 
-        <p>
-            <span>[1]</span> KILL
-        </p>
-
-        <p>
-            <span>[2]</span> EXIT
-        </p>
-
-        <p>
-            <span>[3]</span> STOP
-        </p>
-
-        <p>
-            <span>[4]</span> ROOT
-        </p>
-
-    </div>
+                    <label for="commandInput">
+                        perintah:
+                    </label>
 
 
-    <p class="puzzle-text">
-        Susun perintah sesuai urutan proses.
-    </p>
+                    <div class="code-input">
+
+                        <span>&gt;</span>
+
+                        <input
+                            type="text"
+                            id="commandInput"
+                            autocomplete="off"
+                            spellcheck="false"
+                            placeholder="_"
+                        >
+
+                    </div>
+
+                </div>
 
 
-    <div class="code-area">
+                <button
+                    class="terminal-btn"
+                    id="submitCommand"
+                >
+                    → jalankan
+                </button>
 
-        <label for="processInput">
-            process:
-        </label>
 
-        <div class="code-input">
+                <p
+                    class="escape-status"
+                    id="commandStatus"
+                ></p>
 
-            <span>&gt;</span>
+            </div>
 
-            <input
-                type="text"
-                id="processInput"
-                autocomplete="off"
-                spellcheck="false"
-                placeholder="_"
+
+            <!-- =====================
+                 PUZZLE 04
+            ====================== -->
+
+            <div
+                id="puzzle4"
+                class="puzzle-hidden"
             >
 
+                <p class="directory-line">
+                    &gt; koneksi dipulihkan...
+                </p>
+
+                <br>
+
+
+                <p class="escape-error">
+                    &gt; EXIT GAGAL
+                </p>
+
+
+                <p>
+                    Ada sesuatu yang menahanmu di sini.
+                </p>
+
+                <p>
+                    Sistem meninggalkan satu proses terakhir.
+                </p>
+
+
+                <div class="escape-hint">
+
+                    <span>LAST_PROCESS:</span>
+
+                    <div class="process-order">
+                        4 1 3 2
+                    </div>
+
+                </div>
+
+
+                <div class="process-list">
+
+                    <p>
+                        <span>[1]</span>
+                        KILL
+                    </p>
+
+                    <p>
+                        <span>[2]</span>
+                        EXIT
+                    </p>
+
+                    <p>
+                        <span>[3]</span>
+                        STOP
+                    </p>
+
+                    <p>
+                        <span>[4]</span>
+                        ROOT
+                    </p>
+
+                </div>
+
+
+                <p class="puzzle-text">
+                    Susun perintah sesuai urutan proses.
+                </p>
+
+
+                <div class="code-area">
+
+                    <label for="processInput">
+                        process:
+                    </label>
+
+
+                    <div class="code-input">
+
+                        <span>&gt;</span>
+
+                        <input
+                            type="text"
+                            id="processInput"
+                            autocomplete="off"
+                            spellcheck="false"
+                            placeholder="_"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="terminal-btn"
+                    id="submitProcess"
+                >
+                    → jalankan
+                </button>
+
+
+                <p
+                    class="escape-status"
+                    id="processStatus"
+                ></p>
+
+            </div>
+
+
         </div>
-
-    </div>
-
-
-    <button
-        class="terminal-btn"
-        id="submitProcess"
-    >
-        → jalankan
-    </button>
+        <!-- END ESCAPE CONTENT -->
 
 
-    <p
-        class="escape-status"
-        id="processStatus"
-    ></p>
-
-</div>
-
-
-        <!-- FOOTER -->
+        <!-- ==============================
+             FOOTER
+        =============================== -->
 
         <div class="escape-footer">
 
@@ -389,6 +405,9 @@
 
         </div>
 
+
     </div>
+    <!-- END ESCAPE WINDOW -->
 
 </div>
+<!-- END ESCAPE SCREEN -->
