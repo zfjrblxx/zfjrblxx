@@ -10,20 +10,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
-        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
 
-    <link rel="stylesheet" href="styles.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/secret-note.css">
+    <link rel="stylesheet" href="css/escape.css">
 </head>
 
 <body>
 
-    <!-- subtle scanlines -->
     <div class="scanlines"></div>
 
     <main class="terminal">
 
         <!-- TERMINAL TOP BAR -->
+
         <div class="terminal-bar">
 
             <div class="terminal-dots">
@@ -40,6 +45,7 @@
 
 
         <div class="terminal-content">
+
 
             <!-- =====================
                  WHOAMI
@@ -59,12 +65,19 @@
                     </h1>
 
                     <p class="meta">
+
                         <span class="arrow">&gt;</span>
+
                         <span id="age"></span> y.o
+
                         <span class="dot">•</span>
+
                         ♌ Leo
+
                         <span class="dot">•</span>
+
                         Indonesia
+
                     </p>
 
                 </div>
@@ -90,56 +103,74 @@
             </section>
 
 
+            <!-- =====================
+                 THINGS I'VE BUILT
+            ====================== -->
+
             <section class="terminal-section">
 
-    <p class="command">
-        <span>wly@home:~$</span> things i've built
-    </p>
+                <p class="command">
+                    <span>wly@home:~$</span> things i've built
+                </p>
 
-    <div class="projects-list">
-
-        <!-- PROJECT 01 -->
-        <div class="project-item">
-
-            <div class="project-title">
-                <span>[01]</span>
-                <h2>Ingfo Bengkel</h2>
-            </div>
-
-            <p>
-                Catat servis, pajak, ganti oli,
-                dan perawatan kendaraan.
-            </p>
-
-            <a href="https://ingfobengkel.vercel.app/"" target="_blank">
-                → open project
-            </a>
-
-        </div>
+                <div class="projects-list">
 
 
-        <!-- PROJECT 02 -->
-        <div class="project-item">
+                    <!-- PROJECT 01 -->
 
-            <div class="project-title">
-                <span>[02]</span>
-                <h2>Print Calc</h2>
-            </div>
+                    <div class="project-item">
 
-            <p>
-                Hitung kebutuhan cetak lebih mudah,
-                cepat, dan praktis.
-            </p>
+                        <div class="project-title">
 
-            <span class="coming-soon">
-                → open project [soon]
-            </span>
+                            <span>[01]</span>
 
-        </div>
+                            <h2>Ingfo Bengkel</h2>
 
-    </div>
+                        </div>
 
-</section>
+                        <p>
+                            Catat servis, pajak, ganti oli,
+                            dan perawatan kendaraan.
+                        </p>
+
+                        <a
+                            href="https://ingfobengkel.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            → open project
+                        </a>
+
+                    </div>
+
+
+                    <!-- PROJECT 02 -->
+
+                    <div class="project-item">
+
+                        <div class="project-title">
+
+                            <span>[02]</span>
+
+                            <h2>Print Calc</h2>
+
+                        </div>
+
+                        <p>
+                            Hitung kebutuhan cetak lebih mudah,
+                            cepat, dan praktis.
+                        </p>
+
+                        <span class="coming-soon">
+                            → open project [soon]
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </section>
 
 
             <!-- =====================
@@ -169,191 +200,18 @@
             </section>
 
 
+            <!-- =====================
+                 SECRET NOTE
+            ====================== -->
 
-<!-- =====================
-     SECRET FOLDER
-====================== -->
-
-<section class="terminal-section secret-section">
-
-    <p class="command">
-        <span>wly@home:~$</span> ls
-    </p>
-
-    <button class="secret-folder" id="secretFolder">
-        <span class="folder-icon" id="folderIcon">📁</span>
-    </button>
-
-</section>
+            <div id="secret-note-container"></div>
 
 
-<!-- =====================
-     SECRET NOTE
-====================== -->
+            <!-- =====================
+                 ESCAPE GAME
+            ====================== -->
 
-<div class="note-overlay" id="noteOverlay">
-
-    <div class="terminal-note">
-
-        <div class="note-header">
-
-            <span>
-                ~/secret_note.txt
-            </span>
-
-            <button id="closeNote">
-                [x]
-            </button>
-
-        </div>
-
-        <div class="note-body">
-
-            <p>Hey :)</p>
-
-            <p>
-                So... you actually opened this.
-            </p>
-
-            <p>
-                I don't really know what to put here,
-                but since you found it, I guess I
-                should say something.
-            </p>
-
-            <p>
-                This is just my little space on the internet.
-                Some random stuff I like, things I've made,
-                and whatever else I feel like putting here.
-            </p>
-
-            <p>
-                Thanks for checking it out, though.
-                Kinda cool knowing someone actually
-                made it this far.
-            </p>
-
-            <p>
-                Anyway, that's it.
-            </p>
-
-            <p>
-                See you around :)
-            </p>
-
-            <p class="note-signature">
-                — Wly
-            </p>
-<p class="hidden-code">
-    P.S. some things are easier to remember backwards — 7291
-</p>
-        </div>
-
-        <div class="note-bottom">
-            <span>secret_note.txt</span>
-            <span>100%</span>
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ==============================
-     ESCAPE GAME
-============================== -->
-
-<section class="terminal-section escape-trigger">
-
-    <p class="command">
-        <span>wly@home:~$</span> escape
-    </p>
-
-    <button class="terminal-btn" id="startEscape">
-        [ ENTER ]
-    </button>
-
-</section>
-
-
-<!-- ESCAPE SCREEN -->
-
-<div class="escape-screen" id="escapeScreen">
-
-    <div class="escape-window">
-
-        <div class="escape-header">
-            <span>ESCAPE_PROTOCOL.exe</span>
-
-            <button id="closeEscape">
-                [x]
-            </button>
-        </div>
-
-
-        <div class="escape-content">
-
-            <p class="escape-error">
-                > ACCESS RESTRICTED
-            </p>
-
-            <p>
-                You shouldn't be here.
-            </p>
-
-            <p>
-                Find the access code to continue.
-            </p>
-
-
-            <div class="escape-hint">
-                <span>HINT:</span>
-                you've already seen where it's hidden.
-            </div>
-
-
-            <div class="code-area">
-
-                <label for="accessCode">
-                    access_code:
-                </label>
-
-                <div class="code-input">
-
-                    <span>&gt;</span>
-
-                    <input
-                        type="text"
-                        id="accessCode"
-                        autocomplete="off"
-                        spellcheck="false"
-                        placeholder="_"
-                    >
-
-                </div>
-
-            </div>
-
-
-            <button class="terminal-btn" id="submitCode">
-                [ EXECUTE ]
-            </button>
-
-
-            <p class="escape-status" id="escapeStatus"></p>
-
-        </div>
-
-
-        <div class="escape-footer">
-            PUZZLE 01 / 05
-        </div>
-
-    </div>
-
-</div>
-
-
+            <div id="escape-container"></div>
 
 
             <!-- =====================
@@ -363,8 +221,11 @@
             <section class="terminal-end">
 
                 <p class="command">
+
                     <span>wly@home:~$</span>
+
                     <span class="cursor"></span>
+
                 </p>
 
             </section>
@@ -381,7 +242,9 @@
     </main>
 
 
-    <script src="script.js"></script>
+    <!-- JS -->
+
+    <script src="js/main.js"></script>
 
 </body>
 
