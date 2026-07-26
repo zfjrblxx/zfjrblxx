@@ -193,59 +193,77 @@ body {
     line-height: 1.8;
 }
 
-
 /* ==============================
-   PROJECT
+   PROJECTS
 ============================== */
 
-.project {
+.projects-list {
     max-width: 850px;
 
-    padding: 25px;
-
     border: 1px solid #194822;
-    border-radius: 6px;
+    border-radius: 8px;
+
+    overflow: hidden;
 
     background: rgba(0, 255, 50, 0.015);
-
-    transition: 0.25s ease;
 }
 
-.project:hover {
-    border-color: #28e44d;
 
-    background: rgba(0, 255, 50, 0.03);
+/* PROJECT ITEM */
+
+.project-item {
+    padding: 28px 30px;
+
+    border-bottom: 1px solid #18351e;
 }
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+
+/* TITLE */
 
 .project-title {
     display: flex;
     align-items: center;
-
     gap: 12px;
 }
 
 .project-title span {
     color: #28e44d;
+
+    font-size: 16px;
 }
 
 .project-title h2 {
-    color: #2ee951;
+    color: #28e44d;
 
     font-size: 19px;
     font-weight: 500;
+
+    margin: 0;
 }
 
-.project > p {
-    margin: 18px 0 18px 43px;
 
-    color: #b7b7b7;
+/* DESCRIPTION */
+
+.project-item > p {
+    margin: 16px 0 18px 43px;
+
+    color: #aaa;
 
     font-size: 14px;
-
     line-height: 1.7;
 }
 
-.project a {
+
+/* LINK */
+
+.project-item > a,
+.coming-soon {
+    display: inline-block;
+
     margin-left: 43px;
 
     color: #28e44d;
@@ -255,53 +273,50 @@ body {
     text-decoration: none;
 }
 
-.project a:hover {
+.project-item > a:hover {
     text-decoration: underline;
+}
+
+.coming-soon {
+    color: #527b59;
 }
 
 
 /* ==============================
-   THANKS
+   MOBILE
 ============================== */
 
-.thanks-title {
-    color: #888;
+@media (max-width: 700px) {
 
-    font-size: 13px;
+    .project-item {
+        padding: 22px 18px;
+    }
 
-    margin-bottom: 20px;
-}
+    .project-title {
+        gap: 9px;
+    }
 
-.thanks-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    .project-title span {
+        font-size: 14px;
+    }
 
-    border-top: 1px solid #18351e;
-    border-bottom: 1px solid #18351e;
-}
+    .project-title h2 {
+        font-size: 16px;
+    }
 
-.thanks-list span {
-    padding: 25px 15px;
+    .project-item > p {
+        margin: 14px 0 17px;
 
-    color: #d7d7d7;
+        font-size: 13px;
+        line-height: 1.7;
+    }
 
-    text-align: center;
+    .project-item > a,
+    .coming-soon {
+        margin-left: 0;
 
-    font-size: 14px;
-
-    border-right: 1px solid #18351e;
-
-    transition: 0.2s ease;
-}
-
-.thanks-list span:last-child {
-    border-right: none;
-}
-
-.thanks-list span:hover {
-    color: #28e44d;
-
-    background: rgba(0, 255, 50, 0.025);
+        font-size: 13px;
+    }
 }
 
 
