@@ -1,0 +1,214 @@
+<!-- ==============================
+     DON'T CLICK GAME
+============================== -->
+
+<section class="terminal-section dont-click-trigger">
+
+    <p class="command">
+        <span>wly@home:~$</span> ./dont_click.exe
+    </p>
+
+    <button class="terminal-btn" id="startDontClick">
+        → masuk
+    </button>
+
+</section>
+
+
+<!-- ==============================
+     DON'T CLICK SCREEN
+============================== -->
+
+<div class="dont-click-screen" id="dontClickScreen">
+
+    <div class="dont-click-window">
+
+
+        <!-- HEADER -->
+
+        <div class="dont-click-header">
+
+            <span>DON'T_CLICK.exe</span>
+
+            <button id="closeDontClick">
+                [x]
+            </button>
+
+        </div>
+
+
+        <!-- CONTENT -->
+
+        <div class="dont-click-content">
+
+
+            <!-- INTRO -->
+
+            <div
+                class="dont-click-intro"
+                id="dontClickIntro"
+            >
+
+                <p class="dont-line">
+                    &gt; program dimulai...
+                </p>
+
+                <p>
+                    Ada satu aturan sederhana.
+                </p>
+
+                <p>
+                    Jangan klik tombol ini.
+                </p>
+
+
+                <!-- BUTTON AREA -->
+
+                <div
+                    class="dont-button-area"
+                    id="dontButtonArea"
+                >
+
+                    <button
+                        class="danger-button"
+                        id="dontButton"
+                    >
+                        [ JANGAN KLIK ]
+                    </button>
+
+                </div>
+
+
+                <!-- TERMINAL OUTPUT -->
+
+                <div
+                    class="dont-output"
+                    id="dontOutput"
+                ></div>
+
+            </div>
+
+
+            <!-- ==============================
+                 FAKE DOWNLOAD
+            =============================== -->
+
+            <div
+                class="fake-process hidden"
+                id="fakeProcess"
+            >
+
+                <p>
+                    &gt; sesuatu sedang dibuka...
+                </p>
+
+                <br>
+
+                <p class="process-name">
+                    unknown_process.exe
+                </p>
+
+
+                <div class="fake-progress">
+
+                    <div
+                        class="fake-progress-bar"
+                        id="fakeProgressBar"
+                    ></div>
+
+                </div>
+
+
+                <p id="fakeProgressText">
+                    0%
+                </p>
+
+            </div>
+
+
+            <!-- ==============================
+                 FINAL
+            =============================== -->
+
+            <div
+                class="dont-complete hidden"
+                id="dontComplete"
+            >
+
+                <p class="dont-error">
+                    SYSTEM ERROR
+                </p>
+
+                <p>
+                    DON'T_CLICK.exe
+                </p>
+
+                <p>
+                    telah berhenti merespons.
+                </p>
+
+
+                <div class="dont-wait">
+
+                    <p>...</p>
+
+                    <p>...</p>
+
+                    <p>...</p>
+
+                </div>
+
+
+                <p class="dont-joke">
+                    &gt; bercanda :)
+                </p>
+
+
+                <div class="achievement">
+
+                    <span>
+                        ACHIEVEMENT UNLOCKED
+                    </span>
+
+                    <h2>
+                        "Can't Follow Instructions"
+                    </h2>
+
+                    <p>
+                        13x clicks
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="terminal-btn"
+                    id="finishDontClick"
+                >
+                    → kembali
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <div class="dont-click-footer">
+
+            <span>
+                DON'T CLICK
+            </span>
+
+            <span id="clickCounter">
+                CLICK: 0
+            </span>
+
+        </div>
+
+
+    </div>
+
+</div>
