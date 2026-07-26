@@ -257,6 +257,102 @@
 </div>
 
 
+<!-- ==============================
+     ESCAPE GAME
+============================== -->
+
+<section class="terminal-section escape-trigger">
+
+    <p class="command">
+        <span>wly@home:~$</span> escape
+    </p>
+
+    <button class="terminal-btn" id="startEscape">
+        [ ENTER ]
+    </button>
+
+</section>
+
+
+<!-- ESCAPE SCREEN -->
+
+<div class="escape-screen" id="escapeScreen">
+
+    <div class="escape-window">
+
+        <div class="escape-header">
+            <span>ESCAPE_PROTOCOL.exe</span>
+
+            <button id="closeEscape">
+                [x]
+            </button>
+        </div>
+
+
+        <div class="escape-content">
+
+            <p class="escape-error">
+                > ACCESS RESTRICTED
+            </p>
+
+            <p>
+                You shouldn't be here.
+            </p>
+
+            <p>
+                Find the access code to continue.
+            </p>
+
+
+            <div class="escape-hint">
+                <span>HINT:</span>
+                you've already seen where it's hidden.
+            </div>
+
+
+            <div class="code-area">
+
+                <label for="accessCode">
+                    access_code:
+                </label>
+
+                <div class="code-input">
+
+                    <span>&gt;</span>
+
+                    <input
+                        type="text"
+                        id="accessCode"
+                        autocomplete="off"
+                        spellcheck="false"
+                        placeholder="_"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button class="terminal-btn" id="submitCode">
+                [ EXECUTE ]
+            </button>
+
+
+            <p class="escape-status" id="escapeStatus"></p>
+
+        </div>
+
+
+        <div class="escape-footer">
+            PUZZLE 01 / 05
+        </div>
+
+    </div>
+
+</div>
+
+
+
 
             <!-- =====================
                  END TERMINAL
