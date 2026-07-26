@@ -304,7 +304,102 @@ footer {
     }
 
 
-    /* FOOTER */
+
+/* ==============================
+   THINGS I'VE BUILT
+============================== */
+
+.my-websites {
+    padding: 60px 0;
+}
+
+.section-label {
+    color: #666;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.website-item {
+    display: grid;
+    grid-template-columns: 50px 1fr auto;
+    align-items: center;
+    gap: 20px;
+
+    padding: 28px 0;
+
+    border-top: 1px solid #292929;
+    border-bottom: 1px solid #292929;
+
+    color: #fff;
+    text-decoration: none;
+
+    transition: 0.3s ease;
+}
+
+.website-number {
+    color: #555;
+    font-size: 13px;
+}
+
+.website-info h2 {
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.8px;
+}
+
+.website-info p {
+    margin-top: 7px;
+    color: #666;
+    font-size: 14px;
+}
+
+.website-arrow {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.website-item:hover {
+    padding-left: 10px;
+}
+
+.website-item:hover .website-arrow {
+    transform: translate(4px, -4px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .my-websites {
+        padding: 45px 0;
+    }
+
+    .website-item {
+        grid-template-columns: 30px 1fr auto;
+        gap: 12px;
+        padding: 22px 0;
+    }
+
+    .website-info h2 {
+        font-size: 21px;
+    }
+
+    .website-info p {
+        font-size: 13px;
+    }
+
+    .website-arrow {
+        font-size: 20px;
+    }
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
 
     footer {
     padding: 30px 0 10px;
