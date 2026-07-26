@@ -3,19 +3,32 @@
 ============================== */
 
 .terminal-btn {
+    appearance: none;
+    -webkit-appearance: none;
+
+    display: inline-block;
+
     border: 1px solid #28e44d;
+    border-radius: 0;
 
     background: transparent;
     color: #28e44d;
 
     padding: 10px 16px;
 
-    font-family: inherit;
+    font-family: "JetBrains Mono", monospace;
     font-size: 12px;
+    font-weight: 400;
+
+    line-height: 1.4;
 
     cursor: pointer;
 
-    transition: 0.2s ease;
+    box-shadow: none;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
 }
 
 .terminal-btn:hover {
@@ -23,6 +36,14 @@
     color: #001604;
 }
 
+.terminal-btn:focus {
+    outline: none;
+}
+
+.terminal-btn:active {
+    background: #28e44d;
+    color: #001604;
+}
 
 /* ==============================
    ESCAPE SCREEN
