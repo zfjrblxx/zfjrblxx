@@ -39,3 +39,74 @@ function updateAge() {
 }
 
 updateAge();
+
+
+// ==============================
+// SECRET FOLDER
+// ==============================
+
+const secretFolder =
+    document.getElementById("secretFolder");
+
+const folderIcon =
+    document.getElementById("folderIcon");
+
+const noteOverlay =
+    document.getElementById("noteOverlay");
+
+const closeNote =
+    document.getElementById("closeNote");
+
+
+function openSecretNote() {
+
+    noteOverlay.classList.add("show");
+
+    folderIcon.textContent = "📂";
+
+    document.body.style.overflow = "hidden";
+}
+
+
+function closeSecretNote() {
+
+    noteOverlay.classList.remove("show");
+
+    folderIcon.textContent = "📁";
+
+    document.body.style.overflow = "";
+}
+
+
+secretFolder.addEventListener(
+    "click",
+    openSecretNote
+);
+
+
+closeNote.addEventListener(
+    "click",
+    closeSecretNote
+);
+
+
+// Klik area gelap untuk menutup
+
+noteOverlay.addEventListener("click", (event) => {
+
+    if (event.target === noteOverlay) {
+        closeSecretNote();
+    }
+
+});
+
+
+// ESC untuk menutup
+
+document.addEventListener("keydown", (event) => {
+
+    if (event.key === "Escape") {
+        closeSecretNote();
+    }
+
+});
