@@ -66,6 +66,23 @@ function initEscapeGame() {
 
 
     // ========================================
+    // PUZZLE 04
+    // ========================================
+
+    const puzzle4 =
+        document.getElementById("puzzle4");
+
+    const processInput =
+        document.getElementById("processInput");
+
+    const submitProcess =
+        document.getElementById("submitProcess");
+
+    const processStatus =
+        document.getElementById("processStatus");
+
+
+    // ========================================
     // STATE
     // ========================================
 
@@ -145,7 +162,6 @@ function initEscapeGame() {
 
 
             accessCode.disabled = true;
-
             submitCode.disabled = true;
 
 
@@ -242,14 +258,11 @@ function initEscapeGame() {
                     class="terminal-btn"
                     id="continuePuzzle3"
                 >
-                    [ LANJUT ]
+                    → lanjut
                 </button>
 
             `;
 
-
-            // Tombol baru dibuat setelah innerHTML,
-            // jadi ambil elemennya di sini.
 
             const continueButton =
                 document.getElementById(
@@ -274,7 +287,6 @@ function initEscapeGame() {
 
         // ====================================
         // MEMORY.DAT
-        // FILE RUSAK
         // ====================================
 
         if (file === "memory") {
@@ -306,7 +318,6 @@ function initEscapeGame() {
 
         // ====================================
         // EXIT.KEY
-        // JEBAKAN
         // ====================================
 
         if (file === "exit") {
@@ -339,7 +350,6 @@ function initEscapeGame() {
 
         // ====================================
         // README
-        // PETUNJUK
         // ====================================
 
         if (file === "readme") {
@@ -432,11 +442,10 @@ function initEscapeGame() {
 
 
             commandInput.disabled = true;
-
             submitCommand.disabled = true;
 
 
-            // SEAKAN BERHASIL
+            // PURA-PURA BERHASIL
 
             setTimeout(() => {
 
@@ -465,6 +474,34 @@ function initEscapeGame() {
             }, 2000);
 
 
+            // MASUK PUZZLE 04
+
+            setTimeout(() => {
+
+                puzzle3.style.display =
+                    "none";
+
+
+                puzzle4.classList.remove(
+                    "puzzle-hidden"
+                );
+
+
+                puzzleCounter.textContent =
+                    "PUZZLE 04 / 05";
+
+
+                setTimeout(() => {
+
+                    if (processInput) {
+                        processInput.focus();
+                    }
+
+                }, 200);
+
+            }, 4000);
+
+
             return;
 
         }
@@ -483,6 +520,110 @@ function initEscapeGame() {
         commandInput.value = "";
 
         commandInput.focus();
+
+    }
+
+
+    // ========================================
+    // PUZZLE 04
+    // CEK URUTAN PROCESS
+    // ========================================
+
+    function checkProcess() {
+
+        const answer =
+            processInput.value
+                .trim()
+                .toUpperCase()
+                .replace(/\s+/g, " ");
+
+
+        if (!answer) {
+            return;
+        }
+
+
+        attempts++;
+
+
+        // JAWABAN BENAR
+
+        if (
+            answer ===
+            "ROOT KILL STOP EXIT"
+        ) {
+
+            processStatus.style.color =
+                "#28e44d";
+
+
+            processStatus.innerHTML =
+                "&gt; URUTAN DITERIMA.<br>" +
+                "&gt; menghentikan proses...";
+
+
+            processInput.disabled = true;
+            submitProcess.disabled = true;
+
+
+            // PROSES TERMINATED
+
+            setTimeout(() => {
+
+                processStatus.innerHTML =
+                    "&gt; ROOT ........ TERMINATED<br>" +
+                    "&gt; KILL ........ TERMINATED<br>" +
+                    "&gt; STOP ........ TERMINATED<br>" +
+                    "&gt; EXIT ........ TERMINATED";
+
+            }, 1000);
+
+
+            // MASIH ADA PROSES
+
+            setTimeout(() => {
+
+                processStatus.innerHTML +=
+                    "<br><br>" +
+                    "&gt; PERINGATAN:<br>" +
+                    "&gt; 1 PROSES MASIH AKTIF.";
+
+            }, 2200);
+
+
+            // FINAL PROTOCOL
+
+            setTimeout(() => {
+
+                processStatus.innerHTML +=
+                    "<br><br>" +
+                    "&gt; membuka final_protocol...";
+
+            }, 3200);
+
+
+            // PUZZLE 05 NANTI MASUK DI SINI
+
+
+            return;
+
+        }
+
+
+        // JAWABAN SALAH
+
+        processStatus.style.color =
+            "#777";
+
+
+        processStatus.innerHTML =
+            "&gt; URUTAN SALAH.<br>" +
+            "&gt; proses gagal dihentikan.";
+
+
+        processInput.value = "";
+
+        processInput.focus();
 
     }
 
@@ -575,6 +716,37 @@ function initEscapeGame() {
                 if (event.key === "Enter") {
 
                     checkCommand();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // ========================================
+    // EVENT - PUZZLE 04
+    // ========================================
+
+    if (
+        submitProcess &&
+        processInput
+    ) {
+
+        submitProcess.addEventListener(
+            "click",
+            checkProcess
+        );
+
+
+        processInput.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (event.key === "Enter") {
+
+                    checkProcess();
 
                 }
 
