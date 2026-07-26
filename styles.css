@@ -15,9 +15,7 @@ html {
 body {
     background: #0a0a0a;
     color: #f5f5f5;
-
     font-family: "Inter", sans-serif;
-
     min-height: 100vh;
 }
 
@@ -144,7 +142,7 @@ nav {
 ============================== */
 
 .about {
-    padding: 55px 0 65px;
+    padding: 55px 0 30px;
 }
 
 .description {
@@ -163,7 +161,7 @@ nav {
 ============================== */
 
 .my-websites {
-    padding: 70px 0;
+    padding: 30px 0 55px;
 }
 
 .section-label {
@@ -174,11 +172,13 @@ nav {
 
     letter-spacing: 3px;
 
-    margin-bottom: 55px;
+    margin-bottom: 35px;
 }
 
 
-/* PROJECT ITEM */
+/* ==============================
+   PROJECT ITEM
+============================== */
 
 .website-item {
     display: grid;
@@ -190,7 +190,7 @@ nav {
 
     width: 100%;
 
-    padding: 45px 0;
+    padding: 38px 0;
 
     border-top: 1px solid #292929;
     border-bottom: 1px solid #292929;
@@ -202,7 +202,9 @@ nav {
 }
 
 
-/* NUMBER */
+/* ==============================
+   PROJECT NUMBER
+============================== */
 
 .website-number {
     color: #555;
@@ -211,7 +213,9 @@ nav {
 }
 
 
-/* PROJECT INFO */
+/* ==============================
+   PROJECT INFO
+============================== */
 
 .website-info {
     min-width: 0;
@@ -238,7 +242,9 @@ nav {
 }
 
 
-/* PROJECT ARROW */
+/* ==============================
+   PROJECT ARROW
+============================== */
 
 .website-arrow {
     color: #fff;
@@ -251,7 +257,9 @@ nav {
 }
 
 
-/* PROJECT HOVER */
+/* ==============================
+   PROJECT HOVER
+============================== */
 
 .website-item:hover {
     border-color: #444;
@@ -324,7 +332,6 @@ footer {
 
     .container {
         width: 88%;
-
         padding: 25px 0;
     }
 
@@ -375,12 +382,11 @@ footer {
     /* ABOUT */
 
     .about {
-        padding: 40px 0 50px;
+        padding: 40px 0 20px;
     }
 
     .description {
         font-size: 22px;
-
         line-height: 1.6;
     }
 
@@ -388,14 +394,13 @@ footer {
     /* THINGS I'VE BUILT */
 
     .my-websites {
-        padding: 55px 0;
+        padding: 25px 0 45px;
     }
 
     .section-label {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
 
         font-size: 12px;
-
         letter-spacing: 3px;
     }
 
@@ -424,7 +429,6 @@ footer {
         margin-top: 7px;
 
         font-size: 14px;
-
         line-height: 1.45;
     }
 
