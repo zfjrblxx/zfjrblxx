@@ -627,7 +627,7 @@ footer {
 .folder-icon {
     display: block;
 
-    font-size: 48px;
+    font-size: 28px;
 
     transition:
         transform 0.2s ease,
@@ -806,7 +806,7 @@ footer {
 @media (max-width: 700px) {
 
     .folder-icon {
-        font-size: 43px;
+        font-size: 26px;
     }
 
     .note-overlay {
