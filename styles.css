@@ -1061,3 +1061,15 @@ footer {
         font-size: 16px !important;
     }
 }
+
+/* HIDDEN CODE */
+
+.hidden-code {
+    margin-top: 35px;
+
+    color: #4b604f;
+
+    font-size: 10px;
+
+    opacity: 0.55;
+}
