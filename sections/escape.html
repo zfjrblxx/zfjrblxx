@@ -80,6 +80,7 @@
                         kode_akses:
                     </label>
 
+
                     <div class="code-input">
 
                         <span>&gt;</span>
@@ -148,8 +149,11 @@
                         class="file-item"
                         data-file="system"
                     >
+
                         <span>[01]</span>
+
                         system.log
+
                     </button>
 
 
@@ -157,8 +161,11 @@
                         class="file-item"
                         data-file="memory"
                     >
+
                         <span>[02]</span>
+
                         memory.dat
+
                     </button>
 
 
@@ -166,8 +173,11 @@
                         class="file-item"
                         data-file="exit"
                     >
+
                         <span>[03]</span>
+
                         exit.key
+
                     </button>
 
 
@@ -175,8 +185,11 @@
                         class="file-item"
                         data-file="readme"
                     >
+
                         <span>[04]</span>
+
                         README.txt
+
                     </button>
 
 
@@ -189,8 +202,11 @@
                     class="file-output"
                     id="fileOutput"
                 >
+
                     &gt; pilih sebuah file
+
                 </div>
+
 
             </div>
 
@@ -207,6 +223,7 @@
                 <p class="directory-line">
                     &gt; fragmen berhasil dipulihkan
                 </p>
+
 
                 <br>
 
@@ -225,8 +242,11 @@
 
                     <span>FRAGMEN:</span>
 
+
                     <div class="broken-command">
+
                         E X _ T
+
                     </div>
 
                 </div>
@@ -275,6 +295,7 @@
                     id="commandStatus"
                 ></p>
 
+
             </div>
 
 
@@ -291,6 +312,7 @@
                     &gt; koneksi dipulihkan...
                 </p>
 
+
                 <br>
 
 
@@ -303,6 +325,7 @@
                     Ada sesuatu yang menahanmu di sini.
                 </p>
 
+
                 <p>
                     Sistem meninggalkan satu proses terakhir.
                 </p>
@@ -312,12 +335,17 @@
 
                     <span>LAST_PROCESS:</span>
 
+
                     <div class="process-order">
+
                         4 1 3 2
+
                     </div>
 
                 </div>
 
+
+                <!-- PROCESS LIST -->
 
                 <div class="process-list">
 
@@ -386,150 +414,174 @@
                     id="processStatus"
                 ></p>
 
+
+            </div>
+
+
+            <!-- =====================
+                 PUZZLE 05
+            ====================== -->
+
+            <div
+                id="puzzle5"
+                class="puzzle-hidden"
+            >
+
+                <p class="directory-line">
+                    &gt; final_protocol dimuat
+                </p>
+
+
+                <br>
+
+
+                <p class="escape-error">
+                    &gt; 1 PROSES MASIH AKTIF
+                </p>
+
+
+                <!-- FINAL PROCESS -->
+
+                <div class="final-process">
+
+                    <span>
+                        PROCESS:
+                    </span>
+
+                    <strong>
+                        YOU
+                    </strong>
+
+                </div>
+
+
+                <p>
+                    Tidak ada perintah untuk menghentikannya.
+                </p>
+
+
+                <p>
+                    Satu-satunya cara keluar adalah
+                    mengakhiri sesi ini.
+                </p>
+
+
+                <!-- HINT -->
+
+                <div class="escape-hint">
+
+                    <span>
+                        PETUNJUK:
+                    </span>
+
+                    Linux punya perintah untuk keluar
+                    dari sebuah sesi.
+
+                </div>
+
+
+                <!-- FINAL INPUT -->
+
+                <div class="code-area">
+
+                    <label for="finalInput">
+                        wly@system:~$
+                    </label>
+
+
+                    <div class="code-input">
+
+                        <span>&gt;</span>
+
+                        <input
+                            type="text"
+                            id="finalInput"
+                            autocomplete="off"
+                            spellcheck="false"
+                            placeholder="_"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="terminal-btn"
+                    id="submitFinal"
+                >
+                    → jalankan
+                </button>
+
+
+                <p
+                    class="escape-status"
+                    id="finalStatus"
+                ></p>
+
+
+            </div>
+
+
+            <!-- =====================
+                 ESCAPE COMPLETE
+            ====================== -->
+
+            <div
+                id="escapeComplete"
+                class="puzzle-hidden"
+            >
+
+                <div class="escape-complete">
+
+
+                    <p class="complete-small">
+                        &gt; logout
+                    </p>
+
+
+                    <p>
+                        mengakhiri sesi...
+                    </p>
+
+
+                    <p>
+                        menutup koneksi...
+                    </p>
+
+
+                    <p>
+                        menghapus session...
+                    </p>
+
+
+                    <div class="complete-divider"></div>
+
+
+                    <p class="complete-status">
+                        CONNECTION CLOSED.
+                    </p>
+
+
+                    <h2>
+                        KAMU BERHASIL KELUAR.
+                    </h2>
+
+
+                    <p class="complete-code">
+                        ESCAPE COMPLETE
+                    </p>
+
+
+                </div>
+
             </div>
 
 
         </div>
-
-<!-- =====================
-     PUZZLE 05
-====================== -->
-
-<div
-    id="puzzle5"
-    class="puzzle-hidden"
->
-
-    <p class="directory-line">
-        &gt; final_protocol dimuat
-    </p>
-
-    <br>
-
-
-    <p class="escape-error">
-        &gt; 1 PROSES MASIH AKTIF
-    </p>
-
-
-    <div class="final-process">
-
-        <span>PROCESS:</span>
-
-        <strong>YOU</strong>
-
-    </div>
-
-
-    <p>
-        Tidak ada perintah untuk menghentikannya.
-    </p>
-
-    <p>
-        Satu-satunya cara keluar adalah
-        mengakhiri sesi ini.
-    </p>
-
-
-    <div class="escape-hint">
-
-        <span>PETUNJUK:</span>
-
-        Linux punya perintah untuk keluar
-        dari sebuah sesi.
-
-    </div>
-
-
-    <div class="code-area">
-
-        <label for="finalInput">
-            wly@system:~$
-        </label>
-
-
-        <div class="code-input">
-
-            <span>&gt;</span>
-
-            <input
-                type="text"
-                id="finalInput"
-                autocomplete="off"
-                spellcheck="false"
-                placeholder="_"
-            >
-
-        </div>
-
-    </div>
-
-
-    <button
-        class="terminal-btn"
-        id="submitFinal"
-    >
-        → jalankan
-    </button>
-
-
-    <p
-        class="escape-status"
-        id="finalStatus"
-    ></p>
-
-</div>
-
-
-<!-- =====================
-     ESCAPE COMPLETE
-====================== -->
-
-<div
-    id="escapeComplete"
-    class="puzzle-hidden"
->
-
-    <div class="escape-complete">
-
-        <p class="complete-small">
-            &gt; logout
-        </p>
-
-        <p>
-            mengakhiri sesi...
-        </p>
-
-        <p>
-            menutup koneksi...
-        </p>
-
-        <p>
-            menghapus session...
-        </p>
-
-
-        <div class="complete-divider"></div>
-
-
-        <p class="complete-status">
-            CONNECTION CLOSED.
-        </p>
-
-
-        <h2>
-            KAMU BERHASIL KELUAR.
-        </h2>
-
-
-        <p class="complete-code">
-            ESCAPE COMPLETE
-        </p>
-
-    </div>
-
-</div>
-        <!-- END ESCAPE CONTENT -->
+        <!-- ==============================
+             END ESCAPE CONTENT
+        =============================== -->
 
 
         <!-- ==============================
@@ -547,6 +599,7 @@
 
     </div>
     <!-- END ESCAPE WINDOW -->
+
 
 </div>
 <!-- END ESCAPE SCREEN -->
