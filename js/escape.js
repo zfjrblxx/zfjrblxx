@@ -83,6 +83,26 @@ function initEscapeGame() {
 
 
     // ========================================
+    // PUZZLE 05
+    // ========================================
+
+    const puzzle5 =
+        document.getElementById("puzzle5");
+
+    const finalInput =
+        document.getElementById("finalInput");
+
+    const submitFinal =
+        document.getElementById("submitFinal");
+
+    const finalStatus =
+        document.getElementById("finalStatus");
+
+    const escapeComplete =
+        document.getElementById("escapeComplete");
+
+
+    // ========================================
     // STATE
     // ========================================
 
@@ -108,7 +128,9 @@ function initEscapeGame() {
                 accessCode &&
                 !accessCode.disabled
             ) {
+
                 accessCode.focus();
+
             }
 
         }, 200);
@@ -165,8 +187,6 @@ function initEscapeGame() {
             submitCode.disabled = true;
 
 
-            // MASUK PUZZLE 02
-
             setTimeout(() => {
 
                 puzzle1.style.display =
@@ -216,10 +236,7 @@ function initEscapeGame() {
     function openFile(file) {
 
 
-        // ====================================
         // SYSTEM.LOG
-        // FILE BENAR
-        // ====================================
 
         if (file === "system") {
 
@@ -285,9 +302,7 @@ function initEscapeGame() {
         }
 
 
-        // ====================================
         // MEMORY.DAT
-        // ====================================
 
         if (file === "memory") {
 
@@ -316,9 +331,7 @@ function initEscapeGame() {
         }
 
 
-        // ====================================
         // EXIT.KEY
-        // ====================================
 
         if (file === "exit") {
 
@@ -348,9 +361,7 @@ function initEscapeGame() {
         }
 
 
-        // ====================================
         // README
-        // ====================================
 
         if (file === "readme") {
 
@@ -402,7 +413,9 @@ function initEscapeGame() {
         setTimeout(() => {
 
             if (commandInput) {
+
                 commandInput.focus();
+
             }
 
         }, 200);
@@ -412,7 +425,6 @@ function initEscapeGame() {
 
     // ========================================
     // PUZZLE 03
-    // CEK COMMAND
     // ========================================
 
     function checkCommand() {
@@ -427,8 +439,6 @@ function initEscapeGame() {
             return;
         }
 
-
-        // COMMAND BENAR
 
         if (command === "EXIT") {
 
@@ -456,7 +466,7 @@ function initEscapeGame() {
             }, 900);
 
 
-            // TERNYATA GAGAL
+            // GAGAL
 
             setTimeout(() => {
 
@@ -494,7 +504,9 @@ function initEscapeGame() {
                 setTimeout(() => {
 
                     if (processInput) {
+
                         processInput.focus();
+
                     }
 
                 }, 200);
@@ -526,7 +538,6 @@ function initEscapeGame() {
 
     // ========================================
     // PUZZLE 04
-    // CEK URUTAN PROCESS
     // ========================================
 
     function checkProcess() {
@@ -546,8 +557,6 @@ function initEscapeGame() {
         attempts++;
 
 
-        // JAWABAN BENAR
-
         if (
             answer ===
             "ROOT KILL STOP EXIT"
@@ -566,7 +575,7 @@ function initEscapeGame() {
             submitProcess.disabled = true;
 
 
-            // PROSES TERMINATED
+            // TERMINATED
 
             setTimeout(() => {
 
@@ -602,7 +611,36 @@ function initEscapeGame() {
             }, 3200);
 
 
-            // PUZZLE 05 NANTI MASUK DI SINI
+            // ========================================
+            // MASUK PUZZLE 05
+            // ========================================
+
+            setTimeout(() => {
+
+                puzzle4.style.display =
+                    "none";
+
+
+                puzzle5.classList.remove(
+                    "puzzle-hidden"
+                );
+
+
+                puzzleCounter.textContent =
+                    "PUZZLE 05 / 05";
+
+
+                setTimeout(() => {
+
+                    if (finalInput) {
+
+                        finalInput.focus();
+
+                    }
+
+                }, 200);
+
+            }, 4500);
 
 
             return;
@@ -629,47 +667,178 @@ function initEscapeGame() {
 
 
     // ========================================
+    // PUZZLE 05
+    // FINAL
+    // ========================================
+
+    function checkFinal() {
+
+        const answer =
+            finalInput.value
+                .trim()
+                .toLowerCase();
+
+
+        if (!answer) {
+            return;
+        }
+
+
+        attempts++;
+
+
+        // ========================================
+        // LOGOUT BENAR
+        // ========================================
+
+        if (answer === "logout") {
+
+            finalInput.disabled = true;
+            submitFinal.disabled = true;
+
+
+            finalStatus.style.color =
+                "#28e44d";
+
+
+            finalStatus.innerHTML =
+                "&gt; perintah diterima.";
+
+
+            // MENGAKHIRI SESI
+
+            setTimeout(() => {
+
+                finalStatus.innerHTML =
+                    "&gt; mengakhiri sesi...";
+
+            }, 700);
+
+
+            // TUTUP KONEKSI
+
+            setTimeout(() => {
+
+                finalStatus.innerHTML =
+                    "&gt; mengakhiri sesi...<br>" +
+                    "&gt; menutup koneksi...";
+
+            }, 1400);
+
+
+            // HAPUS SESSION
+
+            setTimeout(() => {
+
+                finalStatus.innerHTML =
+                    "&gt; mengakhiri sesi...<br>" +
+                    "&gt; menutup koneksi...<br>" +
+                    "&gt; menghapus session...";
+
+            }, 2100);
+
+
+            // COMPLETE
+
+            setTimeout(() => {
+
+                puzzle5.style.display =
+                    "none";
+
+
+                escapeComplete.classList.remove(
+                    "puzzle-hidden"
+                );
+
+
+                puzzleCounter.textContent =
+                    "ESCAPE COMPLETE";
+
+            }, 3000);
+
+
+            return;
+
+        }
+
+
+        // ========================================
+        // JAWABAN SALAH
+        // ========================================
+
+        finalStatus.style.color =
+            "#777";
+
+
+        finalStatus.innerHTML =
+            "&gt; perintah tidak dikenali.<br>" +
+            "&gt; sesi masih aktif.";
+
+
+        finalInput.value = "";
+
+        finalInput.focus();
+
+    }
+
+
+    // ========================================
     // EVENT - BUKA GAME
     // ========================================
 
-    startEscape.addEventListener(
-        "click",
-        openEscape
-    );
+    if (startEscape) {
+
+        startEscape.addEventListener(
+            "click",
+            openEscape
+        );
+
+    }
 
 
     // ========================================
     // EVENT - TUTUP GAME
     // ========================================
 
-    closeEscape.addEventListener(
-        "click",
-        closeGame
-    );
+    if (closeEscape) {
+
+        closeEscape.addEventListener(
+            "click",
+            closeGame
+        );
+
+    }
 
 
     // ========================================
     // EVENT - PUZZLE 01
     // ========================================
 
-    submitCode.addEventListener(
-        "click",
-        checkCode
-    );
+    if (
+        submitCode &&
+        accessCode
+    ) {
+
+        submitCode.addEventListener(
+            "click",
+            checkCode
+        );
 
 
-    accessCode.addEventListener(
-        "keydown",
-        (event) => {
+        accessCode.addEventListener(
+            "keydown",
+            (event) => {
 
-            if (event.key === "Enter") {
+                if (event.key === "Enter") {
 
-                checkCode();
+                    checkCode();
+
+                }
 
             }
+        );
 
-        }
-    );
+    }
 
 
     // ========================================
@@ -757,24 +926,59 @@ function initEscapeGame() {
 
 
     // ========================================
+    // EVENT - PUZZLE 05
+    // ========================================
+
+    if (
+        submitFinal &&
+        finalInput
+    ) {
+
+        submitFinal.addEventListener(
+            "click",
+            checkFinal
+        );
+
+
+        finalInput.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (event.key === "Enter") {
+
+                    checkFinal();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // ========================================
     // KLIK AREA LUAR
     // ========================================
 
-    escapeScreen.addEventListener(
-        "click",
-        (event) => {
+    if (escapeScreen) {
 
-            if (
-                event.target ===
-                escapeScreen
-            ) {
+        escapeScreen.addEventListener(
+            "click",
+            (event) => {
 
-                closeGame();
+                if (
+                    event.target ===
+                    escapeScreen
+                ) {
+
+                    closeGame();
+
+                }
 
             }
+        );
 
-        }
-    );
+    }
 
 
     // ========================================
@@ -787,6 +991,7 @@ function initEscapeGame() {
 
             if (
                 event.key === "Escape" &&
+                escapeScreen &&
                 escapeScreen.classList.contains(
                     "show"
                 )
