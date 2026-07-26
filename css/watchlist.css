@@ -261,3 +261,121 @@
     }
 
 }
+
+/* ==============================
+   A-Z NAVIGATION
+============================== */
+
+.watchlist-az {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #18351e;
+}
+
+
+.az-letter {
+    border: 0;
+    background: transparent;
+
+    font-family: inherit;
+    font-size: 11px;
+}
+
+
+.az-letter.active {
+    color: #28e44d;
+
+    cursor: pointer;
+}
+
+
+.az-letter.active:hover {
+    text-decoration: underline;
+}
+
+
+.az-letter.disabled {
+    color: #26382a;
+
+    cursor: default;
+}
+
+
+/* ==============================
+   WATCH GROUP
+============================== */
+
+.watch-group {
+    scroll-margin-top: 20px;
+
+    margin-bottom: 30px;
+}
+
+
+.watch-group:last-child {
+    margin-bottom: 0;
+}
+
+
+.watch-letter {
+    margin-bottom: 8px;
+
+    color: #28e44d;
+
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+.watch-items {
+    padding-left: 15px;
+
+    border-left: 1px solid #18351e;
+}
+
+
+.watch-items p {
+    padding: 7px 0;
+
+    border: 0;
+
+    color: #c8c8c8;
+
+    font-size: 13px;
+}
+
+
+.watch-items p::before {
+    content: "> ";
+
+    color: #527b59;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .watchlist-az {
+        gap: 6px;
+    }
+
+    .az-letter {
+        font-size: 10px;
+    }
+
+    .watch-letter {
+        font-size: 16px;
+    }
+
+    .watch-items p {
+        font-size: 12px;
+    }
+
+}
