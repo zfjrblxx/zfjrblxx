@@ -653,3 +653,39 @@ footer {
         font-size: 12px;
     }
 }
+
+/* ==============================
+   CURRENTLY LISTENING
+============================== */
+
+.spotify-section {
+    padding: 50px 0 60px;
+}
+
+.spotify-section .section-label {
+    margin-bottom: 30px;
+}
+
+.spotify-embed {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.spotify-embed iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 12px;
+}
+
+@media (max-width: 700px) {
+
+    .spotify-section {
+        padding: 40px 0 50px;
+    }
+
+    .spotify-embed iframe {
+        height: 352px;
+    }
+}
