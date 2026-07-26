@@ -15,8 +15,6 @@
 </section>
 
 
-<!-- ESCAPE SCREEN -->
-
 <div class="escape-screen" id="escapeScreen">
 
     <div class="escape-window">
@@ -34,67 +32,154 @@
 
         <div class="escape-content">
 
-            <p class="escape-error">
-                &gt; AKSES DIBATASI
-            </p>
+            <!-- =====================
+                 PUZZLE 01
+            ====================== -->
 
-            <p>
-                Anda tidak seharusnya berada di sini.
-            </p>
+            <div id="puzzle1">
 
-            <p>
-                Temukan kode akses untuk melanjutkan.
-            </p>
+                <p class="escape-error">
+                    &gt; ACCESS RESTRICTED
+                </p>
+
+                <p>
+                    You shouldn't be here.
+                </p>
+
+                <p>
+                    Find the access code to continue.
+                </p>
 
 
-            <div class="escape-hint">
+                <div class="escape-hint">
 
-                <span>PETUNJUK:</span>
+                    <span>HINT:</span>
 
-                Anda sudah melihat di mana kode itu disembunyikan.
+                    you've already seen where it's hidden.
+
+                </div>
+
+
+                <div class="code-area">
+
+                    <label for="accessCode">
+                        access_code:
+                    </label>
+
+                    <div class="code-input">
+
+                        <span>&gt;</span>
+
+                        <input
+                            type="text"
+                            id="accessCode"
+                            autocomplete="off"
+                            spellcheck="false"
+                            placeholder="_"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button class="terminal-btn" id="submitCode">
+                    [ EXECUTE ]
+                </button>
+
+
+                <p
+                    class="escape-status"
+                    id="escapeStatus">
+                </p>
 
             </div>
 
 
-            <div class="code-area">
+            <!-- =====================
+                 PUZZLE 02
+            ====================== -->
 
-                <label for="accessCode">
-                    access_code:
-                </label>
+            <div id="puzzle2" class="puzzle-hidden">
+
+                <p class="directory-line">
+                    &gt; ACCESS ACCEPTED
+                </p>
+
+                <p class="directory-line">
+                    &gt; mounting /unknown/...
+                </p>
+
+                <br>
+
+                <p class="directory-command">
+                    wly@unknown:~$ ls
+                </p>
 
 
-                <div class="code-input">
+                <div class="file-list">
 
-                    <span>&gt;</span>
+                    <button
+                        class="file-item"
+                        data-file="system">
 
-                    <input
-                        type="text"
-                        id="accessCode"
-                        autocomplete="off"
-                        spellcheck="false"
-                        placeholder="_"
-                    >
+                        <span>[01]</span>
+                        system.log
+
+                    </button>
+
+
+                    <button
+                        class="file-item"
+                        data-file="memory">
+
+                        <span>[02]</span>
+                        memory.dat
+
+                    </button>
+
+
+                    <button
+                        class="file-item"
+                        data-file="exit">
+
+                        <span>[03]</span>
+                        exit.key
+
+                    </button>
+
+
+                    <button
+                        class="file-item"
+                        data-file="readme">
+
+                        <span>[04]</span>
+                        README.txt
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="file-output"
+                    id="fileOutput">
+
+                    &gt; choose a file
 
                 </div>
 
             </div>
 
-
-            <button class="terminal-btn" id="submitCode">
-                [ EXECUTE ]
-            </button>
-
-
-            <p
-                class="escape-status"
-                id="escapeStatus">
-            </p>
-
         </div>
 
 
         <div class="escape-footer">
-            PUZZLE 01 / 05
+
+            <span id="puzzleCounter">
+                PUZZLE 01 / 05
+            </span>
+
         </div>
 
     </div>
