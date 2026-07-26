@@ -434,3 +434,90 @@ footer {
         font-size: 13px;
     }
 }
+
+/* ==============================
+   INGFO MABAR
+============================== */
+
+.mabar {
+    padding: 55px 0;
+}
+
+.mabar-description {
+    margin-top: -20px;
+    margin-bottom: 35px;
+
+    color: #777;
+    font-size: 15px;
+}
+
+.mabar-games {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.game-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 22px;
+
+    border: 1px solid #292929;
+    border-radius: 14px;
+
+    color: #fff;
+    text-decoration: none;
+
+    transition: 0.25s ease;
+}
+
+.game-item img {
+    width: 60px;
+    height: 60px;
+
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.game-item h3 {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.game-item span {
+    display: block;
+    margin-top: 6px;
+
+    color: #666;
+    font-size: 13px;
+}
+
+.game-item:hover {
+    border-color: #555;
+    transform: translateY(-2px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .mabar {
+        padding: 45px 0;
+    }
+
+    .mabar-games {
+        grid-template-columns: 1fr;
+    }
+
+    .game-item {
+        padding: 18px;
+    }
+
+    .game-item img {
+        width: 55px;
+        height: 55px;
+    }
+}
