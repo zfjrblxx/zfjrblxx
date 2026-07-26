@@ -363,3 +363,47 @@
 
     letter-spacing: 8px;
 }
+
+/* ==============================
+   PUZZLE 04
+============================== */
+
+.process-order {
+    margin-top: 12px;
+
+    color: #28e44d;
+
+    font-size: 20px;
+
+    letter-spacing: 8px;
+}
+
+.process-list {
+    margin: 25px 0;
+
+    padding: 15px 18px;
+
+    border-left: 1px solid #194822;
+
+    font-size: 13px;
+
+    line-height: 2;
+}
+
+.process-list p {
+    color: #aaa;
+}
+
+.process-list span {
+    color: #28e44d;
+
+    margin-right: 10px;
+}
+
+.puzzle-text {
+    margin-bottom: 20px;
+
+    color: #888;
+
+    font-size: 13px;
+}
