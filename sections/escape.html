@@ -9,7 +9,7 @@
     </p>
 
     <button class="terminal-btn" id="startEscape">
-        [ ENTER ]
+        [ MASUK ]
     </button>
 
 </section>
@@ -18,6 +18,8 @@
 <div class="escape-screen" id="escapeScreen">
 
     <div class="escape-window">
+
+        <!-- HEADER -->
 
         <div class="escape-header">
 
@@ -30,7 +32,10 @@
         </div>
 
 
+        <!-- CONTENT -->
+
         <div class="escape-content">
+
 
             <!-- =====================
                  PUZZLE 01
@@ -39,23 +44,23 @@
             <div id="puzzle1">
 
                 <p class="escape-error">
-                    &gt; ACCESS RESTRICTED
+                    &gt; AKSES DIBATASI
                 </p>
 
                 <p>
-                    You shouldn't be here.
+                    Seharusnya kamu tidak berada di sini.
                 </p>
 
                 <p>
-                    Find the access code to continue.
+                    Temukan kode akses untuk melanjutkan.
                 </p>
 
 
                 <div class="escape-hint">
 
-                    <span>HINT:</span>
+                    <span>PETUNJUK:</span>
 
-                    you've already seen where it's hidden.
+                    kamu pernah melihat tempat kode itu disembunyikan.
 
                 </div>
 
@@ -63,7 +68,7 @@
                 <div class="code-area">
 
                     <label for="accessCode">
-                        access_code:
+                        kode_akses:
                     </label>
 
                     <div class="code-input">
@@ -83,15 +88,18 @@
                 </div>
 
 
-                <button class="terminal-btn" id="submitCode">
-                    [ EXECUTE ]
+                <button
+                    class="terminal-btn"
+                    id="submitCode"
+                >
+                    [ JALANKAN ]
                 </button>
 
 
                 <p
                     class="escape-status"
-                    id="escapeStatus">
-                </p>
+                    id="escapeStatus"
+                ></p>
 
             </div>
 
@@ -100,30 +108,40 @@
                  PUZZLE 02
             ====================== -->
 
-            <div id="puzzle2" class="puzzle-hidden">
+            <div
+                id="puzzle2"
+                class="puzzle-hidden"
+            >
 
                 <p class="directory-line">
-                    &gt; ACCESS ACCEPTED
+                    &gt; AKSES DITERIMA
                 </p>
 
                 <p class="directory-line">
-                    &gt; mounting /unknown/...
+                    &gt; membuka /unknown/...
                 </p>
+
 
                 <br>
+
 
                 <p class="directory-command">
                     wly@unknown:~$ ls
                 </p>
 
 
+                <!-- FILES -->
+
                 <div class="file-list">
+
 
                     <button
                         class="file-item"
-                        data-file="system">
+                        data-file="system"
+                    >
 
                         <span>[01]</span>
+
                         system.log
 
                     </button>
@@ -131,9 +149,11 @@
 
                     <button
                         class="file-item"
-                        data-file="memory">
+                        data-file="memory"
+                    >
 
                         <span>[02]</span>
+
                         memory.dat
 
                     </button>
@@ -141,9 +161,11 @@
 
                     <button
                         class="file-item"
-                        data-file="exit">
+                        data-file="exit"
+                    >
 
                         <span>[03]</span>
+
                         exit.key
 
                     </button>
@@ -151,21 +173,27 @@
 
                     <button
                         class="file-item"
-                        data-file="readme">
+                        data-file="readme"
+                    >
 
                         <span>[04]</span>
+
                         README.txt
 
                     </button>
 
+
                 </div>
 
 
+                <!-- OUTPUT -->
+
                 <div
                     class="file-output"
-                    id="fileOutput">
+                    id="fileOutput"
+                >
 
-                    &gt; choose a file
+                    &gt; pilih sebuah file
 
                 </div>
 
@@ -173,6 +201,8 @@
 
         </div>
 
+
+        <!-- FOOTER -->
 
         <div class="escape-footer">
 
