@@ -13,6 +13,9 @@ function initEscapeGame() {
     const closeEscape =
         document.getElementById("closeEscape");
 
+    const puzzleCounter =
+        document.getElementById("puzzleCounter");
+
 
     // ========================================
     // PUZZLE 01
@@ -41,11 +44,25 @@ function initEscapeGame() {
     const fileOutput =
         document.getElementById("fileOutput");
 
-    const puzzleCounter =
-        document.getElementById("puzzleCounter");
-
     const fileItems =
         document.querySelectorAll(".file-item");
+
+
+    // ========================================
+    // PUZZLE 03
+    // ========================================
+
+    const puzzle3 =
+        document.getElementById("puzzle3");
+
+    const commandInput =
+        document.getElementById("commandInput");
+
+    const submitCommand =
+        document.getElementById("submitCommand");
+
+    const commandStatus =
+        document.getElementById("commandStatus");
 
 
     // ========================================
@@ -69,12 +86,12 @@ function initEscapeGame() {
         setTimeout(() => {
 
             if (
+                puzzle1 &&
+                puzzle1.style.display !== "none" &&
                 accessCode &&
                 !accessCode.disabled
             ) {
-
                 accessCode.focus();
-
             }
 
         }, 200);
@@ -219,7 +236,36 @@ function initEscapeGame() {
                     E X _ T
                 </span>
 
+                <br><br>
+
+                <button
+                    class="terminal-btn"
+                    id="continuePuzzle3"
+                >
+                    [ LANJUT ]
+                </button>
+
             `;
+
+
+            // Tombol baru dibuat setelah innerHTML,
+            // jadi ambil elemennya di sini.
+
+            const continueButton =
+                document.getElementById(
+                    "continuePuzzle3"
+                );
+
+
+            if (continueButton) {
+
+                continueButton.addEventListener(
+                    "click",
+                    openPuzzle3
+                );
+
+            }
+
 
             return;
 
@@ -228,6 +274,7 @@ function initEscapeGame() {
 
         // ====================================
         // MEMORY.DAT
+        // FILE RUSAK
         // ====================================
 
         if (file === "memory") {
@@ -250,6 +297,7 @@ function initEscapeGame() {
                 </span>
 
             `;
+
 
             return;
 
@@ -283,6 +331,7 @@ function initEscapeGame() {
 
             `;
 
+
             return;
 
         }
@@ -313,13 +362,133 @@ function initEscapeGame() {
 
             `;
 
+
+            return;
+
         }
 
     }
 
 
     // ========================================
-    // EVENT - OPEN GAME
+    // BUKA PUZZLE 03
+    // ========================================
+
+    function openPuzzle3() {
+
+        puzzle2.style.display =
+            "none";
+
+
+        puzzle3.classList.remove(
+            "puzzle-hidden"
+        );
+
+
+        puzzleCounter.textContent =
+            "PUZZLE 03 / 05";
+
+
+        setTimeout(() => {
+
+            if (commandInput) {
+                commandInput.focus();
+            }
+
+        }, 200);
+
+    }
+
+
+    // ========================================
+    // PUZZLE 03
+    // CEK COMMAND
+    // ========================================
+
+    function checkCommand() {
+
+        const command =
+            commandInput.value
+                .trim()
+                .toUpperCase();
+
+
+        if (!command) {
+            return;
+        }
+
+
+        // COMMAND BENAR
+
+        if (command === "EXIT") {
+
+            commandStatus.style.color =
+                "#28e44d";
+
+
+            commandStatus.innerHTML =
+                "&gt; PERINTAH VALID.<br>" +
+                "&gt; menjalankan EXIT...";
+
+
+            commandInput.disabled = true;
+
+            submitCommand.disabled = true;
+
+
+            // SEAKAN BERHASIL
+
+            setTimeout(() => {
+
+                commandStatus.innerHTML =
+                    "&gt; EXIT BERHASIL.<br>" +
+                    "&gt; memutus koneksi...";
+
+            }, 900);
+
+
+            // TERNYATA GAGAL
+
+            setTimeout(() => {
+
+                commandStatus.style.color =
+                    "#777";
+
+
+                commandStatus.innerHTML =
+                    "&gt; ERROR.<br><br>" +
+                    "Kamu pikir semudah itu?<br><br>" +
+                    "<span class='file-success'>" +
+                    "yah... hampir :)" +
+                    "</span>";
+
+            }, 2000);
+
+
+            return;
+
+        }
+
+
+        // COMMAND SALAH
+
+        commandStatus.style.color =
+            "#777";
+
+
+        commandStatus.innerHTML =
+            "&gt; PERINTAH TIDAK DIKENALI.";
+
+
+        commandInput.value = "";
+
+        commandInput.focus();
+
+    }
+
+
+    // ========================================
+    // EVENT - BUKA GAME
     // ========================================
 
     startEscape.addEventListener(
@@ -329,7 +498,7 @@ function initEscapeGame() {
 
 
     // ========================================
-    // EVENT - CLOSE
+    // EVENT - TUTUP GAME
     // ========================================
 
     closeEscape.addEventListener(
@@ -339,7 +508,7 @@ function initEscapeGame() {
 
 
     // ========================================
-    // EVENT - SUBMIT CODE
+    // EVENT - PUZZLE 01
     // ========================================
 
     submitCode.addEventListener(
@@ -347,8 +516,6 @@ function initEscapeGame() {
         checkCode
     );
 
-
-    // ENTER
 
     accessCode.addEventListener(
         "keydown",
@@ -365,7 +532,7 @@ function initEscapeGame() {
 
 
     // ========================================
-    // EVENT - FILE
+    // EVENT - PUZZLE 02
     // ========================================
 
     fileItems.forEach((item) => {
@@ -377,12 +544,44 @@ function initEscapeGame() {
                 const file =
                     item.dataset.file;
 
+
                 openFile(file);
 
             }
         );
 
     });
+
+
+    // ========================================
+    // EVENT - PUZZLE 03
+    // ========================================
+
+    if (
+        submitCommand &&
+        commandInput
+    ) {
+
+        submitCommand.addEventListener(
+            "click",
+            checkCommand
+        );
+
+
+        commandInput.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (event.key === "Enter") {
+
+                    checkCommand();
+
+                }
+
+            }
+        );
+
+    }
 
 
     // ========================================
