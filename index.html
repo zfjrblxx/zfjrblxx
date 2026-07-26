@@ -10,177 +10,197 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <main class="container">
+    <!-- subtle scanlines -->
+    <div class="scanlines"></div>
 
-        
+    <main class="terminal">
 
-        <!-- PROFILE -->
-        <section class="profile">
+        <!-- TERMINAL TOP BAR -->
+        <div class="terminal-bar">
 
-            <div class="profile-photo">
-                <img src="1.jpg" alt="Fajar Putra Waluya">
+            <div class="terminal-dots">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
 
-            <div class="profile-info">
-                <h1>Fajar Putra Waluya</h1>
-                <p><span id="age"></span> y.o · ♌ Leo · Indonesia</p>
-            </div>
+            <p>wly@home:~</p>
 
-        </section>
+            <div class="terminal-space"></div>
 
-
-        <div class="divider"></div>
-
-
-        <!-- ABOUT -->
-        <section class="about">
-
-            <p class="description">
-                Just a little space on the internet that I call mine. A place to keep the things I like, the things I make, and whatever comes along the way.
-            </p>
-        </section>
-
-
-<!-- ==============================
-     CURRENTLY LISTENING
-============================== -->
-
-<section class="spotify-section">
-
-    <p class="section-label">CURRENTLY LISTENING</p>
-
-    <div class="spotify-embed">
-        <iframe
-            src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1IPOOk?utm_source=generator&theme=0"
-            width="100%"
-            height="352"
-            frameborder="0"
-            allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-        </iframe>
-    </div>
-
-</section>
- 
-
-
-<!-- ==============================
-     THINGS I'VE BUILT
-============================== -->
-
-<section class="my-websites">
-
-    <p class="section-label">THINGS I'VE BUILT</p>
-
-    <a href="https://ingfobengkel.vercel.app/" class="website-item" target="_blank">
-
-        <span class="website-number">01</span>
-
-        <div class="website-info">
-            <h2>Ingfo Bengkel</h2>
-            <p>Catat servis, pajak, ganti oli, dan perawatan kendaraan.</p>
         </div>
 
-        <span class="website-arrow">↗</span>
 
-    </a>
+        <div class="terminal-content">
 
-</section>
+            <!-- =====================
+                 WHOAMI
+            ====================== -->
 
-<section class="mabar">
+            <section class="terminal-section">
 
-    <p class="section-label">INGFO MABAR</p>
-    <div class="mabar-games">
+                <p class="command">
+                    <span>wly@home:~$</span> whoami
+                </p>
 
+                <div class="identity">
 
-<a href="#" class="game-item">
-            <img src="valo.png" alt="Valorant">
+                    <h1>
+                        <span class="arrow">&gt;</span>
+                        Fajar Putra Waluya
+                    </h1>
 
-            <div>
-                <h3>Valorant</h3>
-                <span>Let's play ↗</span>
-            </div>
-        </a>
+                    <p class="meta">
+                        <span class="arrow">&gt;</span>
+                        <span id="age"></span> y.o
+                        <span class="dot">•</span>
+                        ♌ Leo
+                        <span class="dot">•</span>
+                        Indonesia
+                    </p>
 
-        <a href="#" class="game-item">
-            <img src="coc.png" alt="Clash of Clans">
+                </div>
 
-            <div>
-                <h3>Clash of Clans</h3>
-                <span>Let's play ↗</span>
-            </div>
-        </a>
-
-        <a href="#" class="game-item">
-            <img src="cr.png" alt="Clash Royale">
-
-            <div>
-                <h3>Clash Royale</h3>
-                <span>Let's play ↗</span>
-            </div>
-        </a>
-
-    </div>
-
-</section>
+            </section>
 
 
+            <!-- =====================
+                 ABOUT
+            ====================== -->
+
+            <section class="terminal-section">
+
+                <p class="command">
+                    <span>wly@home:~$</span> about
+                </p>
+
+                <p class="about-text">
+                    Just a little space on the internet that I call mine.
+                    A place for my thoughts, ideas, and everything in between.
+                </p>
+
+            </section>
 
 
-<!-- ==============================
-     SPECIAL BIG THANKS
-============================== -->
+            <!-- =====================
+                 PROJECTS
+            ====================== -->
 
-<section class="big-thanks">
+            <section class="terminal-section">
 
-    <p class="section-label">SPECIAL BIG THANKS TO</p>
+                <p class="command">
+                    <span>wly@home:~$</span> projects
+                </p>
 
-    <div class="thanks-grid">
+                <div class="project">
 
-        <a href="https://celestia.org/" target="_blank" class="thanks-item">
-            <img src="https://cryptologos.cc/logos/celestia-tia-logo.png" alt="Celestia">
-            <span>Celestia</span>
-        </a>
+                    <div class="project-title">
+                        <span>[01]</span>
+                        <h2>Ingfo Bengkel</h2>
+                    </div>
 
-        <a href="https://jup.ag/" target="_blank" class="thanks-item">
-            <img src="https://cryptologos.cc/logos/jupiter-ag-jup-logo.png" alt="Jupiter">
-            <span>Jupiter</span>
-        </a>
+                    <p>
+                        Catat servis, pajak, ganti oli,
+                        dan perawatan kendaraan.
+                    </p>
 
-        <a href="https://arbitrum.io/" target="_blank" class="thanks-item">
-            <img src="https://cryptologos.cc/logos/arbitrum-arb-logo.png" alt="Arbitrum">
-            <span>Arbitrum</span>
-        </a>
+                    <a href="#" target="_blank">
+                        → open project
+                    </a>
 
-        <a href="https://www.sui.io" target="_blank" class="thanks-item">
-            <img src="https://cryptologos.cc/logos/sui-sui-logo.png" alt="SUI">
-            <span>SUI</span>
-        </a>
+                </div>
 
-    </div>
-
-</section>
+            </section>
 
 
-        <div class="divider bottom-divider"></div>
+            <!-- =====================
+                 BIG THANKS
+            ====================== -->
+
+            <section class="terminal-section">
+
+                <p class="command">
+                    <span>wly@home:~$</span> special_thanks
+                </p>
+
+                <p class="thanks-title">
+                    Special big thanks to:
+                </p>
+
+                <div class="thanks-list">
+
+                    <span>Celestia</span>
+                    <span>Jupiter</span>
+                    <span>Arbitrum</span>
+                    <span>Magic Eden</span>
+
+                </div>
+
+            </section>
 
 
- <!-- FOOTER -->
-        <footer>
-    <p>Created with love ♡ by Wly</p>
-</footer>
+            <!-- =====================
+                 SPOTIFY
+            ====================== -->
+
+            <section class="terminal-section">
+
+                <p class="command">
+                    <span>wly@home:~$</span> spotify
+                </p>
+
+                <div class="spotify-wrapper">
+
+                    <iframe
+                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1IPOOk?utm_source=generator&theme=0"
+                        width="100%"
+                        height="352"
+                        frameborder="0"
+                        allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy">
+                    </iframe>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 END TERMINAL
+            ====================== -->
+
+            <section class="terminal-end">
+
+                <p class="command">
+                    <span>wly@home:~$</span>
+                    <span class="cursor"></span>
+                </p>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer>
+                <p>Created with love ♡ by Wly</p>
+            </footer>
+
+        </div>
 
     </main>
+
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
