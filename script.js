@@ -1,34 +1,41 @@
-// Fajar Putra Waluya
-// Personal Portfolio
-
-console.log("Portfolio loaded.");
-
 // ==============================
 // AUTO AGE
 // ==============================
 
-// Ganti 2000 dengan tahun lahir kamu
-const birthDate = new Date(2000, 6, 28);
-// Bulan dimulai dari 0
-// 6 = Juli
+const BIRTH_YEAR = 2000; // Ganti dengan tahun lahir kamu
+const BIRTH_MONTH = 6;   // Juli (January = 0)
+const BIRTH_DAY = 28;
 
-function calculateAge() {
+function updateAge() {
+
     const today = new Date();
 
-    let age = today.getFullYear() - birthDate.getFullYear();
+    const birthday = new Date(
+        BIRTH_YEAR,
+        BIRTH_MONTH,
+        BIRTH_DAY
+    );
+
+    let age =
+        today.getFullYear() -
+        birthday.getFullYear();
 
     const birthdayThisYear = new Date(
         today.getFullYear(),
-        birthDate.getMonth(),
-        birthDate.getDate()
+        BIRTH_MONTH,
+        BIRTH_DAY
     );
 
     if (today < birthdayThisYear) {
         age--;
     }
 
-    document.getElementById("age").textContent = age;
+    const ageElement =
+        document.getElementById("age");
+
+    if (ageElement) {
+        ageElement.textContent = age;
+    }
 }
 
-calculateAge();
-
+updateAge();
