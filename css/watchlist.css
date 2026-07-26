@@ -3,43 +3,39 @@
 ============================== */
 
 .watchlist-folder {
-    display: flex;
-    align-items: center;
+    display: block;
 
-    gap: 8px;
+    border: 0;
+    background: transparent;
 
     padding: 4px 8px;
 
-    border: 0;
-
-    background: transparent;
-
-    color: #28e44d;
-
     font-family: inherit;
-    font-size: 13px;
-
     cursor: pointer;
 }
 
-
 .watchlist-folder-icon {
-    font-size: 20px;
+    display: block;
 
-    transition: transform 0.2s ease;
+    font-size: 28px;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
 }
 
-
-.watchlist-folder:hover
-.watchlist-folder-icon {
-    transform: translateY(-2px);
+.watchlist-folder:hover .watchlist-folder-icon {
+    transform: translateY(-3px);
+    filter: brightness(1.15);
 }
 
+@media (max-width: 700px) {
 
-.watchlist-folder:hover {
-    text-decoration: underline;
+    .watchlist-folder-icon {
+        font-size: 26px;
+    }
+
 }
-
 
 /* ==============================
    OVERLAY
