@@ -1,0 +1,505 @@
+/* ==============================
+   RESET
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #071009 0%,
+            #020403 45%,
+            #000 100%
+        );
+
+    color: #d8d8d8;
+
+    font-family: "JetBrains Mono", monospace;
+
+    padding: 30px;
+}
+
+
+/* ==============================
+   TERMINAL
+============================== */
+
+.terminal {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    background: rgba(0, 5, 2, 0.94);
+
+    border: 1px solid #18351e;
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 50px rgba(0, 255, 70, 0.04);
+}
+
+
+/* ==============================
+   TERMINAL BAR
+============================== */
+
+.terminal-bar {
+    height: 48px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    padding: 0 16px;
+
+    border-bottom: 1px solid #18351e;
+
+    background: #050806;
+}
+
+.terminal-bar p {
+    color: #28e44d;
+    font-size: 13px;
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-dots span {
+    width: 11px;
+    height: 11px;
+
+    border-radius: 50%;
+}
+
+.terminal-dots span:nth-child(1) {
+    background: #ff5f56;
+}
+
+.terminal-dots span:nth-child(2) {
+    background: #ffbd2e;
+}
+
+.terminal-dots span:nth-child(3) {
+    background: #27c93f;
+}
+
+
+/* ==============================
+   CONTENT
+============================== */
+
+.terminal-content {
+    padding: 40px;
+}
+
+.terminal-section {
+    margin-bottom: 55px;
+}
+
+
+/* ==============================
+   COMMAND
+============================== */
+
+.command {
+    color: #28e44d;
+
+    font-size: 17px;
+    font-weight: 500;
+
+    margin-bottom: 25px;
+}
+
+.command span:first-child {
+    color: #1cff47;
+}
+
+
+/* ==============================
+   IDENTITY
+============================== */
+
+.identity {
+    padding-left: 15px;
+
+    border-left: 1px solid #1cff47;
+}
+
+.identity h1 {
+    color: #f2f2f2;
+
+    font-size: clamp(27px, 5vw, 45px);
+
+    font-weight: 500;
+    letter-spacing: -1.5px;
+}
+
+.arrow {
+    color: #28e44d;
+    margin-right: 12px;
+}
+
+.meta {
+    margin-top: 18px;
+
+    color: #28e44d;
+
+    font-size: 16px;
+}
+
+.dot {
+    margin: 0 9px;
+}
+
+
+/* ==============================
+   ABOUT
+============================== */
+
+.about-text {
+    max-width: 800px;
+
+    padding-left: 15px;
+
+    color: #d0d0d0;
+
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+/* ==============================
+   PROJECTS
+============================== */
+
+.projects-list {
+    max-width: 850px;
+
+    border: 1px solid #194822;
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    background: rgba(0, 255, 50, 0.015);
+}
+
+.project-item {
+    padding: 28px 30px;
+
+    border-bottom: 1px solid #18351e;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.project-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.project-title span {
+    color: #28e44d;
+    font-size: 16px;
+}
+
+.project-title h2 {
+    margin: 0;
+
+    color: #28e44d;
+
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.project-item > p {
+    margin: 16px 0 18px 43px;
+
+    color: #aaa;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.project-item > a,
+.coming-soon {
+    display: inline-block;
+
+    margin-left: 43px;
+
+    color: #28e44d;
+
+    font-size: 14px;
+
+    text-decoration: none;
+}
+
+.project-item > a:hover {
+    text-decoration: underline;
+}
+
+.coming-soon {
+    color: #527b59;
+}
+
+
+/* ==============================
+   SPOTIFY
+============================== */
+
+.spotify-wrapper {
+    max-width: 850px;
+
+    border: 1px solid #18351e;
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    background: #000;
+}
+
+.spotify-wrapper iframe {
+    display: block;
+
+    width: 100%;
+
+    border: 0;
+}
+
+
+/* ==============================
+   TERMINAL END
+============================== */
+
+.terminal-end {
+    padding-top: 10px;
+}
+
+
+/* ==============================
+   CURSOR
+============================== */
+
+.cursor {
+    display: inline-block;
+
+    width: 9px;
+    height: 18px;
+
+    margin-left: 5px;
+
+    background: #28e44d;
+
+    vertical-align: middle;
+
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+    margin-top: 40px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #18351e;
+
+    color: #4d6652;
+
+    font-size: 12px;
+}
+
+
+/* ==============================
+   SCANLINES
+============================== */
+
+.scanlines {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 999;
+
+    opacity: 0.025;
+
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 2px,
+        #00ff41 3px
+    );
+}
+
+
+/* ==============================
+   SELECTION
+============================== */
+
+::selection {
+    background: #28e44d;
+    color: #000;
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .terminal {
+        border-radius: 7px;
+    }
+
+    .terminal-bar {
+        height: 43px;
+
+        padding: 0 12px;
+    }
+
+    .terminal-bar p {
+        font-size: 11px;
+    }
+
+    .terminal-dots span {
+        width: 9px;
+        height: 9px;
+    }
+
+    .terminal-content {
+        padding: 28px 20px;
+    }
+
+    .terminal-section {
+        margin-bottom: 45px;
+    }
+
+    .command {
+        margin-bottom: 20px;
+
+        font-size: 14px;
+    }
+
+    .identity {
+        padding-left: 12px;
+    }
+
+    .identity h1 {
+        font-size: 27px;
+        line-height: 1.4;
+    }
+
+    .meta {
+        font-size: 13px;
+        line-height: 2;
+    }
+
+    .dot {
+        margin: 0 5px;
+    }
+
+    .about-text {
+        padding-left: 0;
+
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .project-item {
+        padding: 22px 18px;
+    }
+
+    .project-title {
+        gap: 9px;
+    }
+
+    .project-title span {
+        font-size: 14px;
+    }
+
+    .project-title h2 {
+        font-size: 16px;
+    }
+
+    .project-item > p {
+        margin: 14px 0 17px;
+
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .project-item > a,
+    .coming-soon {
+        margin-left: 0;
+
+        font-size: 13px;
+    }
+
+    .spotify-wrapper iframe {
+        height: 352px;
+    }
+
+    footer {
+        font-size: 11px;
+        line-height: 1.7;
+    }
+}
+
+
+/* ==============================
+   SMALL MOBILE
+============================== */
+
+@media (max-width: 420px) {
+
+    .terminal-content {
+        padding: 25px 16px;
+    }
+
+    .identity h1 {
+        font-size: 23px;
+    }
+
+    .meta {
+        font-size: 12px;
+    }
+}
