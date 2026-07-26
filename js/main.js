@@ -150,6 +150,25 @@ async function initWebsite() {
 
     }
 
+
+// ========================================
+// WATCHLIST
+// ========================================
+
+const watchlistLoaded = await loadSection(
+    "watchlist-container",
+    "sections/watchlist.html"
+);
+
+if (
+    watchlistLoaded &&
+    typeof initWatchlist === "function"
+) {
+
+    initWatchlist();
+
+}
+
 }
 
 
