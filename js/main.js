@@ -198,3 +198,15 @@ document.addEventListener(
     "DOMContentLoaded",
     initWebsite
 );
+
+
+// ===============================
+// WATCH LOG COUNT
+// ===============================
+
+const totalWatch = document.querySelectorAll(".movie").length;
+const watchCount = document.getElementById("watchCount");
+
+if (watchCount) {
+    watchCount.textContent = totalWatch;
+}
