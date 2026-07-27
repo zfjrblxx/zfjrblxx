@@ -169,6 +169,24 @@ if (
 
 }
 
+// ========================================
+// SHUTDOWN
+// ========================================
+
+const shutdownLoaded = await loadSection(
+    "shutdown-container",
+    "sections/shutdown.html"
+);
+
+if (
+    shutdownLoaded &&
+    typeof initShutdown === "function"
+) {
+
+    initShutdown();
+
+}
+
 }
 
 
