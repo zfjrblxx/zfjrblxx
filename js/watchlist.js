@@ -342,14 +342,18 @@ function initWatchlist() {
 }
 
 // ===============================
-// WATCH LOG COUNT
+// WATCH COUNT
 // ===============================
 
-document.addEventListener("DOMContentLoaded", () => {
-    const totalWatch = document.querySelectorAll(".movie").length;
+function updateWatchCount() {
+    const movies = document.querySelectorAll(".movie");
     const watchCount = document.getElementById("watchCount");
 
+    console.log("Movie ditemukan:", movies.length);
+
     if (watchCount) {
-        watchCount.textContent = totalWatch;
+        watchCount.textContent = movies.length;
     }
-});
+}
+
+updateWatchCount();
