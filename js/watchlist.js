@@ -15,6 +15,9 @@ function initWatchlist() {
     const count =
         document.getElementById("watchlistCount");
 
+    const watchCount =
+        document.getElementById("watchCount");
+
 
     if (
         !folder ||
@@ -27,16 +30,18 @@ function initWatchlist() {
 
 
     // ========================================
-    // LOAD WATCHLIST
+    // WATCHLIST DATA
     // ========================================
 
-    async function loadWatchlist() {
+    let watchlistItems = [];
+    let watchlistLoaded = false;
 
-        content.innerHTML = `
-            <p class="watchlist-loading">
-                &gt; loading...
-            </p>
-        `;
+
+    // ========================================
+    // FETCH WATCHLIST DATA
+    // ========================================
+
+    async function fetchWatchlistData() {
 
         try {
 
@@ -66,7 +71,8 @@ function initWatchlist() {
                     "text/html"
                 );
 
-            const items = [
+
+            watchlistItems = [
                 ...doc.querySelectorAll("p")
             ]
                 .map(item =>
@@ -76,184 +82,60 @@ function initWatchlist() {
 
 
             // ========================================
-            // URUTKAN A-Z
+            // UPDATE COUNT
             // ========================================
 
-            items.sort((a, b) =>
-                a.localeCompare(
-                    b,
-                    undefined,
-                    {
-                        sensitivity: "base"
-                    }
-                )
-            );
-
-
-            // ========================================
-            // KELOMPOKKAN BERDASARKAN HURUF
-            // ========================================
-
-            const groups = {};
-
-            items.forEach(title => {
-
-                let letter =
-                    title.charAt(0).toUpperCase();
-
-
-                // Kalau bukan A-Z
-
-                if (!/[A-Z]/.test(letter)) {
-                    letter = "#";
-                }
-
-
-                if (!groups[letter]) {
-                    groups[letter] = [];
-                }
-
-
-                groups[letter].push(title);
-
-            });
-
-
-            // ========================================
-            // NAVIGATION A-Z
-            // ========================================
-
-            let output = `
-                <div class="watchlist-az">
-            `;
-
-
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                .split("")
-                .forEach(letter => {
-
-                    if (groups[letter]) {
-
-                        output += `
-                            <button
-                                class="az-letter active"
-                                data-letter="${letter}"
-                            >
-                                ${letter}
-                            </button>
-                        `;
-
-                    } else {
-
-                        output += `
-                            <span class="az-letter disabled">
-                                ${letter}
-                            </span>
-                        `;
-
-                    }
-
-                });
-
-
-            output += `</div>`;
-
-
-            // ========================================
-            // LIST
-            // ========================================
-
-            Object.keys(groups)
-                .sort()
-                .forEach(letter => {
-
-                    output += `
-                        <div
-                            class="watch-group"
-                            id="watch-${letter}"
-                        >
-
-                            <div class="watch-letter">
-                                ${letter}
-                            </div>
-
-                            <div class="watch-items">
-                    `;
-
-
-                    groups[letter]
-                        .forEach(title => {
-
-                            output += `
-                                <p>${title}</p>
-                            `;
-
-                        });
-
-
-                    output += `
-                            </div>
-                        </div>
-                    `;
-
-                });
-
-
-            content.innerHTML = output;
-
-
-            // ========================================
-            // COUNT
-            // ========================================
+            if (watchCount) {
+                watchCount.textContent =
+                    watchlistItems.length;
+            }
 
             if (count) {
-
                 count.textContent =
-                    `${items.length} items`;
-
+                    `${watchlistItems.length} items`;
             }
 
 
-            // ========================================
-            // A-Z CLICK
-            // ========================================
+            watchlistLoaded = true;
 
-            content
-                .querySelectorAll(
-                    ".az-letter.active"
-                )
-                .forEach(button => {
-
-                    button.addEventListener(
-                        "click",
-                        () => {
-
-                            const letter =
-                                button.dataset.letter;
-
-                            const target =
-                                document.getElementById(
-                                    `watch-${letter}`
-                                );
-
-                            if (target) {
-
-                                target.scrollIntoView({
-                                    behavior: "smooth",
-                                    block: "start"
-                                });
-
-                            }
-
-                        }
-                    );
-
-                });
+            return watchlistItems;
 
 
         } catch (error) {
 
             console.error(error);
+
+            return [];
+
+        }
+
+    }
+
+
+    // ========================================
+    // LOAD WATCHLIST
+    // ========================================
+
+    async function loadWatchlist() {
+
+        content.innerHTML = `
+            <p class="watchlist-loading">
+                &gt; loading...
+            </p>
+        `;
+
+
+        // Kalau data belum pernah dimuat
+
+        if (!watchlistLoaded) {
+            await fetchWatchlistData();
+        }
+
+
+        const items = [...watchlistItems];
+
+
+        if (!items.length) {
 
             content.innerHTML = `
                 <p class="watchlist-loading">
@@ -261,7 +143,194 @@ function initWatchlist() {
                 </p>
             `;
 
+            return;
         }
+
+
+        // ========================================
+        // URUTKAN A-Z
+        // ========================================
+
+        items.sort((a, b) =>
+            a.localeCompare(
+                b,
+                undefined,
+                {
+                    sensitivity: "base"
+                }
+            )
+        );
+
+
+        // ========================================
+        // KELOMPOKKAN BERDASARKAN HURUF
+        // ========================================
+
+        const groups = {};
+
+
+        items.forEach(title => {
+
+            let letter =
+                title.charAt(0).toUpperCase();
+
+
+            // Kalau bukan A-Z
+
+            if (!/[A-Z]/.test(letter)) {
+                letter = "#";
+            }
+
+
+            if (!groups[letter]) {
+                groups[letter] = [];
+            }
+
+
+            groups[letter].push(title);
+
+        });
+
+
+        // ========================================
+        // NAVIGATION A-Z
+        // ========================================
+
+        let output = `
+            <div class="watchlist-az">
+        `;
+
+
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            .split("")
+            .forEach(letter => {
+
+                if (groups[letter]) {
+
+                    output += `
+                        <button
+                            class="az-letter active"
+                            data-letter="${letter}"
+                        >
+                            ${letter}
+                        </button>
+                    `;
+
+                } else {
+
+                    output += `
+                        <span class="az-letter disabled">
+                            ${letter}
+                        </span>
+                    `;
+
+                }
+
+            });
+
+
+        output += `</div>`;
+
+
+        // ========================================
+        // LIST
+        // ========================================
+
+        Object.keys(groups)
+            .sort()
+            .forEach(letter => {
+
+                output += `
+                    <div
+                        class="watch-group"
+                        id="watch-${letter}"
+                    >
+
+                        <div class="watch-letter">
+                            ${letter}
+                        </div>
+
+                        <div class="watch-items">
+                `;
+
+
+                groups[letter]
+                    .forEach(title => {
+
+                        output += `
+                            <p>${title}</p>
+                        `;
+
+                    });
+
+
+                output += `
+                        </div>
+                    </div>
+                `;
+
+            });
+
+
+        content.innerHTML = output;
+
+
+        // ========================================
+        // COUNT
+        // ========================================
+
+        if (count) {
+
+            count.textContent =
+                `${items.length} items`;
+
+        }
+
+
+        if (watchCount) {
+
+            watchCount.textContent =
+                items.length;
+
+        }
+
+
+        // ========================================
+        // A-Z CLICK
+        // ========================================
+
+        content
+            .querySelectorAll(
+                ".az-letter.active"
+            )
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const letter =
+                            button.dataset.letter;
+
+                        const target =
+                            document.getElementById(
+                                `watch-${letter}`
+                            );
+
+
+                        if (target) {
+
+                            target.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start"
+                            });
+
+                        }
+
+                    }
+                );
+
+            });
 
     }
 
@@ -339,21 +408,11 @@ function initWatchlist() {
         }
     );
 
+
+    // ========================================
+    // INITIAL COUNT
+    // ========================================
+
+    fetchWatchlistData();
+
 }
-
-// ===============================
-// WATCH COUNT
-// ===============================
-
-function updateWatchCount() {
-    const movies = document.querySelectorAll(".movie");
-    const watchCount = document.getElementById("watchCount");
-
-    console.log("Movie ditemukan:", movies.length);
-
-    if (watchCount) {
-        watchCount.textContent = movies.length;
-    }
-}
-
-updateWatchCount();
