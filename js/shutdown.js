@@ -161,73 +161,17 @@ function initShutdown() {
     // REBOOT
     // ========================================
 
-    async function reboot() {
+    function reboot() {
 
-        if (!canReboot) {
-            return;
-        }
-
-
-        canReboot = false;
-
-        message.classList.add("hidden");
-
-        rebootMessage.classList.add(
-            "hidden"
-        );
-
-        log.innerHTML = "";
-
-
-        addLog(
-            "WLY BIOS v1.0"
-        );
-
-
-        await wait(500);
-
-        addLog(
-            ""
-        );
-
-        addLog(
-            "checking memory........ OK"
-        );
-
-
-        await wait(550);
-
-        addLog(
-            "loading system......... OK"
-        );
-
-
-        await wait(550);
-
-        addLog(
-            "restoring session...... OK"
-        );
-
-
-        await wait(700);
-
-        addLog(
-            ""
-        );
-
-        addLog(
-            "Welcome back."
-        );
-
-
-        await wait(1200);
-
-
-        screen.classList.remove("show");
-
-        document.body.style.overflow = "";
-
+    if (!canReboot) {
+        return;
     }
+
+    canReboot = false;
+
+    window.location.href = "https://www.google.com/";
+
+}
 
 
     // ========================================
