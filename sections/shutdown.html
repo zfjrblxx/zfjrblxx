@@ -1,1 +1,46 @@
-.
+<!-- ==============================
+     SHUTDOWN
+============================== -->
+
+<section class="terminal-section shutdown-section">
+
+    <p class="command">
+        <span>wly@home:~$</span> shutdown
+    </p>
+
+    <button class="terminal-btn" id="startShutdown">
+        → shutdown
+    </button>
+
+</section>
+
+
+<!-- ==============================
+     SHUTDOWN SCREEN
+============================== -->
+
+<div class="shutdown-screen" id="shutdownScreen">
+
+    <div class="shutdown-terminal">
+
+        <div id="shutdownLog"></div>
+
+        <div
+            class="shutdown-message hidden"
+            id="shutdownMessage"
+        >
+            <p>...</p>
+            <p>hmmm...</p>
+        </div>
+
+        <div
+            class="reboot-message hidden"
+            id="rebootMessage"
+        >
+            klik di mana saja untuk reboot
+            <span class="shutdown-cursor"></span>
+        </div>
+
+    </div>
+
+</div>
