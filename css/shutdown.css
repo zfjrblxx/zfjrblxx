@@ -1,1 +1,146 @@
-.
+/* ==============================
+   SHUTDOWN SCREEN
+============================== */
+
+.shutdown-screen {
+    position: fixed;
+    inset: 0;
+
+    z-index: 99999;
+
+    display: none;
+
+    background: #000;
+    color: #28e44d;
+
+    font-family: "JetBrains Mono", monospace;
+
+    cursor: default;
+}
+
+.shutdown-screen.show {
+    display: block;
+}
+
+
+/* TERMINAL */
+
+.shutdown-terminal {
+    width: 100%;
+    height: 100%;
+
+    padding: 35px;
+
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+
+/* LOG */
+
+.shutdown-log-line {
+    margin-bottom: 3px;
+}
+
+
+/* FINAL MESSAGE */
+
+.shutdown-message {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 100%;
+
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+    line-height: 2;
+}
+
+
+/* REBOOT */
+
+.reboot-message {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 45px;
+
+    text-align: center;
+
+    color: #28e44d;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+
+/* CURSOR */
+
+.shutdown-cursor {
+    display: inline-block;
+
+    width: 7px;
+    height: 12px;
+
+    margin-left: 5px;
+
+    background: #28e44d;
+
+    vertical-align: middle;
+
+    animation: shutdownBlink 1s steps(1) infinite;
+}
+
+@keyframes shutdownBlink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* HIDDEN */
+
+.shutdown-screen .hidden {
+    display: none;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .shutdown-terminal {
+        padding: 25px 20px;
+
+        font-size: 11px;
+        line-height: 1.8;
+    }
+
+    .shutdown-message {
+        font-size: 11px;
+    }
+
+    .reboot-message {
+        bottom: 30px;
+
+        font-size: 10px;
+    }
+
+}
