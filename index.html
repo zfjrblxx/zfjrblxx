@@ -2,7 +2,13 @@
 <html lang="en">
 
 <head>
-<link rel="icon" type="image/png" href="images/ico.png">
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="images/ico.png"
+    >
+
     <meta charset="UTF-8">
 
     <meta
@@ -11,7 +17,6 @@
     >
 
     <title>Fajar Putra Waluya</title>
-
 
     <!-- ==========================
          FONT
@@ -33,33 +38,33 @@
         rel="stylesheet"
     >
 
+    <!-- ==========================
+         CSS
+    ========================== -->
 
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="./css/watchlist.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/watchlist.css"
+    >
 
 </head>
 
-
 <body>
 
-
-    <!-- ==============================
-         SCANLINES
-    =============================== -->
-
-    <div class="scanlines"></div>
-
-
-    <!-- ==============================
+    <!-- ==========================
          TERMINAL
-    =============================== -->
+    ========================== -->
 
     <main class="terminal">
 
-
-        <!-- ==============================
-             TERMINAL TOP BAR
-        =============================== -->
+        <!-- ==========================
+             TERMINAL BAR
+        ========================== -->
 
         <div class="terminal-bar">
 
@@ -71,27 +76,23 @@
 
             </div>
 
-
             <p>
                 wly@home:~
             </p>
 
-
-            <div class="terminal-space"></div>
+            <div></div>
 
         </div>
 
-
-        <!-- ==============================
-             TERMINAL CONTENT
-        =============================== -->
+        <!-- ==========================
+             CONTENT
+        ========================== -->
 
         <div class="terminal-content">
 
-
-            <!-- ==============================
+            <!-- ==========================
                  WHOAMI
-            =============================== -->
+            ========================== -->
 
             <section class="terminal-section">
 
@@ -105,7 +106,6 @@
 
                 </p>
 
-
                 <div class="identity">
 
                     <h1>
@@ -118,7 +118,6 @@
 
                     </h1>
 
-
                     <p class="meta">
 
                         <span class="arrow">
@@ -127,19 +126,15 @@
 
                         <span id="age"></span> y.o
 
-
                         <span class="dot">
                             •
                         </span>
-
 
                         ♌ Leo
 
-
                         <span class="dot">
                             •
                         </span>
-
 
                         Indonesia
 
@@ -149,10 +144,9 @@
 
             </section>
 
-
-            <!-- ==============================
+            <!-- ==========================
                  ABOUT
-            =============================== -->
+            ========================== -->
 
             <section class="terminal-section">
 
@@ -166,7 +160,6 @@
 
                 </p>
 
-
                 <p class="about-text">
 
                     Just a little space on the internet that I call mine.
@@ -176,131 +169,167 @@
 
             </section>
 
+            <!-- ==========================
+                 PROJECTS
+            ========================== -->
 
-            <!-- ==============================
-                 THINGS I'VE BUILT
-            =============================== -->
+            <section class="terminal-section">
 
-           <section class="terminal-section">
+                <button
+                    class="command command-toggle"
+                    id="projectToggle"
+                >
 
-    <button class="command command-toggle" id="projectToggle">
-        <span>wly@home:~$</span>
-        things i've built
-        <span class="toggle-arrow" id="projectArrow">▸</span>
-    </button>
+                    <span>
+                        wly@home:~$
+                    </span>
+
+                    things i've built
+
+                    <span
+                        class="toggle-arrow"
+                        id="projectArrow"
+                    >
+                        ▸
+                    </span>
+
+                </button>
+
+                <div
+                    class="projects-collapse"
+                    id="projectsCollapse"
+                >
+
+                    <div class="projects-list">
+                                                <!-- PROJECT 01 -->
+
+                        <div class="project-item">
+
+                            <div class="project-title">
+
+                                <span>[01]</span>
+
+                                <h2>Ingfo Bengkel</h2>
+
+                            </div>
+
+                            <p>
+
+                                Catat servis, pajak, ganti oli,
+                                dan perawatan kendaraan.
+
+                            </p>
+
+                            <a
+                                href="https://ingfobengkel.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                → open project
+                            </a>
+
+                        </div>
 
 
-    <div class="projects-collapse" id="projectsCollapse">
+                        <!-- PROJECT 02 -->
 
-        <div class="projects-list">
+                        <div class="project-item">
 
-            <!-- PROJECT 01 -->
+                            <div class="project-title">
 
-            <div class="project-item">
+                                <span>[02]</span>
 
-                <div class="project-title">
-                    <span>[01]</span>
-                    <h2>Ingfo Bengkel</h2>
+                                <h2>IngfoPrint</h2>
+
+                            </div>
+
+                            <p>
+
+                                Hitung kebutuhan cetak lebih mudah,
+                                cepat, dan praktis.
+
+                            </p>
+
+                            <a
+                                href="https://ingfoprint.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                → open project
+                            </a>
+
+                        </div>
+
+
+                        <!-- PROJECT 03 -->
+
+                        <div class="project-item">
+
+                            <div class="project-title">
+
+                                <span>[03]</span>
+
+                                <h2>IngfoPass</h2>
+
+                            </div>
+
+                            <p>
+
+                                Generate password dengan cepat
+                                dan praktis.
+
+                            </p>
+
+                            <a
+                                href="https://ingfopass.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                → open project
+                            </a>
+
+                        </div>
+
+
+                        <!-- PROJECT 04 -->
+
+                        <div class="project-item">
+
+                            <div class="project-title">
+
+                                <span>[04]</span>
+
+                                <h2>IngfoWarna</h2>
+
+                            </div>
+
+                            <p>
+
+                                Pilih, konversi,
+                                dan eksplorasi warna.
+
+                            </p>
+
+                            <a
+                                href="https://ingfowarna.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                → open project
+                            </a>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <p>
-                    Catat servis, pajak, ganti oli,
-                    dan perawatan kendaraan.
-                </p>
-
-                <a
-                    href="https://ingfobengkel.vercel.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    → open project
-                </a>
-
-            </div>
+            </section>
 
 
-            <!-- PROJECT 02 -->
-
-            <div class="project-item">
-
-                <div class="project-title">
-                    <span>[02]</span>
-                    <h2>IngfoPrint</h2>
-                </div>
-
-                <p>
-                    Hitung kebutuhan cetak lebih mudah,
-                    cepat, dan praktis.
-                </p>
-
-                <a
-                    href="https://ingfoprint.vercel.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    → open project
-                </a>
-
-            </div>
-
-
-            <!-- PROJECT 03 -->
-
-            <div class="project-item">
-
-                <div class="project-title">
-                    <span>[03]</span>
-                    <h2>IngfoPass</h2>
-                </div>
-
-                <p>
-                    Generate password dengan cepat dan praktis.
-                </p>
-
-                <a
-                    href="https://ingfopass.vercel.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    → open project
-                </a>
-
-            </div>
-
-
-            <!-- PROJECT 04 -->
-
-            <div class="project-item">
-
-                <div class="project-title">
-                    <span>[04]</span>
-                    <h2>IngfoWarna</h2>
-                </div>
-
-                <p>
-                    Pilih, konversi, dan eksplorasi warna.
-                </p>
-
-                <a
-                    href="https://ingfowarna.vercel.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    → open project
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-            <!-- ==============================
+            <!-- ==========================
                  SPOTIFY
-            =============================== -->
+            ========================== -->
 
             <section class="terminal-section">
 
@@ -313,7 +342,6 @@
                     spotify
 
                 </p>
-
 
                 <div class="spotify-wrapper">
 
@@ -332,17 +360,12 @@
             </section>
 
 
-<!-- WATCHLIST -->
+            <!-- WATCHLIST -->
 
-<div id="watchlist-container"></div>
-
-
-            
-
-
-            <!-- ==============================
-                 END TERMINAL
-            =============================== -->
+            <div id="watchlist-container"></div>
+                        <!-- ==========================
+                 TERMINAL END
+            ========================== -->
 
             <section class="terminal-end">
 
@@ -352,43 +375,35 @@
                         wly@home:~$
                     </span>
 
-
                     <span class="cursor"></span>
 
                 </p>
 
             </section>
 
-
-            <!-- ==============================
+            <!-- ==========================
                  FOOTER
-            =============================== -->
+            ========================== -->
 
             <footer>
 
                 <p>
-                    // somewhere on the internet
+                    EOF — thanks for stopping by.
                 </p>
 
             </footer>
 
-
         </div>
         <!-- END TERMINAL CONTENT -->
 
-
     </main>
-  
-    <!-- ==============================
+
+    <!-- ==========================
          JAVASCRIPT
-    =============================== -->
+    ========================== -->
 
-<script src="js/watchlist.js"></script>
-<script src="js/main.js"></script>
-
-</body>
-</html>
-
+    <script src="js/watchlist.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
 
