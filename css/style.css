@@ -1,734 +1,175 @@
-/* ========================================
-   THEME — CATPPUCCIN MOCHA
-======================================== */
+// ========================================
+// AUTO AGE
+// ========================================
 
-:root{
+const BIRTH_YEAR = 2000;
+const BIRTH_MONTH = 6; // July (January = 0)
+const BIRTH_DAY = 28;
 
-    --bg:#11111b;
-    --bg-gradient:#181825;
+function updateAge() {
 
-    --surface:#1e1e2e;
-    --surface-2:#313244;
+    const today = new Date();
 
-    --border:#45475a;
+    let age =
+        today.getFullYear() - BIRTH_YEAR;
 
-    --text:#cdd6f4;
-    --text-muted:#a6adc8;
-    --text-faint:#6c7086;
-
-    --blue:#89b4fa;
-    --green:#a6e3a1;
-    --yellow:#f9e2af;
-    --red:#f38ba8;
-    --lavender:#b4befe;
-
-}
-
-
-/* ========================================
-   RESET
-======================================== */
-
-*{
-
-    margin:0;
-    padding:0;
-
-    box-sizing:border-box;
-
-}
-
-html{
-
-    scroll-behavior:smooth;
-
-}
-
-body{
-
-    min-height:100vh;
-
-    padding:30px;
-
-    background:
-        radial-gradient(
-            circle at top,
-            var(--bg-gradient) 0%,
-            #181825 45%,
-            var(--bg) 100%
+    const birthdayThisYear =
+        new Date(
+            today.getFullYear(),
+            BIRTH_MONTH,
+            BIRTH_DAY
         );
 
-    color:var(--text);
-
-    font-family:"JetBrains Mono", monospace;
-
-}
-
-
-/* ========================================
-   TERMINAL
-======================================== */
-
-.terminal{
-
-    width:100%;
-    max-width:850px;
-
-    margin:0 auto;
-
-    background:rgba(30,30,46,.95);
-
-    border:1px solid var(--border);
-    border-radius:16px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 18px 50px rgba(0,0,0,.35);
-
-}
-
-
-/* ========================================
-   TERMINAL BAR
-======================================== */
-
-.terminal-bar{
-
-    height:48px;
-
-    display:grid;
-    grid-template-columns:1fr auto 1fr;
-    align-items:center;
-
-    padding:0 16px;
-
-    background:var(--surface);
-
-    border-bottom:1px solid var(--border);
-
-}
-
-.terminal-bar p{
-
-    color:var(--text-muted);
-
-    font-size:13px;
-
-}
-
-.terminal-dots{
-
-    display:flex;
-    gap:8px;
-
-}
-
-.terminal-dots span{
-
-    width:11px;
-    height:11px;
-
-    border-radius:50%;
-
-}
-
-.terminal-dots span:nth-child(1){
-
-    background:var(--red);
-
-}
-
-.terminal-dots span:nth-child(2){
-
-    background:var(--yellow);
-
-}
-
-.terminal-dots span:nth-child(3){
-
-    background:var(--green);
-
-}
-
-
-/* ========================================
-   CONTENT
-======================================== */
-
-.terminal-content{
-
-    padding:40px;
-
-}
-
-.terminal-section{
-
-    margin-bottom:55px;
-
-}
-
-
-
-/* ========================================
-   COMMAND
-======================================== */
-
-.command{
-
-    margin-bottom:25px;
-
-    color:var(--blue);
-
-    font-size:17px;
-    font-weight:500;
-
-}
-
-.command span:first-child{
-
-    color:var(--green);
-
-}
-
-
-/* ========================================
-   PROJECT TOGGLE
-======================================== */
-
-.command-toggle{
-
-    width:100%;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0;
-
-    border:none;
-
-    background:none;
-
-    color:var(--blue);
-
-    font:inherit;
-
-    text-align:left;
-
-    cursor:pointer;
-
-}
-
-.command-toggle:hover{
-
-    color:var(--green);
-
-}
-
-.toggle-arrow{
-
-    transition:transform .25s ease;
-
-}
-
-.projects-collapse{
-
-    max-height:0;
-
-    overflow:hidden;
-
-    opacity:0;
-
-    transition:
-        max-height .35s ease,
-        opacity .3s ease;
-
-}
-
-.projects-collapse.open{
-
-    max-height:2000px;
-
-    opacity:1;
-
-    margin-top:24px;
-
-}
-
-
-/* ========================================
-   IDENTITY
-======================================== */
-
-.identity{
-
-    padding-left:18px;
-
-    border-left:2px solid var(--green);
-
-}
-
-.identity h1{
-
-    color:var(--text);
-
-    font-size:clamp(28px,5vw,46px);
-
-    font-weight:600;
-
-    letter-spacing:-1.4px;
-
-}
-
-.arrow{
-
-    margin-right:12px;
-
-    color:var(--blue);
-
-}
-
-.meta{
-
-    margin-top:18px;
-
-    color:var(--text-muted);
-
-    font-size:15px;
-
-}
-
-.dot{
-
-    margin:0 10px;
-
-    color:var(--text-faint);
-
-}
-
-
-/* ========================================
-   ABOUT
-======================================== */
-
-.about-text{
-
-    max-width:760px;
-
-    color:var(--text-muted);
-
-    line-height:1.9;
-
-    font-size:16px;
-
-}
-
-
-/* ========================================
-   PROJECTS
-======================================== */
-
-.projects-list{
-
-    border:1px solid var(--border);
-
-    border-radius:12px;
-
-    overflow:hidden;
-
-    background:var(--surface);
-
-}
-
-.project-item{
-
-    padding:28px 30px;
-
-    border-bottom:1px solid var(--border);
-
-    transition:
-        background .25s ease,
-        transform .2s ease;
-
-}
-
-.project-item:last-child{
-
-    border-bottom:none;
-
-}
-
-.project-item:hover{
-
-    background:var(--surface-2);
-
-}
-
-
-.project-title{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-}
-
-.project-title span{
-
-    color:var(--green);
-
-    font-size:15px;
-
-}
-
-.project-title h2{
-
-    color:var(--blue);
-
-    font-size:19px;
-
-    font-weight:600;
-
-}
-
-.project-item>p{
-
-    margin:15px 0 18px 43px;
-
-    color:var(--text-muted);
-
-    font-size:14px;
-
-    line-height:1.8;
-
-}
-
-.project-item>a,
-.coming-soon{
-
-    display:inline-block;
-
-    margin-left:43px;
-
-    color:var(--blue);
-
-    text-decoration:none;
-
-    transition:.2s;
-
-}
-
-.project-item>a:hover{
-
-    color:var(--green);
-
-}
-
-.coming-soon{
-
-    color:var(--text-faint);
-
-}
-
-
-/* ========================================
-   SPOTIFY
-======================================== */
-
-.spotify-wrapper{
-
-    border:1px solid var(--border);
-
-    border-radius:12px;
-
-    overflow:hidden;
-
-    background:var(--surface);
-
-}
-
-.spotify-wrapper iframe{
-
-    display:block;
-
-    width:100%;
-
-    border:0;
-
-}
-
-
-/* ========================================
-   TERMINAL END
-======================================== */
-
-.terminal-end{
-
-    padding-top:10px;
-
-}
-
-
-/* ========================================
-   CURSOR
-======================================== */
-
-.cursor{
-
-    display:inline-block;
-
-    width:8px;
-    height:18px;
-
-    margin-left:5px;
-
-    background:var(--green);
-
-    vertical-align:middle;
-
-    animation:blink 1s steps(1) infinite;
-
-}
-
-@keyframes blink{
-
-    0%,50%{
-
-        opacity:1;
-
+    if (today < birthdayThisYear) {
+        age--;
     }
 
-    51%,100%{
+    const ageElement =
+        document.getElementById("age");
 
-        opacity:0;
-
+    if (ageElement) {
+        ageElement.textContent = age;
     }
 
 }
 
 
-/* ========================================
-   FOOTER
-======================================== */
+// ========================================
+// LOAD SECTION
+// ========================================
 
-footer{
+async function loadSection(
+    containerId,
+    file
+) {
 
-    margin-top:40px;
+    const container =
+        document.getElementById(
+            containerId
+        );
 
-    padding-top:24px;
+    if (!container) {
+        return false;
+    }
 
-    border-top:1px solid var(--border);
+    try {
 
-    color:var(--text-faint);
+        const response =
+            await fetch(file);
 
-    font-size:12px;
+        if (!response.ok) {
 
-}
+            throw new Error(
+                `Failed to load ${file}`
+            );
 
+        }
 
-/* ========================================
-   SCROLLBAR
-======================================== */
+        container.innerHTML =
+            await response.text();
 
-::-webkit-scrollbar{
-
-    width:10px;
-
-}
-
-::-webkit-scrollbar-track{
-
-    background:var(--bg);
-
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:var(--surface-2);
-
-    border-radius:999px;
-
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-    background:var(--border);
-
-}
-
-
-/* ========================================
-   SELECTION
-======================================== */
-
-::selection{
-
-    background:var(--blue);
-
-    color:var(--bg);
-
-}
-
-
-/* ========================================
-   MOBILE
-======================================== */
-
-@media (max-width:700px){
-
-    body{
-
-        padding:14px;
+        return true;
 
     }
 
-    .terminal{
+    catch (error) {
 
-        border-radius:12px;
+        console.error(error);
 
-    }
+        container.innerHTML = `
+            <p style="
+                color:#6c7086;
+                font-size:12px;
+            ">
+                failed to load ${file}
+            </p>
+        `;
 
-    .terminal-bar{
-
-        height:44px;
-
-        padding:0 12px;
-
-    }
-
-    .terminal-bar p{
-
-        font-size:11px;
-
-    }
-
-    .terminal-dots span{
-
-        width:9px;
-        height:9px;
-
-    }
-
-    .terminal-content{
-
-        padding:28px 20px;
-
-    }
-
-    .terminal-section{
-
-        margin-bottom:42px;
-
-    }
-
-    .command{
-
-        font-size:15px;
-
-        margin-bottom:20px;
-
-    }
-
-    .identity{
-
-        padding-left:14px;
-
-    }
-
-    .identity h1{
-
-        font-size:28px;
-
-        line-height:1.4;
-
-    }
-
-    .meta{
-
-        font-size:13px;
-
-        line-height:1.8;
-
-    }
-
-    .about-text{
-
-        font-size:14px;
-
-        line-height:1.8;
-
-    }
-
-    .project-item{
-
-        padding:22px 18px;
-
-    }
-
-    .project-title h2{
-
-        font-size:17px;
-
-    }
-
-    .project-item > p{
-
-        margin:14px 0 16px;
-
-        font-size:13px;
-
-    }
-
-    .project-item > a,
-    .coming-soon{
-
-        margin-left:0;
-
-        font-size:13px;
-
-    }
-
-    .spotify-wrapper iframe{
-
-        height:352px;
-
-    }
-
-    footer{
-
-        font-size:11px;
+        return false;
 
     }
 
 }
 
+// ========================================
+// INIT WEBSITE
+// ========================================
 
-/* ========================================
-   SMALL MOBILE
-======================================== */
+async function initWebsite() {
 
-@media (max-width:420px){
+    updateAge();
 
-    .terminal-content{
+    const watchlistLoaded =
+        await loadSection(
+            "watchlist-container",
+            "sections/watchlist.html"
+        );
 
-        padding:24px 16px;
+    if (
+        watchlistLoaded &&
+        typeof initWatchlist === "function"
+    ) {
 
-    }
-
-    .identity h1{
-
-        font-size:23px;
-
-    }
-
-    .meta{
-
-        font-size:12px;
+        initWatchlist();
 
     }
+
+    initProjectToggle();
 
 }
 
+
+// ========================================
+// PROJECT TOGGLE
+// ========================================
+
+function initProjectToggle() {
+
+    const projectToggle =
+        document.getElementById(
+            "projectToggle"
+        );
+
+    const projectsCollapse =
+        document.getElementById(
+            "projectsCollapse"
+        );
+
+    const projectArrow =
+        document.getElementById(
+            "projectArrow"
+        );
+
+    if (
+        !projectToggle ||
+        !projectsCollapse ||
+        !projectArrow
+    ) {
+        return;
+    }
+
+    projectToggle.addEventListener(
+        "click",
+        () => {
+
+            const isOpen =
+                projectsCollapse.classList.toggle(
+                    "open"
+                );
+
+            projectArrow.textContent =
+                isOpen ? "▾" : "▸";
+
+        }
+    );
+
+}
+
+           // ========================================
+// START WEBSITE
+// ========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    initWebsite
+);
