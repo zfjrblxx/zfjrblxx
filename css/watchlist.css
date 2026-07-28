@@ -1,377 +1,469 @@
-/* =========================
+/* ========================================
    WATCHLIST FOLDER
-========================== */
+======================================== */
 
 .watchlist-folder {
+
     display: block;
+
+    padding: 4px 8px;
 
     border: 0;
     background: transparent;
 
-    padding: 4px 8px;
-
     font-family: inherit;
+
     cursor: pointer;
+
 }
 
 .watchlist-folder-icon {
+
     display: block;
 
     font-size: 28px;
 
     transition:
-        transform 0.2s ease,
-        filter 0.2s ease;
+        transform .2s ease,
+        filter .2s ease;
+
 }
 
 .watchlist-folder:hover .watchlist-folder-icon {
+
     transform: translateY(-3px);
+
     filter: brightness(1.15);
+
 }
 
-@media (max-width: 700px) {
+@media (max-width:700px){
 
-    .watchlist-folder-icon {
-        font-size: 26px;
+    .watchlist-folder-icon{
+
+        font-size:26px;
+
     }
 
 }
 
-/* ============================
+
+/* ========================================
    OVERLAY
-============================ */
+======================================== */
 
-.watchlist-overlay {
-    position: fixed;
+.watchlist-overlay{
 
-    inset: 0;
+    position:fixed;
 
-    z-index: 9998;
+    inset:0;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    z-index:9998;
 
-    padding: 25px;
+    display:flex;
 
-    background: rgba(0, 0, 0, 0.88);
+    align-items:center;
+    justify-content:center;
 
-    backdrop-filter: blur(5px);
+    padding:24px;
 
-    opacity: 0;
-    visibility: hidden;
+    background:rgba(17,17,27,.82);
+
+    backdrop-filter:blur(10px);
+
+    opacity:0;
+    visibility:hidden;
 
     transition:
-        opacity 0.25s ease,
-        visibility 0.25s ease;
+        opacity .25s ease,
+        visibility .25s ease;
+
+}
+
+.watchlist-overlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+
 }
 
 
-.watchlist-overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-
-/* ==============================
+/* ========================================
    WINDOW
-============================== */
+======================================== */
 
-.watchlist-window {
-    width: min(100%, 620px);
+.watchlist-window{
 
-    background: #020503;
+    width:min(100%,620px);
 
-    border: 1px solid #28e44d;
-    border-radius: 5px;
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    overflow:hidden;
 
     box-shadow:
-        0 0 40px rgba(40, 228, 77, 0.08);
+        0 20px 60px rgba(0,0,0,.4);
 
     transform:
-        translateY(15px)
-        scale(0.98);
+        translateY(14px)
+        scale(.98);
 
     transition:
-        transform 0.25s ease;
+        transform .25s ease;
+
 }
 
-
 .watchlist-overlay.show
-.watchlist-window {
+.watchlist-window{
+
     transform:
         translateY(0)
         scale(1);
+
 }
 
-
-/* ==============================
+/* ========================================
    HEADER
-============================== */
+======================================== */
 
 .watchlist-header {
+
     display: flex;
 
     align-items: center;
     justify-content: space-between;
 
-    padding: 13px 16px;
+    padding: 14px 18px;
 
-    border-bottom:
-        1px solid #18351e;
+    background: var(--surface);
 
-    color: #28e44d;
+    border-bottom: 1px solid var(--border);
+
+    color: var(--text-muted);
 
     font-size: 12px;
+
 }
 
-
 .watchlist-header button {
-    border: 0;
 
+    border: 0;
     background: transparent;
 
-    color: #28e44d;
+    color: var(--blue);
 
     font-family: inherit;
     font-size: 12px;
 
     cursor: pointer;
-}
 
+    transition: color .2s ease;
+
+}
 
 .watchlist-header button:hover {
-    color: #fff;
+
+    color: var(--text);
+
 }
 
 
-/* ==============================
+/* ========================================
    CONTENT
-============================== */
+======================================== */
 
 .watchlist-content {
+
     max-height: 60vh;
 
     overflow-y: auto;
 
-    padding: 25px 30px;
+    padding: 26px 30px;
 
-    color: #c8c8c8;
+    color: var(--text-muted);
 
     font-size: 13px;
-    line-height: 1.8;
-}
 
+    line-height: 1.8;
+
+}
 
 .watchlist-content p {
+
     padding: 9px 0;
 
-    border-bottom:
-        1px solid #0e2112;
-}
+    border-bottom: 1px solid var(--border);
 
+}
 
 .watchlist-content p:last-child {
-    border-bottom: 0;
-}
 
+    border-bottom: 0;
+
+}
 
 .watchlist-loading {
-    color: #527b59;
+
+    color: var(--text-faint);
+
 }
 
 
-/* ==============================
+/* ========================================
    SCROLLBAR
-============================== */
+======================================== */
 
 .watchlist-content::-webkit-scrollbar {
-    width: 5px;
-}
 
+    width: 6px;
+
+}
 
 .watchlist-content::-webkit-scrollbar-track {
-    background: #020503;
-}
 
+    background: var(--surface);
+
+}
 
 .watchlist-content::-webkit-scrollbar-thumb {
-    background: #194822;
+
+    background: var(--surface-2);
+
+    border-radius: 999px;
+
+}
+
+.watchlist-content::-webkit-scrollbar-thumb:hover {
+
+    background: var(--border);
+
 }
 
 
-/* ==============================
+/* ========================================
    FOOTER
-============================== */
+======================================== */
 
 .watchlist-footer {
+
     display: flex;
 
     justify-content: space-between;
+    align-items: center;
 
-    padding: 9px 15px;
+    padding: 10px 16px;
 
-    background: #28e44d;
+    background: var(--surface-2);
 
-    color: #001604;
+    border-top: 1px solid var(--border);
+
+    color: var(--text);
 
     font-size: 10px;
+
     font-weight: 600;
+
 }
 
 
-/* ==============================
+/* ========================================
    MOBILE
-============================== */
+======================================== */
 
-@media (max-width: 700px) {
+@media (max-width:700px){
 
-    .watchlist-overlay {
-        padding: 15px;
+    .watchlist-overlay{
+
+        padding:16px;
+
     }
 
+    .watchlist-header{
 
-    .watchlist-content {
-        max-height: 65vh;
+        padding:12px 14px;
 
-        padding: 20px;
+        font-size:11px;
 
-        font-size: 12px;
     }
 
+    .watchlist-header button{
 
-    .watchlist-header {
-        padding: 12px 14px;
+        font-size:11px;
 
-        font-size: 10px;
     }
 
+    .watchlist-content{
 
-    .watchlist-header button {
-        font-size: 10px;
-    }
+        max-height:65vh;
 
+        padding:20px;
 
-    .watchlist-folder-icon {
-        font-size: 18px;
+        font-size:12px;
+
     }
 
 }
 
-/* ==============================
+/* ========================================
    A-Z NAVIGATION
-============================== */
+======================================== */
 
 .watchlist-az {
+
     display: flex;
+
     flex-wrap: wrap;
 
-    gap: 7px;
+    gap: 8px;
 
-    margin-bottom: 30px;
+    margin-bottom: 28px;
+
     padding-bottom: 20px;
 
-    border-bottom: 1px solid #18351e;
-}
+    border-bottom: 1px solid var(--border);
 
+}
 
 .az-letter {
+
     border: 0;
+
     background: transparent;
 
+    color: var(--text-faint);
+
     font-family: inherit;
+
     font-size: 11px;
-}
-
-
-.az-letter.active {
-    color: #28e44d;
-
-    cursor: pointer;
-}
-
-
-.az-letter.active:hover {
-    text-decoration: underline;
-}
-
-
-.az-letter.disabled {
-    color: #26382a;
 
     cursor: default;
+
+    transition: color .2s ease;
+
+}
+
+.az-letter.active {
+
+    color: var(--blue);
+
+    cursor: pointer;
+
+}
+
+.az-letter.active:hover {
+
+    color: var(--green);
+
+}
+
+.az-letter.disabled {
+
+    color: var(--text-faint);
+
+    opacity: .45;
+
 }
 
 
-/* ==============================
+/* ========================================
    WATCH GROUP
-============================== */
+======================================== */
 
 .watch-group {
+
+    margin-bottom: 32px;
+
     scroll-margin-top: 20px;
 
-    margin-bottom: 30px;
 }
-
 
 .watch-group:last-child {
-    margin-bottom: 0;
-}
 
+    margin-bottom: 0;
+
+}
 
 .watch-letter {
-    margin-bottom: 8px;
 
-    color: #28e44d;
+    margin-bottom: 10px;
+
+    color: var(--green);
 
     font-size: 18px;
-    font-weight: 500;
-}
 
+    font-weight: 600;
+
+}
 
 .watch-items {
-    padding-left: 15px;
 
-    border-left: 1px solid #18351e;
+    padding-left: 16px;
+
+    border-left: 2px solid var(--border);
+
 }
 
-
 .watch-items p {
+
     padding: 7px 0;
 
     border: 0;
 
-    color: #c8c8c8;
+    color: var(--text-muted);
 
     font-size: 13px;
-}
 
+    line-height: 1.7;
+
+}
 
 .watch-items p::before {
+
     content: "> ";
 
-    color: #527b59;
+    color: var(--blue);
+
 }
 
 
-/* MOBILE */
+/* ========================================
+   MOBILE
+======================================== */
 
-@media (max-width: 700px) {
+@media (max-width:700px){
 
-    .watchlist-az {
-        gap: 6px;
+    .watchlist-az{
+
+        gap:6px;
+
     }
 
-    .az-letter {
-        font-size: 10px;
+    .az-letter{
+
+        font-size:10px;
+
     }
 
-    .watch-letter {
-        font-size: 16px;
+    .watch-letter{
+
+        font-size:16px;
+
     }
 
-    .watch-items p {
-        font-size: 12px;
+    .watch-items{
+
+        padding-left:14px;
+
+    }
+
+    .watch-items p{
+
+        font-size:12px;
+
     }
 
 }
