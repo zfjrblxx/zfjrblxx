@@ -3,7 +3,7 @@
 // ========================================
 
 const BIRTH_YEAR = 2000;
-const BIRTH_MONTH = 6; // Juli (January = 0)
+const BIRTH_MONTH = 6; // July (January = 0)
 const BIRTH_DAY = 28;
 
 function updateAge() {
@@ -31,8 +31,6 @@ function updateAge() {
 
 }
 
-updateAge();
-
 
 // ========================================
 // LOAD SECTION
@@ -44,7 +42,7 @@ async function loadSection(containerId, file) {
         document.getElementById(containerId);
 
     if (!container) {
-        return;
+        return false;
     }
 
     try {
@@ -53,30 +51,28 @@ async function loadSection(containerId, file) {
             await fetch(file);
 
         if (!response.ok) {
-
             throw new Error(
                 `Failed to load ${file}`
             );
-
         }
 
-        const html =
+        container.innerHTML =
             await response.text();
-
-        container.innerHTML = html;
 
         return true;
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.error(error);
 
         container.innerHTML = `
             <p style="
-                color:#527b59;
+                color:#6c7086;
                 font-size:12px;
             ">
-                > failed to load ${file}
+                failed to load ${file}
             </p>
         `;
 
@@ -88,136 +84,61 @@ async function loadSection(containerId, file) {
 
 
 // ========================================
-// LOAD WEBSITE COMPONENTS
+// INIT WEBSITE
 // ========================================
 
 async function initWebsite() {
 
+    updateAge();
 
-    // ========================================
-    // SECRET NOTE
-    // ========================================
-
-    const secretLoaded = await loadSection(
-        "secret-note-container",
-        "sections/secret-note.html"
-    );
+    const watchlistLoaded =
+        await loadSection(
+            "watchlist-container",
+            "sections/watchlist.html"
+        );
 
     if (
-        secretLoaded &&
-        typeof initSecretNote === "function"
+        watchlistLoaded &&
+        typeof initWatchlist === "function"
     ) {
 
-        initSecretNote();
+        initWatchlist();
 
     }
 
-
-    // ========================================
-    // ESCAPE GAME
-    // ========================================
-
-    const escapeLoaded = await loadSection(
-        "escape-container",
-        "sections/escape.html"
-    );
-
-    if (
-        escapeLoaded &&
-        typeof initEscapeGame === "function"
-    ) {
-
-        initEscapeGame();
-
-    }
-
-
-    // ========================================
-    // DON'T CLICK GAME
-    // ========================================
-
-    const dontClickLoaded = await loadSection(
-        "dont-click-container",
-        "sections/dont-click.html"
-    );
-
-    if (
-        dontClickLoaded &&
-        typeof initDontClickGame === "function"
-    ) {
-
-        initDontClickGame();
-
-    }
-
-
-// ========================================
-// WATCHLIST
-// ========================================
-
-const watchlistLoaded = await loadSection(
-    "watchlist-container",
-    "sections/watchlist.html"
-);
-
-if (
-    watchlistLoaded &&
-    typeof initWatchlist === "function"
-) {
-
-    initWatchlist();
+    initProjectToggle();
 
 }
 
-// ========================================
-// SHUTDOWN
-// ========================================
-
-const shutdownLoaded = await loadSection(
-    "shutdown-container",
-    "sections/shutdown.html"
-);
-
-if (
-    shutdownLoaded &&
-    typeof initShutdown === "function"
-) {
-
-    initShutdown();
-
-}
-
-}
-
-
-// ========================================
-// START WEBSITE
-// ========================================
-
-document.addEventListener(
-    "DOMContentLoaded",
-    initWebsite
-);
 
 // ========================================
 // PROJECT TOGGLE
 // ========================================
 
-const projectToggle =
-    document.getElementById("projectToggle");
+function initProjectToggle() {
 
-const projectsCollapse =
-    document.getElementById("projectsCollapse");
+    const projectToggle =
+        document.getElementById(
+            "projectToggle"
+        );
 
-const projectArrow =
-    document.getElementById("projectArrow");
+    const projectsCollapse =
+        document.getElementById(
+            "projectsCollapse"
+        );
 
+    const projectArrow =
+        document.getElementById(
+            "projectArrow"
+        );
 
-if (
-    projectToggle &&
-    projectsCollapse &&
-    projectArrow
-) {
+    if (
+        !projectToggle ||
+        !projectsCollapse ||
+        !projectArrow
+    ) {
+        return;
+    }
 
     projectToggle.addEventListener(
         "click",
@@ -236,3 +157,12 @@ if (
 
 }
 
+
+// ========================================
+// START WEBSITE
+// ========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    initWebsite
+);
