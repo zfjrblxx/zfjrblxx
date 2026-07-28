@@ -199,5 +199,40 @@ document.addEventListener(
     initWebsite
 );
 
+// ========================================
+// PROJECT TOGGLE
+// ========================================
 
+const projectToggle =
+    document.getElementById("projectToggle");
+
+const projectsCollapse =
+    document.getElementById("projectsCollapse");
+
+const projectArrow =
+    document.getElementById("projectArrow");
+
+
+if (
+    projectToggle &&
+    projectsCollapse &&
+    projectArrow
+) {
+
+    projectToggle.addEventListener(
+        "click",
+        () => {
+
+            const isOpen =
+                projectsCollapse.classList.toggle(
+                    "open"
+                );
+
+            projectArrow.textContent =
+                isOpen ? "▾" : "▸";
+
+        }
+    );
+
+}
 
