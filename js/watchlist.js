@@ -1,22 +1,34 @@
 function initWatchlist() {
 
     const folder =
-        document.getElementById("watchlistFolder");
+        document.getElementById(
+            "watchlistFolder"
+        );
 
     const overlay =
-        document.getElementById("watchlistOverlay");
+        document.getElementById(
+            "watchlistOverlay"
+        );
 
     const closeButton =
-        document.getElementById("closeWatchlist");
+        document.getElementById(
+            "closeWatchlist"
+        );
 
     const content =
-        document.getElementById("watchlistContent");
+        document.getElementById(
+            "watchlistContent"
+        );
 
     const count =
-        document.getElementById("watchlistCount");
+        document.getElementById(
+            "watchlistCount"
+        );
 
     const watchCount =
-        document.getElementById("watchCount");
+        document.getElementById(
+            "watchCount"
+        );
 
 
     if (
@@ -45,22 +57,21 @@ function initWatchlist() {
 
         try {
 
-            const response = await fetch(
-                "sections/watchlist-data.html"
-            );
+            const response =
+                await fetch(
+                    "sections/watchlist-data.html"
+                );
 
             if (!response.ok) {
+
                 throw new Error(
-                    "Gagal memuat watchlist"
+                    "Failed to load watchlist"
                 );
+
             }
 
-            const html = await response.text();
-
-
-            // ========================================
-            // PARSE DATA
-            // ========================================
+            const html =
+                await response.text();
 
             const parser =
                 new DOMParser();
@@ -71,37 +82,36 @@ function initWatchlist() {
                     "text/html"
                 );
 
-
-            watchlistItems = [
-                ...doc.querySelectorAll("p")
-            ]
+            watchlistItems =
+                [
+                    ...doc.querySelectorAll("p")
+                ]
                 .map(item =>
                     item.textContent.trim()
                 )
                 .filter(Boolean);
 
-
-            // ========================================
-            // UPDATE COUNT
-            // ========================================
-
             if (watchCount) {
+
                 watchCount.textContent =
                     watchlistItems.length;
+
             }
 
             if (count) {
+
                 count.textContent =
                     `${watchlistItems.length} items`;
-            }
 
+            }
 
             watchlistLoaded = true;
 
             return watchlistItems;
 
+        }
 
-        } catch (error) {
+        catch (error) {
 
             console.error(error);
 
@@ -110,7 +120,6 @@ function initWatchlist() {
         }
 
     }
-
 
     // ========================================
     // LOAD WATCHLIST
@@ -124,16 +133,11 @@ function initWatchlist() {
             </p>
         `;
 
-
-        // Kalau data belum pernah dimuat
-
         if (!watchlistLoaded) {
             await fetchWatchlistData();
         }
 
-
         const items = [...watchlistItems];
-
 
         if (!items.length) {
 
@@ -144,11 +148,11 @@ function initWatchlist() {
             `;
 
             return;
+
         }
 
-
         // ========================================
-        // URUTKAN A-Z
+        // SORT A-Z
         // ========================================
 
         items.sort((a, b) =>
@@ -161,45 +165,36 @@ function initWatchlist() {
             )
         );
 
-
         // ========================================
-        // KELOMPOKKAN BERDASARKAN HURUF
+        // GROUP BY LETTER
         // ========================================
 
         const groups = {};
-
 
         items.forEach(title => {
 
             let letter =
                 title.charAt(0).toUpperCase();
 
-
-            // Kalau bukan A-Z
-
             if (!/[A-Z]/.test(letter)) {
                 letter = "#";
             }
-
 
             if (!groups[letter]) {
                 groups[letter] = [];
             }
 
-
             groups[letter].push(title);
 
         });
 
-
         // ========================================
-        // NAVIGATION A-Z
+        // BUILD A-Z
         // ========================================
 
         let output = `
             <div class="watchlist-az">
         `;
-
 
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             .split("")
@@ -228,12 +223,10 @@ function initWatchlist() {
 
             });
 
-
         output += `</div>`;
 
-
         // ========================================
-        // LIST
+        // BUILD LIST
         // ========================================
 
         Object.keys(groups)
@@ -253,7 +246,6 @@ function initWatchlist() {
                         <div class="watch-items">
                 `;
 
-
                 groups[letter]
                     .forEach(title => {
 
@@ -263,7 +255,6 @@ function initWatchlist() {
 
                     });
 
-
                 output += `
                         </div>
                     </div>
@@ -271,12 +262,11 @@ function initWatchlist() {
 
             });
 
-
         content.innerHTML = output;
 
 
         // ========================================
-        // COUNT
+        // UPDATE COUNT
         // ========================================
 
         if (count) {
@@ -285,7 +275,6 @@ function initWatchlist() {
                 `${items.length} items`;
 
         }
-
 
         if (watchCount) {
 
@@ -317,7 +306,6 @@ function initWatchlist() {
                                 `watch-${letter}`
                             );
 
-
                         if (target) {
 
                             target.scrollIntoView({
@@ -333,7 +321,6 @@ function initWatchlist() {
             });
 
     }
-
 
     // ========================================
     // OPEN
@@ -373,24 +360,23 @@ function initWatchlist() {
         openWatchlist
     );
 
-
     closeButton.addEventListener(
         "click",
         closeWatchlist
     );
-
 
     overlay.addEventListener(
         "click",
         event => {
 
             if (event.target === overlay) {
+
                 closeWatchlist();
+
             }
 
         }
     );
-
 
     document.addEventListener(
         "keydown",
@@ -416,3 +402,7 @@ function initWatchlist() {
     fetchWatchlistData();
 
 }
+
+
+
+
