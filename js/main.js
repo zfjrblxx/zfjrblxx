@@ -81,7 +81,7 @@ async function loadSection(
                 color:#6c7086;
                 font-size:12px;
             ">
-                failed to load ${file}
+                Failed to load ${file}
             </p>
         `;
 
@@ -90,6 +90,8 @@ async function loadSection(
     }
 
 }
+
+
 // ========================================
 // INIT WEBSITE
 // ========================================
@@ -113,70 +115,69 @@ async function initWebsite() {
 
     }
 
-    initProjectToggle();
+    initAccordion();
 
 }
 
 
 // ========================================
-// PROJECT TOGGLE
+// ACCORDION
 // ========================================
 
-function initProjectToggle() {
+function initAccordion() {
 
-    const projectToggle =
-        document.getElementById(
-            "projectToggle"
+    const accordions =
+        document.querySelectorAll(
+            ".command-toggle"
         );
 
-    const projectsCollapse =
-        document.getElementById(
-            "projectsCollapse"
+    accordions.forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const collapse =
+                    button.nextElementSibling;
+
+                if (!collapse) {
+                    return;
+                }
+
+                const arrow =
+                    button.querySelector("span");
+
+                const isOpen =
+                    collapse.classList.toggle(
+                        "open"
+                    );
+
+                if (arrow) {
+
+                    arrow.textContent =
+                        isOpen
+                            ? "▾"
+                            : "▸";
+
+                }
+
+            }
         );
 
-    const projectArrow =
-        document.getElementById(
-            "projectArrow"
-        );
-
-    if (
-        !projectToggle ||
-        !projectsCollapse ||
-        !projectArrow
-    ) {
-        return;
-    }
-
-    projectToggle.addEventListener(
-        "click",
-        () => {
-
-            const isOpen =
-                projectsCollapse.classList.toggle(
-                    "open"
-                );
-
-            projectArrow.textContent =
-                isOpen ? "▾" : "▸";
-
-        }
-    );
+    });
 
 }
+
+
 // ========================================
 // START WEBSITE
 // ========================================
 
 document.addEventListener(
     "DOMContentLoaded",
-    initWebsite
+    () => {
+
+        initWebsite();
+
+    }
 );
-
-
-
-
-
-
-
-
-
