@@ -1,62 +1,100 @@
-/* ============================
+/* ========================================
+   THEME — CATPPUCCIN MOCHA
+======================================== */
+
+:root {
+
+    --bg: #11111b;
+    --bg-gradient: #181825;
+
+    --surface: #1e1e2e;
+    --surface-2: #313244;
+
+    --border: #45475a;
+
+    --text: #cdd6f4;
+    --text-muted: #a6adc8;
+    --text-faint: #6c7086;
+
+    --blue: #89b4fa;
+    --green: #a6e3a1;
+    --yellow: #f9e2af;
+    --red: #f38ba8;
+    --lavender: #b4befe;
+
+}
+
+
+/* ========================================
    RESET
-============================ */
+======================================== */
 
 * {
+
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
+
 }
 
 html {
+
     scroll-behavior: smooth;
+
 }
 
 body {
+
     min-height: 100vh;
+
+    padding: 30px;
 
     background:
         radial-gradient(
             circle at top,
-            #071009 0%,
-            #020403 45%,
-            #000 100%
+            var(--bg-gradient) 0%,
+            #181825 45%,
+            var(--bg) 100%
         );
 
-    color: #d8d8d8;
+    color: var(--text);
 
     font-family: "JetBrains Mono", monospace;
 
-    padding: 30px;
 }
 
 
-/* ==============================
+/* ========================================
    TERMINAL
-============================== */
+======================================== */
 
 .terminal {
+
     width: 100%;
     max-width: 850px;
 
     margin: 0 auto;
 
-    background: rgba(0, 5, 2, 0.94);
+    background: rgba(30, 30, 46, .95);
 
-    border: 1px solid #18351e;
-    border-radius: 10px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
 
     overflow: hidden;
 
     box-shadow:
-        0 0 50px rgba(0, 255, 70, 0.04);
+        0 18px 50px rgba(0, 0, 0, .35);
+
 }
 
-/* ==============================
+
+/* ========================================
    TERMINAL BAR
-============================== */
+======================================== */
 
 .terminal-bar {
+
     height: 48px;
 
     display: grid;
@@ -65,493 +103,564 @@ body {
 
     padding: 0 16px;
 
-    border-bottom: 1px solid #18351e;
+    background: var(--surface);
 
-    background: #050806;
+    border-bottom: 1px solid var(--border);
+
 }
 
 .terminal-bar p {
-    color: #28e44d;
+
+    color: var(--text-muted);
+
     font-size: 13px;
+
 }
 
 .terminal-dots {
+
     display: flex;
     gap: 8px;
+
 }
 
 .terminal-dots span {
+
     width: 11px;
     height: 11px;
 
     border-radius: 50%;
+
 }
 
 .terminal-dots span:nth-child(1) {
-    background: #ff5f56;
+
+    background: var(--red);
+
 }
 
 .terminal-dots span:nth-child(2) {
-    background: #ffbd2e;
+
+    background: var(--yellow);
+
 }
 
 .terminal-dots span:nth-child(3) {
-    background: #27c93f;
+
+    background: var(--green);
+
 }
 
 
-/* ==============================
+/* ========================================
    CONTENT
-============================== */
+======================================== */
 
 .terminal-content {
+
     padding: 40px;
+
 }
 
 .terminal-section {
+
     margin-bottom: 55px;
+
 }
 
-
-/* ==============================
+/* ========================================
    COMMAND
-============================== */
+======================================== */
 
 .command {
-    color: #28e44d;
+
+    margin-bottom: 25px;
+
+    color: var(--blue);
 
     font-size: 17px;
     font-weight: 500;
 
-    margin-bottom: 25px;
 }
 
 .command span:first-child {
-    color: #1cff47;
+
+    color: var(--green);
+
 }
 
 
-/* ==============================
+/* ========================================
    IDENTITY
-============================== */
+======================================== */
 
 .identity {
-    padding-left: 15px;
 
-    border-left: 1px solid #1cff47;
+    padding-left: 18px;
+
+    border-left: 2px solid var(--green);
+
 }
 
 .identity h1 {
-    color: #f2f2f2;
 
-    font-size: clamp(27px, 5vw, 45px);
+    color: var(--text);
 
-    font-weight: 500;
-    letter-spacing: -1.5px;
+    font-size: clamp(28px, 5vw, 46px);
+
+    font-weight: 600;
+
+    letter-spacing: -1.4px;
+
 }
 
 .arrow {
-    color: #28e44d;
+
     margin-right: 12px;
+
+    color: var(--blue);
+
 }
 
 .meta {
+
     margin-top: 18px;
 
-    color: #28e44d;
+    color: var(--text-muted);
 
-    font-size: 16px;
+    font-size: 15px;
+
 }
 
 .dot {
-    margin: 0 9px;
+
+    margin: 0 10px;
+
+    color: var(--text-faint);
+
 }
 
 
-/* ==============================
+/* ========================================
    ABOUT
-============================== */
+======================================== */
 
 .about-text {
-    max-width: 800px;
 
-    padding-left: 15px;
+    max-width: 760px;
 
-    color: #d0d0d0;
+    color: var(--text-muted);
 
-    font-size: 17px;
-    line-height: 1.8;
+    line-height: 1.9;
+
+    font-size: 16px;
+
 }
 
 
-/* ==============================
+/* ========================================
    PROJECTS
-============================== */
+======================================== */
 
 .projects-list {
-    max-width: 850px;
 
-    border: 1px solid #194822;
-    border-radius: 8px;
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
 
     overflow: hidden;
 
-    background: rgba(0, 255, 50, 0.015);
+    background: var(--surface);
+
 }
 
 .project-item {
+
     padding: 28px 30px;
 
-    border-bottom: 1px solid #18351e;
+    border-bottom: 1px solid var(--border);
+
+    transition:
+        background .25s ease,
+        transform .2s ease;
+
 }
 
 .project-item:last-child {
+
     border-bottom: none;
+
+}
+
+.project-item:hover {
+
+    background: var(--surface-2);
+
 }
 
 .project-title {
+
     display: flex;
+
     align-items: center;
+
     gap: 12px;
+
 }
 
 .project-title span {
-    color: #28e44d;
-    font-size: 16px;
+
+    color: var(--green);
+
+    font-size: 15px;
+
 }
 
 .project-title h2 {
-    margin: 0;
 
-    color: #28e44d;
+    color: var(--blue);
 
     font-size: 19px;
-    font-weight: 500;
+
+    font-weight: 600;
+
 }
 
-.project-item > p {
-    margin: 16px 0 18px 43px;
+.project-item>p {
 
-    color: #aaa;
+    margin: 15px 0 18px 43px;
+
+    color: var(--text-muted);
 
     font-size: 14px;
-    line-height: 1.7;
+
+    line-height: 1.8;
+
 }
 
-.project-item > a,
+.project-item>a,
 .coming-soon {
+
     display: inline-block;
 
     margin-left: 43px;
 
-    color: #28e44d;
-
-    font-size: 14px;
+    color: var(--blue);
 
     text-decoration: none;
+
+    transition: .2s;
+
 }
 
-.project-item > a:hover {
-    text-decoration: underline;
+.project-item>a:hover {
+
+    color: var(--green);
+
 }
 
 .coming-soon {
-    color: #527b59;
+
+    color: var(--text-faint);
+
 }
 
-
-/* ==============================
+/* ========================================
    SPOTIFY
-============================== */
+======================================== */
 
 .spotify-wrapper {
-    max-width: 850px;
 
-    border: 1px solid #18351e;
-    border-radius: 8px;
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
 
     overflow: hidden;
 
-    background: #000;
+    background: var(--surface);
+
 }
 
 .spotify-wrapper iframe {
+
     display: block;
 
     width: 100%;
 
     border: 0;
+
 }
 
 
-/* ==============================
+/* ========================================
    TERMINAL END
-============================== */
+======================================== */
 
 .terminal-end {
+
     padding-top: 10px;
+
 }
 
 
-/* ==============================
+/* ========================================
    CURSOR
-============================== */
+======================================== */
 
 .cursor {
+
     display: inline-block;
 
-    width: 9px;
+    width: 8px;
     height: 18px;
 
     margin-left: 5px;
 
-    background: #28e44d;
+    background: var(--green);
 
     vertical-align: middle;
 
     animation: blink 1s steps(1) infinite;
+
 }
 
 @keyframes blink {
+
     0%,
     50% {
+
         opacity: 1;
+
     }
 
     51%,
     100% {
+
         opacity: 0;
+
     }
+
 }
 
 
-/* ==============================
+/* ========================================
    FOOTER
-============================== */
+======================================== */
 
 footer {
+
     margin-top: 40px;
 
-    padding-top: 25px;
+    padding-top: 24px;
 
-    border-top: 1px solid #18351e;
+    border-top: 1px solid var(--border);
 
-    color: #4d6652;
+    color: var(--text-faint);
 
     font-size: 12px;
+
 }
 
 
-/* ==============================
-   SCANLINES
-============================== */
+/* ========================================
+   SCROLLBAR
+======================================== */
 
-.scanlines {
-    position: fixed;
-    inset: 0;
+::-webkit-scrollbar {
 
-    pointer-events: none;
+    width: 10px;
 
-    z-index: 999;
+}
 
-    opacity: 0.025;
+::-webkit-scrollbar-track {
 
-    background: repeating-linear-gradient(
-        to bottom,
-        transparent 0,
-        transparent 2px,
-        #00ff41 3px
-    );
+    background: var(--bg);
+
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: var(--surface-2);
+
+    border-radius: 999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: var(--border);
+
 }
 
 
-/* ==============================
+/* ========================================
    SELECTION
-============================== */
+======================================== */
 
 ::selection {
-    background: #28e44d;
-    color: #000;
+
+    background: var(--blue);
+
+    color: var(--bg);
+
 }
 
 
-/* ==============================
+/* ========================================
    MOBILE
-============================== */
+======================================== */
 
 @media (max-width: 700px) {
 
     body {
-        padding: 12px;
+
+        padding: 14px;
+
     }
 
     .terminal {
-        border-radius: 7px;
+
+        border-radius: 12px;
+
     }
 
     .terminal-bar {
-        height: 43px;
+
+        height: 44px;
 
         padding: 0 12px;
+
     }
 
     .terminal-bar p {
+
         font-size: 11px;
+
     }
 
     .terminal-dots span {
+
         width: 9px;
         height: 9px;
+
     }
 
     .terminal-content {
+
         padding: 28px 20px;
+
     }
 
     .terminal-section {
-        margin-bottom: 45px;
+
+        margin-bottom: 42px;
+
     }
 
     .command {
+
+        font-size: 15px;
+
         margin-bottom: 20px;
 
-        font-size: 14px;
     }
 
     .identity {
-        padding-left: 12px;
+
+        padding-left: 14px;
+
     }
 
     .identity h1 {
-        font-size: 27px;
+
+        font-size: 28px;
+
         line-height: 1.4;
+
     }
 
     .meta {
-        font-size: 13px;
-        line-height: 2;
-    }
 
-    .dot {
-        margin: 0 5px;
+        font-size: 13px;
+
+        line-height: 1.8;
+
     }
 
     .about-text {
-        padding-left: 0;
 
         font-size: 14px;
+
         line-height: 1.8;
+
     }
 
     .project-item {
+
         padding: 22px 18px;
-    }
 
-    .project-title {
-        gap: 9px;
-    }
-
-    .project-title span {
-        font-size: 14px;
     }
 
     .project-title h2 {
-        font-size: 16px;
+
+        font-size: 17px;
+
     }
 
     .project-item > p {
-        margin: 14px 0 17px;
+
+        margin: 14px 0 16px;
 
         font-size: 13px;
-        line-height: 1.7;
+
     }
 
     .project-item > a,
     .coming-soon {
+
         margin-left: 0;
 
         font-size: 13px;
+
     }
 
     .spotify-wrapper iframe {
+
         height: 352px;
+
     }
 
     footer {
+
         font-size: 11px;
-        line-height: 1.7;
+
     }
+
 }
 
 
-/* ==============================
+/* ========================================
    SMALL MOBILE
-============================== */
+======================================== */
 
 @media (max-width: 420px) {
 
     .terminal-content {
-        padding: 25px 16px;
+
+        padding: 24px 16px;
+
     }
 
     .identity h1 {
+
         font-size: 23px;
+
     }
 
     .meta {
+
         font-size: 12px;
+
     }
-}
-/* ==============================
-   PROJECT COLLAPSE
-============================== */
 
-.command-toggle {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    width: fit-content;
-
-    padding: 0;
-    border: 0;
-    background: transparent;
-
-    font-family: inherit;
-    cursor: pointer;
-}
-
-.toggle-arrow {
-    color: #527b59;
-
-    font-size: 13px;
-
-    transition: transform 0.2s ease;
-}
-
-
-/* COLLAPSE */
-
-.projects-collapse {
-    display: grid;
-    grid-template-rows: 0fr;
-
-    opacity: 0;
-
-    transition:
-        grid-template-rows 0.35s ease,
-        opacity 0.25s ease;
-}
-
-.projects-collapse > .projects-list {
-    overflow: hidden;
-}
-
-
-/* OPEN */
-
-.projects-collapse.open {
-    grid-template-rows: 1fr;
-
-    opacity: 1;
 }
