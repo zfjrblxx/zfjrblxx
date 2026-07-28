@@ -3,402 +3,408 @@
 
 <head>
 
+    <link
+        rel="icon"
+        type="image/png"
+        href="images/ico.png"
+    >
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Fajar Putra Waluya</title>
 
-    <link rel="icon" href="favicon.ico">
+    <!-- ==========================
+         FONT
+    ========================== -->
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
-          rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
 
-    <link rel="stylesheet"
-          href="css/style.css">
+    <!-- ==========================
+         CSS
+    ========================== -->
 
-    <link rel="stylesheet"
-          href="css/watchlist.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/watchlist.css"
+    >
 
 </head>
 
 <body>
 
-<div class="scanlines"></div>
+    <!-- ==========================
+         TERMINAL
+    ========================== -->
 
-<div class="container">
+    <main class="terminal">
 
-<!-- =======================================
-HEADER
-======================================= -->
+        <!-- ==========================
+             TERMINAL BAR
+        ========================== -->
 
-<header>
+        <div class="terminal-bar">
 
-    <h1>
+            <div class="terminal-dots">
 
-        Fajar Putra Waluya
-
-    </h1>
-
-</header>
-
-
-<!-- =======================================
-WHOAMI
-======================================= -->
-
-<section class="terminal-section">
-
-    <p class="command">
-
-        <span class="prompt">
-
-            wly@home:~$
-
-        </span>
-
-        whoami
-
-    </p>
-
-    <div class="identity">
-
-        <h2>
-
-            > Fajar Putra Waluya
-
-        </h2>
-
-        <p>
-
-            Book Layout Designer
-
-        </p>
-
-        <p>
-
-            <span id="age"></span> y.o
-
-            •
-
-            ♌ Leo
-
-            •
-
-            Indonesia
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================
-ABOUT
-======================================= -->
-
-<section class="terminal-section">
-
-    <p class="command">
-
-        <span class="prompt">
-
-            wly@home:~$
-
-        </span>
-
-        about
-
-    </p>
-
-    <div class="about">
-
-        <p>
-
-            Just a little space on the internet that I call mine.
-            A place for my thoughts, ideas, and everything in between.
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================
-THINGS I'VE BUILT
-======================================= -->
-
-<section class="terminal-section">
-
-    <button
-        class="command command-toggle"
-        id="projectToggle">
-
-        <span>
-
-            ▸
-
-        </span>
-
-        things i've built
-
-    </button>
-
-    <div
-        class="projects-collapse"
-        id="projectsCollapse">
-             <div class="projects">
-
-        <a href="https://ingfoprint.vercel.app/"
-           target="_blank"
-           class="project-card">
-
-            <span class="project-number">
-
-                [01]
-
-            </span>
-
-            <div>
-
-                <h3>
-
-                    IngfoPrint
-
-                </h3>
-
-                <p>
-
-                    Printing price calculator.
-
-                </p>
+                <span></span>
+                <span></span>
+                <span></span>
 
             </div>
 
-        </a>
+            <p>
+                wly@home:~
+            </p>
 
-
-        <a href="https://ingfopass.vercel.app/"
-           target="_blank"
-           class="project-card">
-
-            <span class="project-number">
-
-                [02]
-
-            </span>
-
-            <div>
-
-                <h3>
-
-                    IngfoPass
-
-                </h3>
-
-                <p>
-
-                    Secure password generator.
-
-                </p>
-
-            </div>
-
-        </a>
-
-
-        <a href="https://ingfowarna.vercel.app/"
-           target="_blank"
-           class="project-card">
-
-            <span class="project-number">
-
-                [03]
-
-            </span>
-
-            <div>
-
-                <h3>
-
-                    IngfoWarna
-
-                </h3>
-
-                <p>
-
-                    Color palette & converter.
-
-                </p>
-
-            </div>
-
-        </a>
-
-
-        <a href="https://ingfobengkel.vercel.app/"
-           target="_blank"
-           class="project-card">
-
-            <span class="project-number">
-
-                [04]
-
-            </span>
-
-            <div>
-
-                <h3>
-
-                    Ingfo Bengkel
-
-                </h3>
-
-                <p>
-
-                    Motorcycle maintenance tracker.
-
-                </p>
-
-            </div>
-
-        </a>
-
-    </div>
-
-</div>
-
-</section>
-
-
-<!-- =======================================
-SPOTIFY
-======================================= -->
-
-<section class="terminal-section">
-
-    <button
-        class="command command-toggle"
-        id="spotifyToggle">
-
-        <span>
-
-            ▸
-
-        </span>
-
-        spotify
-
-    </button>
-
-    <div
-        class="projects-collapse"
-        id="spotifyCollapse">
-
-        <div class="spotify-wrapper">
-
-            <iframe
-                style="border-radius:12px"
-                src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1IPOOk?utm_source=generator&theme=0"
-                width="100%"
-                height="352"
-                frameborder="0"
-                allowfullscreen=""
-                loading="lazy"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-
-            </iframe>
+            <div></div>
 
         </div>
 
-    </div>
+        <!-- ==========================
+             CONTENT
+        ========================== -->
 
-</section>
-<!-- =======================================
-WATCH LOG
-======================================= -->
+        <div class="terminal-content">
 
-<section class="terminal-section">
+            <!-- ==========================
+                 WHOAMI
+            ========================== -->
 
-    <button
-        class="command command-toggle"
-        id="watchToggle">
+            <section class="terminal-section">
 
-        <span>
+                <p class="command">
 
-            ▸
+                    <span>
+                        wly@home:~$
+                    </span>
 
-        </span>
+                    whoami
 
-        watch log
+                </p>
 
-    </button>
+                <div class="identity">
 
-    <div
-        class="projects-collapse"
-        id="watchCollapse">
+                    <h1>
 
-        <div id="watchlist-container"></div>
+                        <span class="arrow">
+                            &gt;
+                        </span>
 
-    </div>
+                        Fajar Putra Waluya
 
-</section>
+                    </h1>
+
+                    <p class="meta">
+
+                        <span class="arrow">
+                            &gt;
+                        </span>
+
+                        <span id="age"></span> y.o
+
+                        <span class="dot">
+                            •
+                        </span>
+
+                        ♌ Leo
+
+                        <span class="dot">
+                            •
+                        </span>
+
+                        Indonesia
+
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- ==========================
+                 ABOUT
+            ========================== -->
+
+            <section class="terminal-section">
+
+                <p class="command">
+
+                    <span>
+                        wly@home:~$
+                    </span>
+
+                    about
+
+                </p>
+
+                <p class="about-text">
+
+                    Just a little space on the internet that I call mine.
+                    A place for my thoughts, ideas, and everything in between.
+
+                </p>
+
+            </section>
+
+            <!-- ==========================
+                 PROJECTS
+            ========================== -->
+
+            <section class="terminal-section">
+
+                <button
+                    class="command command-toggle"
+                    id="projectToggle"
+                >
+
+                    <span>
+                        wly@home:~$
+                    </span>
+
+                    things i've built
+
+                    <span
+                        class="toggle-arrow"
+                        id="projectArrow"
+                    >
+                        ▸
+                    </span>
+
+                </button>
+
+                <div
+                    class="projects-collapse"
+                    id="projectsCollapse"
+                >
+
+                    <div class="projects-list">
+                                                <!-- PROJECT 01 -->
+
+                        <div class="project-item">
+
+                            <div class="project-title">
+
+                                <span>[01]</span>
+
+                                <h2>Ingfo Bengkel</h2>
+
+                            </div>
+
+                            <p>
+
+                                Catat servis, pajak, ganti oli,
+                                dan perawatan kendaraan.
+
+                            </p>
+
+                            <a
+                                href="https://ingfobengkel.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                → open project
+                            </a>
+
+                        </div>
 
 
-<!-- =======================================
-FOOTER
-======================================= -->
+                        <!-- PROJECT 02 -->
 
-<footer>
+                        <div class="project-item">
 
-    <p>
+                            <div class="project-title">
 
-        Process finished with exit code 0
+                                <span>[02]</span>
 
-    </p>
+                                <h2>IngfoPrint</h2>
 
-</footer>
+                            </div>
 
-</div>
+                            <p>
+
+                                Hitung kebutuhan cetak lebih mudah,
+                                cepat, dan praktis.
+
+                            </p>
+
+                            <a
+                                href="https://ingfoprint.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                → open project
+                            </a>
+
+                        </div>
 
 
-<script src="js/watchlist.js"></script>
-<script src="js/main.js"></script>
+                        <!-- PROJECT 03 -->
 
-<script>
+                        <div class="project-item">
 
-document.querySelectorAll(".command-toggle").forEach(button => {
+                            <div class="project-title">
 
-    button.addEventListener("click", () => {
+                                <span>[03]</span>
 
-        const collapse =
-            button.nextElementSibling;
+                                <h2>IngfoPass</h2>
 
-        const arrow =
-            button.querySelector("span");
+                            </div>
 
-        collapse.classList.toggle("open");
+                            <p>
 
-        arrow.textContent =
-            collapse.classList.contains("open")
-                ? "▾"
-                : "▸";
+                                Generate password dengan cepat
+                                dan praktis.
 
-    });
+                            </p>
 
-});
+                            <a
+                                href="https://ingfopass.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                → open project
+                            </a>
 
-</script>
+                        </div>
+
+
+                        <!-- PROJECT 04 -->
+
+                        <div class="project-item">
+
+                            <div class="project-title">
+
+                                <span>[04]</span>
+
+                                <h2>IngfoWarna</h2>
+
+                            </div>
+
+                            <p>
+
+                                Pilih, konversi,
+                                dan eksplorasi warna.
+
+                            </p>
+
+                            <a
+                                href="https://ingfowarna.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                → open project
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==========================
+                 SPOTIFY
+            ========================== -->
+
+            <section class="terminal-section">
+
+                <p class="command">
+
+                    <span>
+                        wly@home:~$
+                    </span>
+
+                    spotify
+
+                </p>
+
+                <div class="spotify-wrapper">
+
+                    <iframe
+                        src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO1IPOOk?utm_source=generator&theme=0"
+                        width="100%"
+                        height="352"
+                        frameborder="0"
+                        allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                    ></iframe>
+
+                </div>
+
+            </section>
+
+
+            <!-- WATCHLIST -->
+
+            <div id="watchlist-container"></div>
+                        <!-- ==========================
+                 TERMINAL END
+            ========================== -->
+
+            <section class="terminal-end">
+
+                <p class="command">
+
+                    <span>
+                        wly@home:~$
+                    </span>
+
+                    <span class="cursor"></span>
+
+                </p>
+
+            </section>
+
+            <!-- ==========================
+                 FOOTER
+            ========================== -->
+
+            <footer>
+
+                <p>
+                    // end of file
+                </p>
+
+            </footer>
+
+        </div>
+        <!-- END TERMINAL CONTENT -->
+
+    </main>
+
+    <!-- ==========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="js/watchlist.js"></script>
+    <script src="js/main.js"></script>
 
 </body>
+
 </html>
