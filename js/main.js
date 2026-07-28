@@ -10,13 +10,15 @@ function updateAge() {
 
     const today = new Date();
 
-    let age = today.getFullYear() - BIRTH_YEAR;
+    let age =
+        today.getFullYear() - BIRTH_YEAR;
 
-    const birthdayThisYear = new Date(
-        today.getFullYear(),
-        BIRTH_MONTH,
-        BIRTH_DAY
-    );
+    const birthdayThisYear =
+        new Date(
+            today.getFullYear(),
+            BIRTH_MONTH,
+            BIRTH_DAY
+        );
 
     if (today < birthdayThisYear) {
         age--;
@@ -36,10 +38,15 @@ function updateAge() {
 // LOAD SECTION
 // ========================================
 
-async function loadSection(containerId, file) {
+async function loadSection(
+    containerId,
+    file
+) {
 
     const container =
-        document.getElementById(containerId);
+        document.getElementById(
+            containerId
+        );
 
     if (!container) {
         return false;
@@ -51,9 +58,11 @@ async function loadSection(containerId, file) {
             await fetch(file);
 
         if (!response.ok) {
+
             throw new Error(
                 `Failed to load ${file}`
             );
+
         }
 
         container.innerHTML =
@@ -81,8 +90,6 @@ async function loadSection(containerId, file) {
     }
 
 }
-
-
 // ========================================
 // INIT WEBSITE
 // ========================================
@@ -156,8 +163,6 @@ function initProjectToggle() {
     );
 
 }
-
-
 // ========================================
 // START WEBSITE
 // ========================================
@@ -166,3 +171,12 @@ document.addEventListener(
     "DOMContentLoaded",
     initWebsite
 );
+
+
+
+
+
+
+
+
+
