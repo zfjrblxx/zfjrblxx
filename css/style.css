@@ -253,6 +253,168 @@ body{
 
 }
 
+/* ========================================
+   PROJECTS
+======================================== */
+
+.projects-grid{
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+
+}
+
+.project-card{
+
+    display:flex;
+    align-items:flex-start;
+    gap:20px;
+
+    padding:18px 22px;
+
+    border:1px solid var(--surface1);
+
+    border-radius:14px;
+
+    background:var(--surface0);
+
+    text-decoration:none;
+
+    transition:.25s ease;
+
+}
+
+.project-card:hover{
+
+    border-color:var(--green);
+
+    transform:translateX(8px);
+
+    background:rgba(166,227,161,.06);
+
+}
+
+.project-index{
+
+    flex-shrink:0;
+
+    color:var(--green);
+
+    font-size:14px;
+
+    font-weight:700;
+
+    margin-top:2px;
+
+}
+
+.project-content{
+
+    flex:1;
+
+}
+
+.project-content h3{
+
+    margin:0;
+
+    color:var(--text);
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.project-content p{
+
+    margin:8px 0 0;
+
+    color:var(--subtext1);
+
+    font-size:14px;
+
+    line-height:1.7;
+
+}
+
+.project-card::after{
+
+    content:"↗";
+
+    margin-left:auto;
+
+    color:var(--overlay1);
+
+    font-size:20px;
+
+    transition:.25s ease;
+
+}
+
+.project-card:hover::after{
+
+    color:var(--green);
+
+    transform:
+        translate(3px,-3px);
+
+}
+
+.project-card:hover .project-content h3{
+
+    color:var(--green);
+
+}
+
+.project-card:hover .project-content p{
+
+    color:var(--text);
+
+}
+
+.project-card:active{
+
+    transform:scale(.98);
+
+}
+
+@media (max-width:700px){
+
+    .project-card{
+
+        gap:14px;
+
+        padding:16px;
+
+    }
+
+    .project-content h3{
+
+        font-size:16px;
+
+    }
+
+    .project-content p{
+
+        font-size:13px;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ========================================
    IDENTITY
