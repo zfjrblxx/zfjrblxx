@@ -886,3 +886,121 @@ footer{
     }
 
 }
+
+/* ========================================
+   EXPERIENCE
+======================================== */
+
+.timeline{
+
+    position:relative;
+
+    margin-left:14px;
+
+    padding-left:28px;
+
+    border-left:2px solid var(--surface1);
+
+}
+
+.timeline-year{
+
+    margin:0 0 24px;
+
+    color:var(--green);
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+.timeline-item{
+
+    position:relative;
+
+    margin-bottom:28px;
+
+}
+
+.timeline-item:last-child{
+
+    margin-bottom:0;
+
+}
+
+.timeline-dot{
+
+    position:absolute;
+
+    left:-36px;
+
+    top:8px;
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    border:3px solid var(--base);
+
+    box-shadow:0 0 0 2px var(--surface1);
+
+}
+
+.timeline-content{
+
+    transition:.25s ease;
+
+}
+
+.timeline-content h4{
+
+    margin:0;
+
+    color:var(--text);
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.timeline-content p{
+
+    margin:8px 0 0;
+
+    color:var(--subtext1);
+
+    font-size:14px;
+
+    line-height:1.7;
+
+}
+
+.timeline-item:hover .timeline-dot{
+
+    transform:scale(1.25);
+
+}
+
+.timeline-item:hover h4{
+
+    color:var(--green);
+
+}
+
+.timeline-item:hover p{
+
+    color:var(--text);
+
+}
+
+.timeline-item:hover .timeline-content{
+
+    transform:translateX(8px);
+
+}
