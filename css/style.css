@@ -1116,16 +1116,16 @@ footer{
 
     position:absolute;
 
-    bottom:26px;
+    bottom:22px;
 
-    right:85px;
+    right:58px;
 
     font-size:34px;
 
     z-index:9999;
 
-    display:none;
-
     pointer-events:none;
+
+    opacity:0;
 
 }
