@@ -184,67 +184,59 @@ document.addEventListener(
 
 
 
-
 // ========================================
 // CAT WALK
 // ========================================
 
-document.addEventListener("DOMContentLoaded", () => {
+const catButton =
+    document.getElementById("catSecret");
 
-    const cat =
-        document.getElementById("catSecret");
-
-    const walk =
-        document.getElementById("catWalk");
-
-    if (!cat || !walk) return;
-
-    cat.addEventListener("click", () => {
-
-        walk.classList.remove("walk");
-
-        void walk.offsetWidth;
-
-        walk.classList.add("walk");
-
-        walk.addEventListener("animationend", () => {
-
-            walk.classList.remove("walk");
-
-        }, { once: true });
-
-    });
-
-});
-
-// ========================================
-// CAT WALK - KEYFRAME
-// ========================================
-
-const cat =
-document.getElementById("catSecret");
-
-const walk =
-document.getElementById("catWalk");
+const catWalk =
+    document.getElementById("catWalk");
 
 const terminal =
-document.querySelector(".terminal");
+    document.querySelector(".terminal");
 
-cat.addEventListener("click",()=>{
+if (
+    catButton &&
+    catWalk &&
+    terminal
+) {
 
-    walk.style.display="block";
+    catButton.addEventListener("click", () => {
 
-    walk.style.transition="none";
+        const start = 58;
 
-    walk.style.right="85px";
+        const finish =
+            terminal.clientWidth - 120;
 
-    requestAnimationFrame(()=>{
+        catWalk.style.transition = "none";
 
-        walk.style.transition="right 8s linear";
+        catWalk.style.opacity = "1";
 
-        walk.style.right=
-        (terminal.clientWidth-120)+"px";
+        catWalk.style.right =
+            start + "px";
+
+        requestAnimationFrame(() => {
+
+            catWalk.style.transition =
+                "right 8s linear";
+
+            catWalk.style.right =
+                finish + "px";
+
+        });
+
+        catWalk.addEventListener(
+            "transitionend",
+            () => {
+
+                catWalk.style.opacity = "0";
+
+            },
+            { once: true }
+        );
 
     });
 
-});
+}
