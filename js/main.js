@@ -209,22 +209,30 @@ if(cat){
 // CAT WALK
 // ========================================
 
-const catButton =
-    document.getElementById("catSecret");
+document.addEventListener("DOMContentLoaded", () => {
 
-const catWalk =
-    document.getElementById("catWalk");
+    const cat =
+        document.getElementById("catSecret");
 
-if(catButton && catWalk){
+    const walk =
+        document.getElementById("catWalk");
 
-    catButton.addEventListener("click",()=>{
+    if (!cat || !walk) return;
 
-        catWalk.classList.remove("walk");
+    cat.addEventListener("click", () => {
 
-        void catWalk.offsetWidth;
+        walk.classList.remove("walk");
 
-        catWalk.classList.add("walk");
+        void walk.offsetWidth;
+
+        walk.classList.add("walk");
+
+        walk.addEventListener("animationend", () => {
+
+            walk.classList.remove("walk");
+
+        }, { once: true });
 
     });
 
-}
+});
