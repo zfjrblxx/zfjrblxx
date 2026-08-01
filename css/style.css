@@ -1108,26 +1108,24 @@ footer{
 /* ========================================
    CAT EASTER EGG
 ======================================== */
+.terminal{
+    position:relative;
+}
+
 #catWalk{
 
     position:absolute;
 
-    bottom:28px;
+    bottom:26px;
 
     right:85px;
 
     font-size:34px;
 
+    z-index:9999;
+
     display:none;
 
-    z-index:999;
-
     pointer-events:none;
-
-}
-
-#catWalk.walk{
-
-    display:block;
 
 }
