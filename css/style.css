@@ -1034,3 +1034,38 @@ footer{
     }
 
 }
+
+
+/* ========================================
+   TERMINAL FOOTER
+======================================== */
+
+.terminal-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.footer-instagram{
+
+    color:var(--text-faint);
+
+    font-size:18px;
+
+    transition:
+        color .25s ease,
+        transform .25s ease;
+
+}
+
+.footer-instagram:hover{
+
+    color:#E4405F;
+
+    transform:translateY(-2px);
+
+}
