@@ -220,7 +220,7 @@ if (
         requestAnimationFrame(() => {
 
             catWalk.style.transition =
-                "right 8s linear";
+                "right 3s linear";
 
             catWalk.style.right =
                 finish + "px";
