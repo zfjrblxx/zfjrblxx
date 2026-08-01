@@ -1113,21 +1113,23 @@ footer{
 
     position:fixed;
 
-    bottom:28px;
+    bottom:20px;
 
-    left:-120px;
-
-    z-index:99999;
+    right:-80px;
 
     font-size:42px;
 
+    z-index:99999;
+
     pointer-events:none;
 
-    transition:none;
+    display:none;
 
 }
 
 #catWalk.walk{
+
+    display:block;
 
     animation:catWalk 8s linear forwards;
 
@@ -1137,13 +1139,13 @@ footer{
 
     from{
 
-        left:-120px;
+        right:-80px;
 
     }
 
     to{
 
-        left:calc(100vw + 120px);
+        right:100vw;
 
     }
 
