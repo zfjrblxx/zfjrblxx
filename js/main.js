@@ -204,3 +204,27 @@ if(cat){
     });
 
 }
+
+// ========================================
+// CAT WALK
+// ========================================
+
+const catButton =
+    document.getElementById("catSecret");
+
+const catWalk =
+    document.getElementById("catWalk");
+
+if(catButton && catWalk){
+
+    catButton.addEventListener("click",()=>{
+
+        catWalk.classList.remove("walk");
+
+        void catWalk.offsetWidth;
+
+        catWalk.classList.add("walk");
+
+    });
+
+}
