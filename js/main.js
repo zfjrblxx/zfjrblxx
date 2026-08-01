@@ -181,3 +181,28 @@ document.addEventListener(
 
     }
 );
+
+
+// ========================================
+// MEOW
+// ========================================
+
+
+const cat =
+    document.getElementById("catSecret");
+
+if(cat){
+
+    cat.addEventListener("click",()=>{
+
+        alert(
+`🐱 Meow!
+
+Kamu menemukan easter egg!
+
+Terima kasih sudah mengunjungi portfolio-ku.`
+        );
+
+    });
+
+}
