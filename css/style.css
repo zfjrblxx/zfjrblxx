@@ -1050,15 +1050,51 @@ footer{
 
 }
 
+.footer-icons{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.cat-secret{
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    filter:grayscale(100%);
+
+    opacity:.55;
+
+    transition:.25s;
+
+}
+
+.cat-secret:hover{
+
+    filter:none;
+
+    opacity:1;
+
+    transform:translateY(-2px);
+
+}
+
 .footer-instagram{
 
     color:var(--text-faint);
 
     font-size:18px;
 
-    transition:
-        color .25s ease,
-        transform .25s ease;
+    transition:.25s;
 
 }
 
