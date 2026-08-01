@@ -216,3 +216,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+// ========================================
+// CAT WALK - KEYFRAME
+// ========================================
+
+const cat =
+document.getElementById("catSecret");
+
+const walk =
+document.getElementById("catWalk");
+
+const terminal =
+document.querySelector(".terminal");
+
+cat.addEventListener("click",()=>{
+
+    walk.style.display="block";
+
+    walk.style.transition="none";
+
+    walk.style.transform="translateX(0)";
+
+    requestAnimationFrame(()=>{
+
+        walk.style.transition="transform 8s linear";
+
+        walk.style.transform=
+            `translateX(-${terminal.clientWidth-150}px)`;
+
+    });
+
+});
