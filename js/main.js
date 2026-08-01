@@ -198,9 +198,7 @@ if(cat){
         alert(
 `🐱 Meow!
 
-Kamu menemukan easter egg!
-
-Terima kasih sudah mengunjungi portfolio-ku.`
+`
         );
 
     });
