@@ -236,14 +236,14 @@ cat.addEventListener("click",()=>{
 
     walk.style.transition="none";
 
-    walk.style.transform="translateX(0)";
+    walk.style.right="85px";
 
     requestAnimationFrame(()=>{
 
-        walk.style.transition="transform 8s linear";
+        walk.style.transition="right 8s linear";
 
-        walk.style.transform=
-            `translateX(-${terminal.clientWidth-150}px)`;
+        walk.style.right=
+        (terminal.clientWidth-120)+"px";
 
     });
 
