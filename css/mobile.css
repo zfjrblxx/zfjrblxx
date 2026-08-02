@@ -577,3 +577,76 @@ SMALL DEVICES
 }
 
 }
+@media (max-width:768px){
+
+.project-card{
+
+    padding:18px;
+
+}
+
+.project-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.project-number{
+
+    width:42px;
+
+    height:42px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:3px solid var(--border);
+
+    font-size:12px;
+
+}
+
+.project-info{
+
+    flex:1;
+
+}
+
+.project-title{
+
+    font-size:18px;
+
+    margin-bottom:8px;
+
+}
+
+.project-desc{
+
+    font-size:13px;
+
+    line-height:1.6;
+
+    color:var(--muted);
+
+}
+
+.project-link{
+
+    margin-top:18px;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+}
+
+}
