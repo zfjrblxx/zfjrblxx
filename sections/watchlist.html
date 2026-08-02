@@ -1,42 +1,57 @@
-<section class="panel">
+<!-- =========================================
+WATCHLIST BUTTON
+========================================= -->
 
-    <div class="panel-header">
+<div class="watch-home">
 
-        WATCH LOG
+    <button
+        id="watchlistFolder"
+        class="pixel-folder"
+        aria-label="Open Watch Log">
 
-    </div>
+        <span class="folder-icon">
 
-    <div class="panel-body">
+            📼
 
-        <button
-            class="pixel-folder"
-            id="watchlistFolder">
+        </span>
 
-            📁 Open Watch Log
+        <span class="folder-text">
 
-        </button>
+            Open Watch Log
 
-    </div>
+        </span>
 
-</section>
+    </button>
+
+</div>
 
 
+
+<!-- =========================================
+WATCHLIST OVERLAY
+========================================= -->
 
 <div
-id="watchlistOverlay"
-class="watchlist-overlay">
+    id="watchlistOverlay"
+    class="watchlist-overlay">
 
-    <div class="pixel-window watch-window">
+    <div class="watch-window">
+
+        <!-- HEADER -->
 
         <div class="watch-header">
 
-            <span>
+            <div class="watch-title">
 
                 WATCH LOG
 
-            </span>
+                (<span id="watchCount">0</span>)
 
-            <button id="closeWatchlist">
+            </div>
+
+            <button
+                id="closeWatchlist"
+                class="watch-close">
 
                 ✕
 
@@ -44,15 +59,63 @@ class="watchlist-overlay">
 
         </div>
 
-        <div
-        id="watchlistContent"
-        class="watch-content">
+
+
+        <!-- SEARCH -->
+
+        <div class="watch-search">
+
+            <input
+
+                id="watchSearch"
+
+                type="text"
+
+                placeholder="Search movie or series..."
+
+                autocomplete="off">
 
         </div>
 
+
+
+        <!-- A-Z -->
+
+        <div
+            id="watchLetters"
+            class="watch-letters">
+
+        </div>
+
+
+
+        <!-- CONTENT -->
+
+        <div
+            id="watchlistContent"
+            class="watch-content">
+
+            <div class="watch-loading">
+
+                Loading...
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FOOTER -->
+
         <div class="watch-footer">
 
-            <span id="watchCount">
+            <span>
+
+                Pixel Library
+
+            </span>
+
+            <span id="watchlistCount">
 
                 0 Items
 
