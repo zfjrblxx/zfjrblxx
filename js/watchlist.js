@@ -1,408 +1,652 @@
-function initWatchlist() {
+/* =====================================================
+   PIXEL OS
+   WATCHLIST.JS
+   PART 1
+===================================================== */
 
-    const folder =
-        document.getElementById(
-            "watchlistFolder"
-        );
+"use strict";
 
-    const overlay =
-        document.getElementById(
-            "watchlistOverlay"
-        );
+/* =====================================================
+   WATCHLIST
+===================================================== */
 
-    const closeButton =
-        document.getElementById(
-            "closeWatchlist"
-        );
+const Watchlist = {
 
-    const content =
-        document.getElementById(
-            "watchlistContent"
-        );
+    folder: null,
 
-    const count =
-        document.getElementById(
-            "watchlistCount"
-        );
+    overlay: null,
 
-    const watchCount =
-        document.getElementById(
-            "watchCount"
-        );
+    close: null,
+
+    content: null,
+
+    counter: null,
+
+    total: null,
+
+    loaded: false,
+
+    items: [],
 
 
-    if (
-        !folder ||
-        !overlay ||
-        !closeButton ||
-        !content
-    ) {
-        return;
-    }
+
+    init() {
+
+        this.folder =
+            document.getElementById(
+                "watchlistFolder"
+            );
+
+        this.overlay =
+            document.getElementById(
+                "watchlistOverlay"
+            );
+
+        this.close =
+            document.getElementById(
+                "closeWatchlist"
+            );
+
+        this.content =
+            document.getElementById(
+                "watchlistContent"
+            );
+
+        this.counter =
+            document.getElementById(
+                "watchCount"
+            );
+
+        this.total =
+            document.getElementById(
+                "watchlistCount"
+            );
+
+        if (
+
+            !this.folder ||
+
+            !this.overlay ||
+
+            !this.close ||
+
+            !this.content
+
+        ){
+
+            return;
+
+        }
+
+        this.events();
+
+        this.fetch();
+
+    },
 
 
-    // ========================================
-    // WATCHLIST DATA
-    // ========================================
 
-    let watchlistItems = [];
-    let watchlistLoaded = false;
+/* =====================================================
+   FETCH
+===================================================== */
 
+    async fetch(){
 
-    // ========================================
-    // FETCH WATCHLIST DATA
-    // ========================================
-
-    async function fetchWatchlistData() {
-
-        try {
+        try{
 
             const response =
+
                 await fetch(
+
                     "sections/watchlist-data.html"
+
                 );
 
-            if (!response.ok) {
+            if(
 
-                throw new Error(
-                    "Failed to load watchlist"
-                );
+                !response.ok
+
+            ){
+
+                throw new Error();
 
             }
 
             const html =
+
                 await response.text();
 
             const parser =
+
                 new DOMParser();
 
             const doc =
+
                 parser.parseFromString(
+
                     html,
+
                     "text/html"
+
                 );
 
-            watchlistItems =
+            this.items =
+
                 [
+
                     ...doc.querySelectorAll("p")
+
                 ]
-                .map(item =>
+
+                .map(item=>
+
                     item.textContent.trim()
+
                 )
+
                 .filter(Boolean);
 
-            if (watchCount) {
+            this.loaded = true;
 
-                watchCount.textContent =
-                    watchlistItems.length;
-
-            }
-
-            if (count) {
-
-                count.textContent =
-                    `${watchlistItems.length} items`;
-
-            }
-
-            watchlistLoaded = true;
-
-            return watchlistItems;
+            this.updateCount();
 
         }
 
-        catch (error) {
+        catch(error){
 
             console.error(error);
 
-            return [];
+        }
+
+    },
+
+
+
+/* =====================================================
+   COUNT
+===================================================== */
+
+    updateCount(){
+
+        if(this.counter){
+
+            this.counter.textContent =
+
+                this.items.length;
 
         }
 
-    }
+        if(this.total){
 
-    // ========================================
-    // LOAD WATCHLIST
-    // ========================================
+            this.total.textContent =
 
-    async function loadWatchlist() {
+                `${this.items.length} Items`;
 
-        content.innerHTML = `
-            <p class="watchlist-loading">
-                &gt; loading...
-            </p>
-        `;
-
-        if (!watchlistLoaded) {
-            await fetchWatchlistData();
         }
 
-        const items = [...watchlistItems];
+    },
 
-        if (!items.length) {
 
-            content.innerHTML = `
-                <p class="watchlist-loading">
-                    &gt; failed to load watchlist
-                </p>
+
+/* =====================================================
+   OPEN
+===================================================== */
+
+    open(){
+
+        this.overlay.classList.add(
+
+            "show"
+
+        );
+
+        document.body.style.overflow =
+
+            "hidden";
+
+        this.render();
+
+    },
+
+
+
+/* =====================================================
+   CLOSE
+===================================================== */
+
+    closeWindow(){
+
+        this.overlay.classList.remove(
+
+            "show"
+
+        );
+
+        document.body.style.overflow = "";
+
+    },
+
+
+    /* =====================================================
+   RENDER
+===================================================== */
+
+    render() {
+
+        if (!this.loaded) {
+
+            this.content.innerHTML = `
+
+                <div class="watch-loading">
+
+                    Loading...
+
+                </div>
+
             `;
 
             return;
 
         }
 
-        // ========================================
-        // SORT A-Z
-        // ========================================
+        const items =
 
-        items.sort((a, b) =>
-            a.localeCompare(
-                b,
-                undefined,
-                {
-                    sensitivity: "base"
-                }
-            )
+            [...this.items];
+
+        items.sort(
+
+            (a, b) =>
+
+                a.localeCompare(
+
+                    b,
+
+                    undefined,
+
+                    {
+
+                        sensitivity: "base"
+
+                    }
+
+                )
+
         );
-
-        // ========================================
-        // GROUP BY LETTER
-        // ========================================
 
         const groups = {};
 
         items.forEach(title => {
 
             let letter =
-                title.charAt(0).toUpperCase();
 
-            if (!/[A-Z]/.test(letter)) {
+                title.charAt(0)
+
+                .toUpperCase();
+
+            if (
+
+                !/[A-Z]/.test(letter)
+
+            ) {
+
                 letter = "#";
+
             }
 
-            if (!groups[letter]) {
+            if (
+
+                !groups[letter]
+
+            ) {
+
                 groups[letter] = [];
+
             }
 
             groups[letter].push(title);
 
         });
 
-        // ========================================
-        // BUILD A-Z
-        // ========================================
+        let html = `
 
-        let output = `
-            <div class="watchlist-az">
-        `;
+<div class="watch-letters">
+
+`;
+
+
 
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            .split("")
-            .forEach(letter => {
 
-                if (groups[letter]) {
+        .split("")
 
-                    output += `
-                        <button
-                            class="az-letter active"
-                            data-letter="${letter}"
-                        >
-                            ${letter}
-                        </button>
-                    `;
+        .forEach(letter => {
 
-                } else {
+            if (
 
-                    output += `
-                        <span class="az-letter disabled">
-                            ${letter}
-                        </span>
-                    `;
+                groups[letter]
+
+            ) {
+
+                html += `
+
+<button
+class="watch-letter"
+data-letter="${letter}">
+
+${letter}
+
+</button>
+
+`;
+
+            }
+
+            else{
+
+                html += `
+
+<span
+class="watch-letter disabled">
+
+${letter}
+
+</span>
+
+`;
+
+            }
+
+        });
+
+        html += `
+
+</div>
+
+<div class="watch-groups">
+
+`;
+
+
+
+        Object.keys(groups)
+
+        .sort()
+
+        .forEach(letter => {
+
+            html += `
+
+<div
+
+class="watch-group"
+
+id="group-${letter}"
+
+>
+
+<div class="group-title">
+
+${letter}
+
+</div>
+
+`;
+
+
+
+            groups[letter]
+
+            .forEach(title => {
+
+                html += `
+
+<div class="watch-card">
+
+<div class="watch-icon">
+
+🎬
+
+</div>
+
+<div class="watch-title">
+
+${title}
+
+</div>
+
+</div>
+
+`;
+
+            });
+
+            html += `
+
+</div>
+
+`;
+
+        });
+
+        html += `
+
+</div>
+
+`;
+
+        this.content.innerHTML = html;
+
+        this.bindLetters();
+
+    },
+
+
+
+/* =====================================================
+   LETTER
+===================================================== */
+
+    bindLetters(){
+
+        this.content
+
+        .querySelectorAll(
+
+            ".watch-letter"
+
+        )
+
+        .forEach(button=>{
+
+            if(
+
+                button.classList.contains(
+
+                    "disabled"
+
+                )
+
+            ){
+
+                return;
+
+            }
+
+            button.addEventListener(
+
+                "click",
+
+                ()=>{
+
+                    const target=
+
+                        document.getElementById(
+
+                            "group-"+
+
+                            button.dataset.letter
+
+                        );
+
+                    if(target){
+
+                        target.scrollIntoView({
+
+                            behavior:"smooth",
+
+                            block:"start"
+
+                        });
+
+                    }
 
                 }
 
-            });
+            );
 
-        output += `</div>`;
+        });
 
-        // ========================================
-        // BUILD LIST
-        // ========================================
-
-        Object.keys(groups)
-            .sort()
-            .forEach(letter => {
-
-                output += `
-                    <div
-                        class="watch-group"
-                        id="watch-${letter}"
-                    >
-
-                        <div class="watch-letter">
-                            ${letter}
-                        </div>
-
-                        <div class="watch-items">
-                `;
-
-                groups[letter]
-                    .forEach(title => {
-
-                        output += `
-                            <p>${title}</p>
-                        `;
-
-                    });
-
-                output += `
-                        </div>
-                    </div>
-                `;
-
-            });
-
-        content.innerHTML = output;
+    },
 
 
-        // ========================================
-        // UPDATE COUNT
-        // ========================================
+    /* =====================================================
+   SEARCH
+===================================================== */
 
-        if (count) {
+    search(keyword) {
 
-            count.textContent =
-                `${items.length} items`;
+        const cards =
 
-        }
+            this.content.querySelectorAll(
 
-        if (watchCount) {
+                ".watch-card"
 
-            watchCount.textContent =
-                items.length;
+            );
 
-        }
+        keyword =
 
+            keyword.toLowerCase();
 
-        // ========================================
-        // A-Z CLICK
-        // ========================================
+        cards.forEach(card => {
 
-        content
-            .querySelectorAll(
-                ".az-letter.active"
-            )
-            .forEach(button => {
+            const title =
 
-                button.addEventListener(
-                    "click",
-                    () => {
+                card.querySelector(
 
-                        const letter =
-                            button.dataset.letter;
+                    ".watch-title"
 
-                        const target =
-                            document.getElementById(
-                                `watch-${letter}`
-                            );
+                ).textContent.toLowerCase();
 
-                        if (target) {
+            card.style.display =
 
-                            target.scrollIntoView({
-                                behavior: "smooth",
-                                block: "start"
-                            });
+                title.includes(keyword)
 
-                        }
+                ? "flex"
 
-                    }
-                );
+                : "none";
 
-            });
+        });
 
-    }
-
-    // ========================================
-    // OPEN
-    // ========================================
-
-    function openWatchlist() {
-
-        overlay.classList.add("show");
-
-        document.body.style.overflow =
-            "hidden";
-
-        loadWatchlist();
-
-    }
+    },
 
 
-    // ========================================
-    // CLOSE
-    // ========================================
 
-    function closeWatchlist() {
+/* =====================================================
+   EVENTS
+===================================================== */
 
-        overlay.classList.remove("show");
+    events() {
 
-        document.body.style.overflow = "";
+        this.folder.addEventListener(
 
-    }
+            "click",
 
+            () => {
 
-    // ========================================
-    // EVENTS
-    // ========================================
-
-    folder.addEventListener(
-        "click",
-        openWatchlist
-    );
-
-    closeButton.addEventListener(
-        "click",
-        closeWatchlist
-    );
-
-    overlay.addEventListener(
-        "click",
-        event => {
-
-            if (event.target === overlay) {
-
-                closeWatchlist();
+                this.open();
 
             }
 
-        }
-    );
+        );
 
-    document.addEventListener(
-        "keydown",
-        event => {
+        this.close.addEventListener(
 
-            if (
-                event.key === "Escape" &&
-                overlay.classList.contains("show")
-            ) {
+            "click",
 
-                closeWatchlist();
+            () => {
+
+                this.closeWindow();
 
             }
 
-        }
-    );
+        );
+
+        this.overlay.addEventListener(
+
+            "click",
+
+            event => {
+
+                if (
+
+                    event.target ===
+
+                    this.overlay
+
+                ) {
+
+                    this.closeWindow();
+
+                }
+
+            }
+
+        );
+
+        document.addEventListener(
+
+            "keydown",
+
+            event => {
+
+                if (
+
+                    event.key === "Escape" &&
+
+                    this.overlay.classList.contains(
+
+                        "show"
+
+                    )
+
+                ) {
+
+                    this.closeWindow();
+
+                }
+
+            }
+
+        );
+
+    }
+
+};
 
 
-    // ========================================
-    // INITIAL COUNT
-    // ========================================
 
-    fetchWatchlistData();
+/* =====================================================
+   START
+===================================================== */
 
-}
+document.addEventListener(
 
+    "DOMContentLoaded",
 
+    () => {
 
+        Watchlist.init();
 
+    }
+
+);
