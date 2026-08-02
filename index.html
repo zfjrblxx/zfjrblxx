@@ -7,556 +7,553 @@
 
 <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+    content="width=device-width, initial-scale=1.0">
 
-<title>Fajar Putra Waluya | Pixel OS</title>
+<title>Fajar Putra Waluya</title>
+
+<!-- =========================================
+FAVICON
+========================================= -->
 
 <link
     rel="icon"
     type="image/png"
-    href="images/ico.png"
->
+    href="images/ico.png">
+
+<!-- =========================================
+FONT AWESOME
+========================================= -->
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- =========================================
+GOOGLE FONT
+========================================= -->
 
 <link
     rel="preconnect"
-    href="https://fonts.googleapis.com"
->
+    href="https://fonts.googleapis.com">
 
 <link
     rel="preconnect"
     href="https://fonts.gstatic.com"
-    crossorigin
->
+    crossorigin>
 
 <link
 href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap"
 rel="stylesheet">
 
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<!-- =========================================
+CSS
+========================================= -->
 
 <link
-rel="stylesheet"
-href="css/pixel.css">
+    rel="stylesheet"
+    href="css/pixel.css">
+
+<link
+    rel="stylesheet"
+    href="css/watchlist.css">
 
 </head>
 
 <body>
 
-<!-- =======================================
+<!-- =========================================
 BOOT SCREEN
-======================================= -->
+========================================= -->
 
 <div id="bootScreen">
 
-<div class="boot-box">
+    <div class="boot-box">
 
-<h1>PIXEL OS</h1>
+        <h1>
 
-<p>Version 2.0</p>
+            PIXEL OS v2
 
-<div class="boot-progress">
+        </h1>
 
-<div id="bootBar"></div>
+        <p id="bootText">
+
+            Booting...
+
+        </p>
+
+        <div class="boot-progress">
+
+            <div id="bootBar"></div>
+
+        </div>
+
+    </div>
 
 </div>
 
-<p id="bootText">
-
-Booting...
-
-</p>
-
-</div>
-
-</div>
-
-<!-- =======================================
-PIXEL WINDOW
-======================================= -->
+<!-- =========================================
+WINDOW
+========================================= -->
 
 <main class="pixel-window">
 
-<!-- =======================================
-WINDOW BAR
-======================================= -->
+<!-- =========================================
+TITLE BAR
+========================================= -->
 
 <header class="window-bar">
 
-<div class="window-buttons">
+    <div class="window-buttons">
 
-<span class="red"></span>
+        <span class="red"></span>
 
-<span class="yellow"></span>
+        <span class="yellow"></span>
 
-<span class="green"></span>
+        <span class="green"></span>
 
-</div>
+    </div>
 
-<div class="window-title">
+    <div class="window-title">
 
-PIXEL OS v2.0
+        PIXEL OS v2
 
-</div>
+    </div>
 
-<div class="window-clock">
+    <div
+        class="window-clock"
+        id="clock">
 
-<span id="clock">
+        00:00
 
-00:00
-
-</span>
-
-</div>
+    </div>
 
 </header>
 
-<!-- =======================================
+<!-- =========================================
 CONTENT
-======================================= -->
+========================================= -->
 
-<div class="window-content">
-
-<!-- =======================================
-PLAYER
-======================================= -->
+<div class="window-content"><!-- =========================================
+HERO
+========================================= -->
 
 <section class="hero">
 
-<div class="avatar-frame">
+    <div class="avatar-frame">
 
-<img
-src="images/profile.png"
-alt="Profile"
-class="avatar"
->
+        <img
+            src="images/profile.png"
+            alt="Profile"
+            class="avatar">
 
-</div>
+    </div>
 
-<div class="hero-info">
+    <div class="hero-info">
 
-<h1>
+        <h1>
 
-Fajar Putra Waluya
+            FAJAR PUTRA WALUYA
 
-</h1>
+        </h1>
 
-<p>
+        <p>
 
-Book Layout Designer
+            BOOK LAYOUT DESIGNER
 
-</p>
+        </p>
 
-<div class="hero-stats">
+        <div class="hero-stats">
 
-<div class="stat">
+            <div class="stat">
 
-<span>
+                <span>LEVEL</span>
 
-LEVEL
+                <strong>
 
-</span>
+                    <span id="age">
 
-<strong>
+                        25
 
-26
+                    </span>
 
-</strong>
+                </strong>
 
-</div>
+            </div>
 
-<div class="stat">
+            <div class="stat">
 
-<span>
+                <span>LOCATION</span>
 
-LOCATION
+                <strong>
 
-</span>
+                    INDONESIA
 
-<strong>
+                </strong>
 
-Indonesia
+            </div>
 
-</strong>
+            <div class="stat">
 
-</div>
+                <span>STATUS</span>
 
-<div class="stat">
+                <strong class="online">
 
-<span>
+                    ONLINE
 
-STATUS
+                </strong>
 
-</span>
+            </div>
 
-<strong class="online">
+        </div>
 
-ONLINE
+        <div class="status-bars">
 
-</strong>
+            <div class="bar">
 
-</div>
+                <label>
 
-</div>
+                    HP
 
-<div class="status-bars">
+                </label>
 
-<div class="bar">
+                <div class="progress">
 
-<label>
+                    <div class="fill hp"></div>
 
-HP
+                </div>
 
-</label>
+            </div>
 
-<div class="progress">
+            <div class="bar">
 
-<div
-class="fill hp"
-style="width:100%;">
+                <label>
 
-</div>
+                    EXP
 
-</div>
+                </label>
 
-</div>
+                <div class="progress">
 
-<div class="bar">
+                    <div class="fill exp"></div>
 
-<label>
+                </div>
 
-EXP
+            </div>
 
-</label>
+        </div>
 
-<div class="progress">
+    </div>
 
-<div
-class="fill exp"
-style="width:65%;">
+</section>
 
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-    <!-- =======================================
+<!-- =========================================
 PLAYER PROFILE
-======================================= -->
+========================================= -->
 
 <section class="panel">
 
-<div class="panel-header">
+    <div class="panel-header">
 
-PLAYER PROFILE
+        PLAYER PROFILE
 
-</div>
+    </div>
 
-<div class="panel-body">
+    <div class="panel-body">
 
-<div class="profile-grid">
+        <div class="profile-grid">
 
-<div class="profile-item">
+            <div class="profile-item">
 
-<span>Name</span>
+                <span>
 
-<strong>
+                    CLASS
 
-Fajar Putra Waluya
+                </span>
 
-</strong>
+                <strong>
 
-</div>
+                    Book Layout Designer
 
-<div class="profile-item">
+                </strong>
 
-<span>Age</span>
+            </div>
 
-<strong>
+            <div class="profile-item">
 
-<span id="age">26</span> Years
+                <span>
 
-</strong>
+                    SPECIALITY
 
-</div>
+                </span>
 
-<div class="profile-item">
+                <strong>
 
-<span>Class</span>
+                    Book Design & Typography
 
-<strong>
+                </strong>
 
-Book Layout Designer
+            </div>
 
-</strong>
+            <div class="profile-item">
 
-</div>
+                <span>
 
-<div class="profile-item">
+                    EXPERIENCE
 
-<span>Country</span>
+                </span>
 
-<strong>
+                <strong>
 
-Indonesia
+                    Since 2022
 
-</strong>
+                </strong>
 
-</div>
+            </div>
 
-<div class="profile-item">
+            <div class="profile-item">
 
-<span>Status</span>
+                <span>
 
-<strong class="online">
+                    FAVORITE TOOLS
 
-Available
+                </span>
 
-</strong>
+                <strong>
 
-</div>
+                    InDesign • Photoshop • CorelDRAW
 
-<div class="profile-item">
+                </strong>
 
-<span>Favorite Tool</span>
+            </div>
 
-<strong>
+        </div>
 
-Adobe InDesign
-
-</strong>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
-<!-- =======================================
+
+    <!-- =========================================
 QUEST LOG
-======================================= -->
+========================================= -->
 
 <section class="panel">
 
-<div class="panel-header">
+    <div class="panel-header">
 
-QUEST LOG
+        QUEST LOG
 
-</div>
+    </div>
 
-<div class="panel-body">
+    <div class="panel-body">
 
-<div class="quest-item">
+        <div class="quest-item">
 
-<div class="quest-year">
+            <div class="quest-year">
 
-2022
+                2022
 
-</div>
+            </div>
 
-<div class="quest-content">
+            <div class="quest-content">
 
-<h3>
+                <h3>
 
-Started Web3 Journey
+                    Started Web3 Journey
 
-</h3>
+                </h3>
 
-<p>
+                <p>
 
-Explored blockchain ecosystems, testnets, validators and decentralized applications.
+                    Explored blockchain ecosystems, validators, testnets and decentralized applications.
 
-</p>
+                </p>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-<div class="quest-item">
+        <div class="quest-item">
 
-<div class="quest-year">
+            <div class="quest-year">
 
-2023
+                2023
 
-</div>
+            </div>
 
-<div class="quest-content">
+            <div class="quest-content">
 
-<h3>
+                <h3>
 
-Book Layout Projects
+                    Book Layout Projects
 
-</h3>
+                </h3>
 
-<p>
+                <p>
 
-Worked on educational books, formatting, typography and print-ready layouts.
+                    Designed educational books with print-ready layouts, typography and publishing workflow.
 
-</p>
+                </p>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-<div class="quest-item">
+        <div class="quest-item">
 
-<div class="quest-year">
+            <div class="quest-year">
 
-2024
+                2024
 
-</div>
+            </div>
 
-<div class="quest-content">
+            <div class="quest-content">
 
-<h3>
+                <h3>
 
-Personal Web Projects
+                    Pixel Portfolio
 
-</h3>
+                </h3>
 
-<p>
+                <p>
 
-Built productivity tools and web applications using HTML, CSS and JavaScript.
+                    Created personal portfolio and productivity web applications using HTML, CSS and JavaScript.
 
-</p>
+                </p>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-</div>
-
-</section>
-
-<!-- =======================================
-INVENTORY
-======================================= -->
-
-<section class="panel">
-
-<div class="panel-header">
-
-INVENTORY
-
-</div>
-
-<div class="panel-body">
-
-<div class="inventory-grid">
-
-<a
-href="https://ingfobengkel.vercel.app"
-target="_blank"
-class="inventory-card">
-
-<div class="inventory-number">
-
-01
-
-</div>
-
-<h3>
-
-Ingfo Bengkel
-
-</h3>
-
-<p>
-
-Vehicle Maintenance Tracker
-
-</p>
-
-<div class="inventory-open">
-
-OPEN →
-
-</div>
-
-</a>
-
-<a
-href="https://ingfopass.vercel.app"
-target="_blank"
-class="inventory-card">
-
-<div class="inventory-number">
-
-02
-
-</div>
-
-<h3>
-
-Ingfo Pass
-
-</h3>
-
-<p>
-
-Secure Password Generator
-
-</p>
-
-<div class="inventory-open">
-
-OPEN →
-
-</div>
-
-</a>
-
-<a
-href="https://ingfowarna.vercel.app"
-target="_blank"
-class="inventory-card">
-
-<div class="inventory-number">
-
-03
-
-</div>
-
-<h3>
-
-Ingfo Warna
-
-</h3>
-
-<p>
-
-Color Toolkit Collection
-
-</p>
-
-<div class="inventory-open">
-
-OPEN →
-
-</div>
-
-</a>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-    <!-- =======================================
+
+<!-- =========================================
+INVENTORY
+========================================= -->
+
+<section class="panel">
+
+    <div class="panel-header">
+
+        INVENTORY
+
+    </div>
+
+    <div class="panel-body">
+
+        <div class="inventory-grid">
+
+            <a
+                href="https://ingfobengkel.vercel.app"
+                target="_blank"
+                class="inventory-card">
+
+                <div class="inventory-number">
+
+                    01
+
+                </div>
+
+                <h3>
+
+                    Ingfo Bengkel
+
+                </h3>
+
+                <p>
+
+                    Vehicle maintenance tracker.
+
+                </p>
+
+                <div class="inventory-open">
+
+                    OPEN →
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="https://ingfopass.vercel.app"
+                target="_blank"
+                class="inventory-card">
+
+                <div class="inventory-number">
+
+                    02
+
+                </div>
+
+                <h3>
+
+                    Ingfo Pass
+
+                </h3>
+
+                <p>
+
+                    Secure password generator.
+
+                </p>
+
+                <div class="inventory-open">
+
+                    OPEN →
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="https://ingfowarna.vercel.app"
+                target="_blank"
+                class="inventory-card">
+
+                <div class="inventory-number">
+
+                    03
+
+                </div>
+
+                <h3>
+
+                    Ingfo Warna
+
+                </h3>
+
+                <p>
+
+                    Color palette, converter and gradient tools.
+
+                </p>
+
+                <div class="inventory-open">
+
+                    OPEN →
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!-- =========================================
 MUSIC PLAYER
-======================================= -->
+========================================= -->
 
 <section class="panel">
 
@@ -595,12 +592,19 @@ MUSIC PLAYER
             <div class="spotify-wrapper">
 
                 <iframe
+
                     src="https://open.spotify.com/embed/playlist/4eYOC6VMzhOV1BsfBUgeb6?utm_source=generator"
+
                     width="100%"
+
                     height="352"
+
                     loading="lazy"
+
                     allowfullscreen=""
+
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+
                 </iframe>
 
             </div>
@@ -611,9 +615,11 @@ MUSIC PLAYER
 
 </section>
 
-<!-- =======================================
+
+
+<!-- =========================================
 WATCH LOG
-======================================= -->
+========================================= -->
 
 <section class="panel">
 
@@ -633,15 +639,21 @@ WATCH LOG
 
 </section>
 
-<!-- =======================================
-STATUS BAR
-======================================= -->
+
+
+<!-- =========================================
+STATUS PANEL
+========================================= -->
 
 <section class="status-panel">
 
     <div class="status-item">
 
-        <span>HP</span>
+        <span>
+
+            HP
+
+        </span>
 
         <div class="status-progress">
 
@@ -653,7 +665,11 @@ STATUS BAR
 
     <div class="status-item">
 
-        <span>EXP</span>
+        <span>
+
+            EXP
+
+        </span>
 
         <div class="status-progress">
 
@@ -681,29 +697,34 @@ STATUS BAR
 
 </section>
 
-<!-- =======================================
+
+
+<!-- =========================================
 FOOTER
-======================================= -->
+========================================= -->
 
 <footer class="footer">
 
     <div class="footer-left">
 
-        PIXEL OS v2.0
+        PIXEL OS v2
 
     </div>
 
     <div class="footer-center">
 
-        Created with ❤️ by Fajar
+        Created with ❤️ by Fajar Putra Waluya
 
     </div>
 
     <div class="footer-right">
 
         <button
+
             id="catSecret"
+
             class="pixel-icon"
+
             aria-label="Cat">
 
             🐱
@@ -711,9 +732,13 @@ FOOTER
         </button>
 
         <a
+
             href="https://instagram.com/zfjrblxx"
+
             target="_blank"
+
             class="pixel-icon"
+
             aria-label="Instagram">
 
             <i class="fa-brands fa-instagram"></i>
@@ -728,9 +753,11 @@ FOOTER
 
 </main>
 
-<!-- =======================================
+
+
+<!-- =========================================
 CAT
-======================================= -->
+========================================= -->
 
 <div id="catWalk">
 
@@ -738,13 +765,17 @@ CAT
 
 </div>
 
-<!-- =======================================
-BOOT LOADING
-======================================= -->
+
+
+<!-- =========================================
+ACHIEVEMENT
+========================================= -->
 
 <div
-id="achievement"
-class="achievement hidden">
+
+    id="achievement"
+
+    class="achievement hidden">
 
     <h4>
 
@@ -754,24 +785,20 @@ class="achievement hidden">
 
     <p>
 
-        Welcome to Pixel OS
+        Welcome
 
     </p>
 
 </div>
 
-<!-- =======================================
-SCRIPT
-======================================= -->
 
-<script src="js/watchlist.js"></script>
+
+<!-- =========================================
+JAVASCRIPT
+========================================= -->
 
 <script src="js/app.js"></script>
 
 </body>
 
 </html>
-
-
-
-</section>
