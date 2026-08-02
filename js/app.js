@@ -1195,18 +1195,25 @@ document.addEventListener(
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const bootScreen = document.getElementById("bootScreen");
-    const bgMusic = document.getElementById("bgMusic");
+    const bootScreen =
+        document.getElementById("bootScreen");
+
+    // JANGAN deklarasikan bgMusic lagi di sini
+    // const bgMusic = document.getElementById("bgMusic");
 
     if (!bootScreen) return;
 
     function enterPixelOS() {
 
-        if (bgMusic) {
+        if (typeof bgMusic !== "undefined" && bgMusic) {
 
             bgMusic.volume = 0.30;
 
-            bgMusic.play().catch(() => {});
+            bgMusic.play().catch(error => {
+
+                console.log(error);
+
+            });
 
         }
 
@@ -1217,11 +1224,6 @@ document.addEventListener("DOMContentLoaded", () => {
             bootScreen.remove();
 
         }, 450);
-
-        document.removeEventListener(
-            "click",
-            enterPixelOS
-        );
 
     }
 
