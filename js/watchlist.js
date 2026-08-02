@@ -1,34 +1,29 @@
 /* =====================================================
-   PIXEL OS
-   WATCHLIST.JS
-   PART 1
+   PIXEL WATCHLIST
+   Part 1
 ===================================================== */
 
 "use strict";
 
-/* =====================================================
-   WATCHLIST
-===================================================== */
-
 const Watchlist = {
 
     folder: null,
-
     overlay: null,
-
-    close: null,
-
+    closeButton: null,
     content: null,
-
     counter: null,
-
     total: null,
-
-    loaded: false,
+    search: null,
+    letters: null,
 
     items: [],
+    loaded: false,
 
 
+
+/* =====================================================
+   INIT
+===================================================== */
 
     init() {
 
@@ -42,7 +37,7 @@ const Watchlist = {
                 "watchlistOverlay"
             );
 
-        this.close =
+        this.closeButton =
             document.getElementById(
                 "closeWatchlist"
             );
@@ -62,99 +57,94 @@ const Watchlist = {
                 "watchlistCount"
             );
 
+        this.search =
+            document.getElementById(
+                "watchSearch"
+            );
+
+        this.letters =
+            document.getElementById(
+                "watchLetters"
+            );
+
         if (
-
             !this.folder ||
-
             !this.overlay ||
-
-            !this.close ||
-
+            !this.closeButton ||
             !this.content
-
-        ){
-
+        ) {
             return;
-
         }
 
-        this.events();
+        this.bindEvents();
 
-        this.fetch();
+        this.load();
 
     },
 
 
 
 /* =====================================================
-   FETCH
+   LOAD DATA
 ===================================================== */
 
-    async fetch(){
+    async load() {
 
-        try{
+        try {
 
             const response =
-
                 await fetch(
-
                     "sections/watchlist-data.html"
-
                 );
 
-            if(
+            if (!response.ok) {
 
-                !response.ok
-
-            ){
-
-                throw new Error();
+                throw new Error(
+                    "Failed to load watchlist"
+                );
 
             }
 
             const html =
-
                 await response.text();
 
             const parser =
-
                 new DOMParser();
 
             const doc =
-
                 parser.parseFromString(
-
                     html,
-
                     "text/html"
-
                 );
 
             this.items =
-
                 [
-
                     ...doc.querySelectorAll("p")
-
                 ]
-
-                .map(item=>
-
+                .map(item =>
                     item.textContent.trim()
-
                 )
-
                 .filter(Boolean);
 
             this.loaded = true;
 
-            this.updateCount();
+            this.updateCounter();
 
         }
 
-        catch(error){
+        catch (error) {
 
             console.error(error);
+
+            this.content.innerHTML =
+
+                `
+                <div class="watch-loading">
+
+                    Failed to load watchlist.
+
+                </div>
+                `;
 
         }
 
@@ -163,23 +153,21 @@ const Watchlist = {
 
 
 /* =====================================================
-   COUNT
+   COUNTER
 ===================================================== */
 
-    updateCount(){
+    updateCounter() {
 
-        if(this.counter){
+        if (this.counter) {
 
             this.counter.textContent =
-
                 this.items.length;
 
         }
 
-        if(this.total){
+        if (this.total) {
 
             this.total.textContent =
-
                 `${this.items.length} Items`;
 
         }
@@ -192,16 +180,13 @@ const Watchlist = {
    OPEN
 ===================================================== */
 
-    open(){
+    open() {
 
         this.overlay.classList.add(
-
             "show"
-
         );
 
         document.body.style.overflow =
-
             "hidden";
 
         this.render();
@@ -214,20 +199,19 @@ const Watchlist = {
    CLOSE
 ===================================================== */
 
-    closeWindow(){
+    close() {
 
         this.overlay.classList.remove(
-
             "show"
-
         );
 
-        document.body.style.overflow = "";
+        document.body.style.overflow =
+            "";
 
     },
 
 
-    /* =====================================================
+   /* =====================================================
    RENDER
 ===================================================== */
 
@@ -236,68 +220,39 @@ const Watchlist = {
         if (!this.loaded) {
 
             this.content.innerHTML = `
-
                 <div class="watch-loading">
-
                     Loading...
-
                 </div>
-
             `;
-
             return;
-
         }
 
-        const items =
+        const list = [...this.items];
 
-            [...this.items];
-
-        items.sort(
-
-            (a, b) =>
-
-                a.localeCompare(
-
-                    b,
-
-                    undefined,
-
-                    {
-
-                        sensitivity: "base"
-
-                    }
-
-                )
-
+        list.sort((a, b) =>
+            a.localeCompare(
+                b,
+                undefined,
+                {
+                    sensitivity: "base"
+                }
+            )
         );
 
         const groups = {};
 
-        items.forEach(title => {
+        list.forEach(title => {
 
             let letter =
+                title.charAt(0).toUpperCase();
 
-                title.charAt(0)
-
-                .toUpperCase();
-
-            if (
-
-                !/[A-Z]/.test(letter)
-
-            ) {
+            if (!/[A-Z]/.test(letter)) {
 
                 letter = "#";
 
             }
 
-            if (
-
-                !groups[letter]
-
-            ) {
+            if (!groups[letter]) {
 
                 groups[letter] = [];
 
@@ -307,132 +262,57 @@ const Watchlist = {
 
         });
 
-        let html = `
+        this.renderLetters(groups);
 
-<div class="watch-letters">
-
-`;
-
-
-
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-        .split("")
-
-        .forEach(letter => {
-
-            if (
-
-                groups[letter]
-
-            ) {
-
-                html += `
-
-<button
-class="watch-letter"
-data-letter="${letter}">
-
-${letter}
-
-</button>
-
-`;
-
-            }
-
-            else{
-
-                html += `
-
-<span
-class="watch-letter disabled">
-
-${letter}
-
-</span>
-
-`;
-
-            }
-
-        });
-
-        html += `
-
-</div>
-
-<div class="watch-groups">
-
-`;
-
-
+        let html = "";
 
         Object.keys(groups)
-
-        .sort()
-
-        .forEach(letter => {
-
-            html += `
-
-<div
-
-class="watch-group"
-
-id="group-${letter}"
-
->
-
-<div class="group-title">
-
-${letter}
-
-</div>
-
-`;
-
-
-
-            groups[letter]
-
-            .forEach(title => {
+            .sort()
+            .forEach(letter => {
 
                 html += `
+                    <div
+                        class="watch-group"
+                        id="group-${letter}"
+                    >
 
-<div class="watch-card">
+                        <div class="group-title">
 
-<div class="watch-icon">
+                            ${letter}
 
-🎬
+                        </div>
+                `;
 
-</div>
+                groups[letter].forEach(title => {
 
-<div class="watch-title">
+                    html += `
+                        <div
+                            class="watch-card"
+                            data-title="${title.toLowerCase()}"
+                        >
 
-${title}
+                            <div class="watch-icon">
 
-</div>
+                                🎬
 
-</div>
+                            </div>
 
-`;
+                            <div class="watch-title">
+
+                                ${title}
+
+                            </div>
+
+                        </div>
+                    `;
+
+                });
+
+                html += `
+                    </div>
+                `;
 
             });
-
-            html += `
-
-</div>
-
-`;
-
-        });
-
-        html += `
-
-</div>
-
-`;
 
         this.content.innerHTML = html;
 
@@ -443,119 +323,136 @@ ${title}
 
 
 /* =====================================================
-   LETTER
+   LETTERS
 ===================================================== */
 
-    bindLetters(){
+    renderLetters(groups) {
 
-        this.content
+        if (!this.letters) {
 
-        .querySelectorAll(
+            return;
 
-            ".watch-letter"
+        }
 
-        )
+        let html = "";
 
-        .forEach(button=>{
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            .split("")
+            .forEach(letter => {
 
-            if(
+                if (groups[letter]) {
 
-                button.classList.contains(
+                    html += `
+                        <button
+                            class="watch-letter"
+                            data-letter="${letter}"
+                        >
 
-                    "disabled"
+                            ${letter}
 
-                )
-
-            ){
-
-                return;
-
-            }
-
-            button.addEventListener(
-
-                "click",
-
-                ()=>{
-
-                    const target=
-
-                        document.getElementById(
-
-                            "group-"+
-
-                            button.dataset.letter
-
-                        );
-
-                    if(target){
-
-                        target.scrollIntoView({
-
-                            behavior:"smooth",
-
-                            block:"start"
-
-                        });
-
-                    }
+                        </button>
+                    `;
 
                 }
 
-            );
+                else {
 
-        });
+                    html += `
+                        <span
+                            class="watch-letter disabled"
+                        >
 
-    },
+                            ${letter}
 
+                        </span>
+                    `;
 
-    /* =====================================================
-   SEARCH
-===================================================== */
+                }
 
-    search(keyword) {
+            });
 
-        const cards =
-
-            this.content.querySelectorAll(
-
-                ".watch-card"
-
-            );
-
-        keyword =
-
-            keyword.toLowerCase();
-
-        cards.forEach(card => {
-
-            const title =
-
-                card.querySelector(
-
-                    ".watch-title"
-
-                ).textContent.toLowerCase();
-
-            card.style.display =
-
-                title.includes(keyword)
-
-                ? "flex"
-
-                : "none";
-
-        });
+        this.letters.innerHTML = html;
 
     },
 
 
 
 /* =====================================================
+   LETTER EVENT
+===================================================== */
+
+    bindLetters() {
+
+        this.letters
+            .querySelectorAll(
+                ".watch-letter[data-letter]"
+            )
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const target =
+                            document.getElementById(
+                                "group-" +
+                                button.dataset.letter
+                            );
+
+                        if (target) {
+
+                            target.scrollIntoView({
+
+                                behavior: "smooth",
+
+                                block: "start"
+
+                            });
+
+                        }
+
+                    }
+                );
+
+            });
+
+    },
+
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+    filter(keyword) {
+
+        keyword =
+            keyword.toLowerCase();
+
+        this.content
+            .querySelectorAll(
+                ".watch-card"
+            )
+            .forEach(card => {
+
+                const title =
+                    card.dataset.title;
+
+                card.style.display =
+                    title.includes(keyword)
+                    ? "flex"
+                    : "none";
+
+            });
+
+    },
+
+
+   /* =====================================================
    EVENTS
 ===================================================== */
 
-    events() {
+    bindEvents() {
 
         this.folder.addEventListener(
 
@@ -569,17 +466,21 @@ ${title}
 
         );
 
-        this.close.addEventListener(
+
+
+        this.closeButton.addEventListener(
 
             "click",
 
             () => {
 
-                this.closeWindow();
+                this.close();
 
             }
 
         );
+
+
 
         this.overlay.addEventListener(
 
@@ -589,19 +490,19 @@ ${title}
 
                 if (
 
-                    event.target ===
-
-                    this.overlay
+                    event.target === this.overlay
 
                 ) {
 
-                    this.closeWindow();
+                    this.close();
 
                 }
 
             }
 
         );
+
+
 
         document.addEventListener(
 
@@ -613,21 +514,39 @@ ${title}
 
                     event.key === "Escape" &&
 
-                    this.overlay.classList.contains(
-
-                        "show"
-
-                    )
+                    this.overlay.classList.contains("show")
 
                 ) {
 
-                    this.closeWindow();
+                    this.close();
 
                 }
 
             }
 
         );
+
+
+
+        if (this.search) {
+
+            this.search.addEventListener(
+
+                "input",
+
+                event => {
+
+                    this.filter(
+
+                        event.target.value
+
+                    );
+
+                }
+
+            );
+
+        }
 
     }
 
