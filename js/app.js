@@ -6,7 +6,24 @@
 
 "use strict";
 
+// ========================================
+// BACKGROUND MUSIC
+// ========================================
 
+const bgMusic =
+document.getElementById(
+    "bgMusic"
+);
+
+function playMusic(){
+
+    if(!bgMusic) return;
+
+    bgMusic.volume = 0.30;
+
+    bgMusic.play().catch(() => {});
+
+}
 
 /* =====================================================
    BOOT
