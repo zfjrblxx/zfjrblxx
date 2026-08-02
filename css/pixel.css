@@ -510,16 +510,44 @@ body::before{
 }
 
 .spotify-wrapper{
-  border:4px solid var(--border);
-  background:var(--panel);
-  padding:10px;
-  box-shadow:6px 6px 0 var(--shadow);
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    overflow:visible;
+
 }
 
 .spotify-wrapper iframe{
-  display:block;
-  width:100%;
-  border:none;
+
+    width:100%;
+
+    max-width:100%;
+
+    height:352px;
+
+    border:none;
+
+    border-radius:16px;
+
+}
+
+
+.spotify-wrapper iframe{
+
+    width:100%;
+
+    max-width:100%;
+
+    height:352px;
+
+    border:none;
+
+    border-radius:16px;
+
 }
 
 /* WATCH LOG */
