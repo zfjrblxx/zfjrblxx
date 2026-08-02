@@ -284,52 +284,6 @@ const Age = {
 
 
 
-/* =====================================================
-   WATCHLIST
-===================================================== */
-
-const Watchlist = {
-
-    async init() {
-
-        const container =
-            document.getElementById(
-                "watchlist-container"
-            );
-
-        if (!container) {
-            return;
-        }
-
-        try {
-
-            const response =
-                await fetch(
-                    "sections/watchlist.html"
-                );
-
-            if (!response.ok) {
-                throw new Error();
-            }
-
-            container.innerHTML =
-                await response.text();
-
-        }
-
-        catch (error) {
-
-            console.error(error);
-
-            container.innerHTML =
-                "<p>Failed to load watch log.</p>";
-
-        }
-
-    }
-
-};
-
 
 
 /* =====================================================
@@ -1138,7 +1092,7 @@ const PixelOS = {
    UPDATE APP
 ===================================================== */
 
-App.init = function () {
+function initApp() {
 
     Boot.init();
 
@@ -1164,7 +1118,7 @@ App.init = function () {
 
     PixelOS.init();
 
-};
+}
 
 
 
@@ -1178,7 +1132,7 @@ document.addEventListener(
 
     () => {
 
-        App.init();
+        initApp();
 
     }
 
