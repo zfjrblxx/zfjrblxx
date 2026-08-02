@@ -1336,3 +1336,46 @@ box-shadow:0 0 18px rgba(255,217,102,.18);
 }
 
 }
+/* ==========================================
+   MUSIC BUTTON
+========================================== */
+
+.music-toggle{
+
+    position:fixed;
+
+    right:20px;
+
+    bottom:20px;
+
+    z-index:9999;
+
+    padding:12px 18px;
+
+    border:3px solid #fff;
+
+    background:#2d2740;
+
+    color:#fff;
+
+    font:12px "Press Start 2P", cursive;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.music-toggle:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:4px 4px 0 #000;
+
+}
+
+.music-toggle.playing{
+
+    background:#3c7a3c;
+
+}
