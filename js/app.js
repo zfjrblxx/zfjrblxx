@@ -189,13 +189,54 @@ const Boot = {
 
     finish() {
 
-        this.screen.classList.add(
+    const bgMusic =
+        document.getElementById("bgMusic");
 
-            "hide"
+    this.screen.innerHTML = `
 
-        );
+        <div class="boot-box">
 
-    }
+            <h1>PIXEL OS v3</h1>
+
+            <p>Boot Complete ✓</p>
+
+            <div class="boot-note">
+
+                ♪
+
+            </div>
+
+            <span>
+
+                Click Anywhere to Enter
+
+            </span>
+
+        </div>
+
+    `;
+
+    this.screen.onclick = () => {
+
+        if (bgMusic) {
+
+            bgMusic.volume = .3;
+
+            bgMusic.play().catch(() => {});
+
+        }
+
+        this.screen.classList.add("hide");
+
+        setTimeout(() => {
+
+            this.screen.remove();
+
+        },450);
+
+    };
+
+}
 
 };
 
@@ -1189,38 +1230,3 @@ document.addEventListener(
 
 );
 
-// ========================================
-// BOOT SCREEN
-// ========================================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const bootScreen =
-        document.getElementById("bootScreen");
-
-    const bgMusic =
-        document.getElementById("bgMusic");
-
-    if (!bootScreen) return;
-
-    bootScreen.addEventListener("click", () => {
-
-        if (bgMusic) {
-
-            bgMusic.volume = .3;
-
-            bgMusic.play().catch(() => {});
-
-        }
-
-        bootScreen.classList.add("hide");
-
-        setTimeout(() => {
-
-            bootScreen.remove();
-
-        }, 450);
-
-    });
-
-});
