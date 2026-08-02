@@ -1191,3 +1191,47 @@ document.addEventListener(
     }
 
 );
+
+// ========================================
+// BOOT SCREEN
+// ========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const bootScreen = document.getElementById("bootScreen");
+    const bgMusic = document.getElementById("bgMusic");
+
+    if (!bootScreen) return;
+
+    function enterPixelOS() {
+
+        if (bgMusic) {
+
+            bgMusic.volume = 0.30;
+
+            bgMusic.play().catch(() => {});
+
+        }
+
+        bootScreen.classList.add("hide");
+
+        setTimeout(() => {
+
+            bootScreen.remove();
+
+        }, 450);
+
+        document.removeEventListener(
+            "click",
+            enterPixelOS
+        );
+
+    }
+
+    document.addEventListener(
+        "click",
+        enterPixelOS,
+        { once: true }
+    );
+
+});
