@@ -11,11 +11,8 @@
 // MUSIC PLAYER
 // ========================================
 
-const bgMusic =
-    document.getElementById("bgMusic");
-
-const musicButton =
-    document.getElementById("musicToggle");
+const bgMusic = document.getElementById("bgMusic");
+const musicButton = document.getElementById("musicToggle");
 
 if (bgMusic && musicButton) {
 
@@ -37,15 +34,23 @@ if (bgMusic && musicButton) {
 
     }
 
-    musicButton.addEventListener("click", () => {
+    musicButton.addEventListener("click", async () => {
 
-        if (bgMusic.paused) {
+        try {
 
-            bgMusic.play();
+            if (bgMusic.paused) {
 
-        } else {
+                await bgMusic.play();
 
-            bgMusic.pause();
+            } else {
+
+                bgMusic.pause();
+
+            }
+
+        } catch (err) {
+
+            console.error(err);
 
         }
 
@@ -57,6 +62,8 @@ if (bgMusic && musicButton) {
     updateButton();
 
 }
+
+
 /* =====================================================
    BOOT
 ===================================================== */
