@@ -191,77 +191,51 @@ body::before{
   image-rendering:pixelated;
 }
 
-.hero-info h1{
-  font:20px "Press Start 2P",cursive;
-  line-height:1.8;
+.hero-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    gap:20px;
+
 }
 
-.hero-info>p{
-  margin-top:14px;
-  font-size:24px;
-  color:var(--muted);
+.hero-info h1{
+
+    font:20px "Press Start 2P", cursive;
+
+    line-height:1.8;
+
+    margin:0;
+
+}
+
+.hero-info > p{
+
+    margin:0;
+
+    font:600 20px "Pixelify Sans", sans-serif;
+
+    color:var(--muted);
+
 }
 
 .hero-stats{
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px;
-  margin:24px 0;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:16px;
+
+    margin-top:8px;
+
 }
 
-.stat{
-  border:3px solid var(--border);
-  background:var(--panel);
-  padding:10px 14px;
-}
 
-.stat span{
-  display:block;
-  font-size:14px;
-  color:var(--muted);
-}
-
-.stat strong{
-  font:10px "Press Start 2P",cursive;
-  color:var(--yellow);
-}
-
-.status-bars{
-  display:grid;
-  gap:16px;
-}
-
-.bar{
-  display:grid;
-  grid-template-columns:70px 1fr;
-  gap:12px;
-  align-items:center;
-}
-
-.bar label{
-  font:10px "Press Start 2P",cursive;
-}
-
-.progress{
-  height:20px;
-  border:3px solid var(--border);
-  background:var(--bg2);
-  overflow:hidden;
-}
-
-.fill{
-  height:100%;
-}
-
-.hp{
-  width:100%;
-  background:var(--green);
-}
-
-.exp{
-  width:65%;
-  background:var(--blue);
-}
 
 @media (max-width:768px){
   body{padding:18px;}
