@@ -297,11 +297,11 @@ const Watchlist = {
 
                             </div>
 
-                            <div class="watch-title">
+                            <div class="watch-name">
 
-                                ${title}
+    ${title}
 
-                            </div>
+</div>
 
                         </div>
                     `;
@@ -381,42 +381,26 @@ const Watchlist = {
    LETTER EVENT
 ===================================================== */
 
-    bindLetters() {
+   button.addEventListener("click", () => {
 
-        this.letters
-            .querySelectorAll(
-                ".watch-letter[data-letter]"
-            )
-            .forEach(button => {
+    const target =
+        document.getElementById(
+            "group-" + button.dataset.letter
+        );
 
-                button.addEventListener(
-                    "click",
-                    () => {
+    if (target) {
 
-                        const target =
-                            document.getElementById(
-                                "group-" +
-                                button.dataset.letter
-                            );
+        this.content.scrollTo({
 
-                        if (target) {
+            top: target.offsetTop - 10,
 
-                            target.scrollIntoView({
+            behavior: "smooth"
 
-                                behavior: "smooth",
+        });
 
-                                block: "start"
+    }
 
-                            });
-
-                        }
-
-                    }
-                );
-
-            });
-
-    },
+});
 
 
 
