@@ -1,7 +1,7 @@
 /* =====================================================
-   PIXEL OS v2
-   APP.JS
-   PART 1A
+   Pixel OS v2
+   app.js
+   Part 1A
 ===================================================== */
 
 "use strict";
@@ -12,17 +12,17 @@
 
 const App = {
 
-    init(){
+    init() {
+
+    Boot.init();
 
     Clock.init();
 
     Age.init();
 
-    Boot.init();
+    Achievement.init();
 
     Watchlist.init();
-
-    Achievement.init();
 
     Panel.init();
 
@@ -45,6 +45,148 @@ const App = {
 
 
 /* =====================================================
+   BOOT
+===================================================== */
+
+const Boot = {
+
+    screen: null,
+
+    bar: null,
+
+    text: null,
+
+    percent: 0,
+
+    messages: [
+
+        "Loading Pixel OS...",
+
+        "Loading Portfolio...",
+
+        "Loading Projects...",
+
+        "Loading Playlist...",
+
+        "Loading Watch Log...",
+
+        "Welcome."
+
+    ],
+
+    init() {
+
+        this.screen =
+
+            document.getElementById(
+
+                "bootScreen"
+
+            );
+
+        this.bar =
+
+            document.getElementById(
+
+                "bootBar"
+
+            );
+
+        this.text =
+
+            document.getElementById(
+
+                "bootText"
+
+            );
+
+        if (!this.screen) {
+
+            return;
+
+        }
+
+        this.start();
+
+    },
+
+
+
+    start() {
+
+        let index = 0;
+
+        const timer = setInterval(() => {
+
+            this.percent = Math.min(
+
+                this.percent + 20,
+
+                100
+
+            );
+
+            if (this.bar) {
+
+                this.bar.style.width =
+
+                    this.percent + "%";
+
+            }
+
+            if (
+
+                this.text &&
+
+                this.messages[index]
+
+            ) {
+
+                this.text.textContent =
+
+                    this.messages[index];
+
+            }
+
+            index++;
+
+            if (
+
+                this.percent >= 100
+
+            ) {
+
+                clearInterval(timer);
+
+                setTimeout(() => {
+
+                    this.finish();
+
+                }, 500);
+
+            }
+
+        }, 350);
+
+    },
+
+
+
+    finish() {
+
+        this.screen.classList.add(
+
+            "hide"
+
+        );
+
+    }
+
+};
+
+
+
+/* =====================================================
    CLOCK
 ===================================================== */
 
@@ -57,11 +199,18 @@ const Clock = {
     init() {
 
         this.element =
+
             document.getElementById(
+
                 "clock"
+
             );
 
-        if (!this.element) return;
+        if (!this.element) {
+
+            return;
+
+        }
 
         this.update();
 
@@ -84,9 +233,11 @@ const Clock = {
     update() {
 
         const now =
+
             new Date();
 
         const hour =
+
             String(
 
                 now.getHours()
@@ -100,6 +251,7 @@ const Clock = {
             );
 
         const minute =
+
             String(
 
                 now.getMinutes()
@@ -120,8 +272,6 @@ const Clock = {
 
 };
 
-
-
 /* =====================================================
    AGE
 ===================================================== */
@@ -137,168 +287,32 @@ const Age = {
     init() {
 
         const element =
-
-            document.getElementById(
-
-                "age"
-
-            );
+            document.getElementById("age");
 
         if (!element) return;
 
-        const today =
-
-            new Date();
+        const today = new Date();
 
         let age =
+            today.getFullYear() - this.year;
 
-            today.getFullYear()
+        const birthday = new Date(
 
-            - this.year;
+            today.getFullYear(),
 
-        const birthday =
+            this.month,
 
-            new Date(
+            this.day
 
-                today.getFullYear(),
+        );
 
-                this.month,
-
-                this.day
-
-            );
-
-        if (
-
-            today < birthday
-
-        ) {
+        if (today < birthday) {
 
             age--;
 
         }
 
         element.textContent = age;
-
-    }
-
-};
-
-
-
-
-/* =====================================================
-   BOOT
-===================================================== */
-
-const Boot = {
-
-    screen: null,
-
-    bar: null,
-
-    text: null,
-
-    progress: 0,
-
-    messages: [
-
-        "Loading Assets...",
-
-        "Loading Portfolio...",
-
-        "Loading Projects...",
-
-        "Loading Playlist...",
-
-        "Loading Watch Log...",
-
-        "Welcome."
-
-    ],
-
-    init() {
-
-        this.screen =
-            document.getElementById("bootScreen");
-
-        this.bar =
-            document.getElementById("bootBar");
-
-        this.text =
-            document.getElementById("bootText");
-
-        if (!this.screen) return;
-
-        this.start();
-
-    },
-
-
-
-    start() {
-
-        let step = 0;
-
-        const timer = setInterval(() => {
-
-            this.progress = Math.min(
-
-                this.progress + 20,
-
-                100
-
-            );
-
-            if (this.bar) {
-
-                this.bar.style.width =
-
-                    this.progress + "%";
-
-            }
-
-            if (
-
-                this.text &&
-
-                this.messages[step]
-
-            ) {
-
-                this.text.textContent =
-
-                    this.messages[step];
-
-            }
-
-            step++;
-
-            if (this.progress >= 100) {
-
-                clearInterval(timer);
-
-                setTimeout(() => {
-
-                    this.finish();
-
-                }, 500);
-
-            }
-
-        }, 400);
-
-    },
-
-
-
-    finish() {
-
-        this.screen.classList.add(
-
-            "hide"
-
-        );
 
     }
 
@@ -322,7 +336,11 @@ const Watchlist = {
 
             );
 
-        if (!container) return;
+        if (!container) {
+
+            return;
+
+        }
 
         try {
 
@@ -346,7 +364,9 @@ const Watchlist = {
 
         }
 
-        catch {
+        catch (error) {
+
+            console.error(error);
 
             container.innerHTML =
 
@@ -368,7 +388,7 @@ const Achievement = {
 
     element: null,
 
-    key: "pixel-achievement",
+    storage: "pixel-achievement",
 
     init() {
 
@@ -386,19 +406,21 @@ const Achievement = {
 
     unlock(title) {
 
-        if (!this.element) return;
+        if (!this.element) {
 
-        const cache =
+            return;
 
-            JSON.parse(
+        }
 
-                localStorage.getItem(
+        const cache = JSON.parse(
 
-                    this.key
+            localStorage.getItem(
 
-                ) || "[]"
+                this.storage
 
-            );
+            ) || "[]"
+
+        );
 
         if (
 
@@ -414,7 +436,7 @@ const Achievement = {
 
         localStorage.setItem(
 
-            this.key,
+            this.storage,
 
             JSON.stringify(cache)
 
@@ -426,9 +448,7 @@ const Achievement = {
 
         if (text) {
 
-            text.textContent =
-
-                title;
+            text.textContent = title;
 
         }
 
@@ -474,42 +494,17 @@ document.addEventListener(
 
     "DOMContentLoaded",
 
-    () => {
+    async () => {
 
-       init(){
-
-    Clock.init();
-
-    Age.init();
-
-    Boot.init();
-
-    Watchlist.init();
-
-    Achievement.init();
-
-    Panel.init();
-
-    Inventory.init();
-
-    Reveal.init();
-
-    Shortcut.init();
-
-    Welcome.init();
-
-}
-
-        Watchlist.init();
+        App.init();
 
         Achievement.init();
+
+        await Watchlist.init();
 
     }
 
 );
-
-
-
 
 /* =====================================================
    PANEL
@@ -517,65 +512,45 @@ document.addEventListener(
 
 const Panel = {
 
-    items: [],
+    panels: [],
 
     init() {
 
-        this.items =
-            document.querySelectorAll(".panel");
+        this.panels =
 
-        this.items.forEach((panel, index) => {
+            document.querySelectorAll(
 
-            panel.style.opacity = "0";
+                ".panel"
 
-            panel.style.transform =
-                "translateY(25px)";
+            );
 
-            panel.style.transition =
-                "all .45s ease";
+        this.panels.forEach(
 
-            setTimeout(() => {
+            (panel, index) => {
 
-                panel.style.opacity = "1";
+                panel.style.opacity = "0";
 
                 panel.style.transform =
-                    "translateY(0)";
 
-            }, index * 150);
+                    "translateY(20px)";
 
-            panel.addEventListener(
+                panel.style.transition =
 
-                "mouseenter",
+                    "all .45s ease";
 
-                () => {
+                setTimeout(() => {
 
-                    panel.classList.add(
+                    panel.style.opacity = "1";
 
-                        "panel-hover"
+                    panel.style.transform =
 
-                    );
+                        "translateY(0)";
 
-                }
+                }, index * 120);
 
-            );
+            }
 
-            panel.addEventListener(
-
-                "mouseleave",
-
-                () => {
-
-                    panel.classList.remove(
-
-                        "panel-hover"
-
-                    );
-
-                }
-
-            );
-
-        });
+        );
 
     }
 
@@ -639,27 +614,21 @@ const Inventory = {
 
                 "click",
 
-                e => {
+                () => {
 
                     const title =
 
-                        card.querySelector(
+                        card.querySelector("h3");
 
-                            "h3"
+                    if (!title) return;
 
-                        );
+                    Achievement.unlock(
 
-                    if (title) {
+                        "Opened " +
 
-                        Achievement.unlock(
+                        title.textContent
 
-                            "Opened " +
-
-                            title.textContent
-
-                        );
-
-                    }
+                    );
 
                 }
 
@@ -674,7 +643,7 @@ const Inventory = {
 
 
 /* =====================================================
-   PANEL REVEAL
+   REVEAL
 ===================================================== */
 
 const Reveal = {
@@ -682,6 +651,30 @@ const Reveal = {
     observer: null,
 
     init() {
+
+        if (
+
+            !("IntersectionObserver" in window)
+
+        ) {
+
+            document
+
+                .querySelectorAll(".panel")
+
+                .forEach(panel => {
+
+                    panel.classList.add(
+
+                        "show-panel"
+
+                    );
+
+                });
+
+            return;
+
+        }
 
         this.observer =
 
@@ -703,6 +696,12 @@ const Reveal = {
 
                             );
 
+                            this.observer.unobserve(
+
+                                entry.target
+
+                            );
+
                         }
 
                     });
@@ -711,7 +710,7 @@ const Reveal = {
 
                 {
 
-                    threshold:0.15
+                    threshold: 0.15
 
                 }
 
@@ -719,27 +718,17 @@ const Reveal = {
 
         document
 
-            .querySelectorAll(
-
-                ".panel"
-
-            )
+            .querySelectorAll(".panel")
 
             .forEach(panel => {
 
-                this.observer.observe(
-
-                    panel
-
-                );
+                this.observer.observe(panel);
 
             });
 
     }
 
 };
-
-
 
 /* =====================================================
    SHORTCUT
@@ -753,24 +742,18 @@ const Shortcut = {
 
             "keydown",
 
-            e => {
+            (event) => {
 
-                const key =
-
-                    e.key.toLowerCase();
+                const key = event.key.toLowerCase();
 
                 switch (key) {
 
                     case "h":
 
                         document
-
                             .querySelector(".hero")
-
                             ?.scrollIntoView({
-
-                                behavior:"smooth"
-
+                                behavior: "smooth"
                             });
 
                     break;
@@ -780,13 +763,9 @@ const Shortcut = {
                     case "i":
 
                         document
-
                             .querySelector(".inventory-grid")
-
                             ?.scrollIntoView({
-
-                                behavior:"smooth"
-
+                                behavior: "smooth"
                             });
 
                     break;
@@ -796,13 +775,9 @@ const Shortcut = {
                     case "m":
 
                         document
-
                             .querySelector(".music-box")
-
                             ?.scrollIntoView({
-
-                                behavior:"smooth"
-
+                                behavior: "smooth"
                             });
 
                     break;
@@ -812,13 +787,9 @@ const Shortcut = {
                     case "w":
 
                         document
-
                             .querySelector("#watchlist-container")
-
                             ?.scrollIntoView({
-
-                                behavior:"smooth"
-
+                                behavior: "smooth"
                             });
 
                     break;
@@ -841,21 +812,15 @@ const Shortcut = {
 
 const Storage = {
 
-    key:"pixel-os",
+    key: "pixel-os-data",
 
-    get(name,fallback=null){
+    get(name, fallback = null) {
 
-        const data=
+        const data = JSON.parse(
 
-            JSON.parse(
+            localStorage.getItem(this.key) || "{}"
 
-                localStorage.getItem(
-
-                    this.key
-
-                )||"{}"
-
-            );
+        );
 
         return data[name] ?? fallback;
 
@@ -863,21 +828,15 @@ const Storage = {
 
 
 
-    set(name,value){
+    set(name, value) {
 
-        const data=
+        const data = JSON.parse(
 
-            JSON.parse(
+            localStorage.getItem(this.key) || "{}"
 
-                localStorage.getItem(
+        );
 
-                    this.key
-
-                )||"{}"
-
-            );
-
-        data[name]=value;
+        data[name] = value;
 
         localStorage.setItem(
 
@@ -899,9 +858,9 @@ const Storage = {
 
 const Welcome = {
 
-    init(){
+    init() {
 
-        if(
+        const visited =
 
             Storage.get(
 
@@ -909,9 +868,9 @@ const Welcome = {
 
                 false
 
-            )
+            );
 
-        ){
+        if (visited) {
 
             return;
 
@@ -925,7 +884,7 @@ const Welcome = {
 
         );
 
-        setTimeout(()=>{
+        setTimeout(() => {
 
             Achievement.unlock(
 
@@ -933,11 +892,12 @@ const Welcome = {
 
             );
 
-        },1200);
+        }, 1000);
 
     }
 
 };
+
 
 /* =====================================================
    CAT
@@ -947,7 +907,7 @@ const Cat = {
 
     button: null,
 
-    cat: null,
+    element: null,
 
     walking: false,
 
@@ -958,14 +918,14 @@ const Cat = {
                 "catSecret"
             );
 
-        this.cat =
+        this.element =
             document.getElementById(
                 "catWalk"
             );
 
         if (
             !this.button ||
-            !this.cat
+            !this.element
         ) {
             return;
         }
@@ -996,7 +956,7 @@ const Cat = {
 
         this.walking = true;
 
-        this.cat.classList.add(
+        this.element.classList.add(
 
             "walk"
 
@@ -1008,19 +968,19 @@ const Cat = {
 
         );
 
-        this.cat.addEventListener(
+        this.element.addEventListener(
 
             "animationend",
 
             () => {
 
-                this.cat.classList.remove(
+                this.walking = false;
+
+                this.element.classList.remove(
 
                     "walk"
 
                 );
-
-                this.walking = false;
 
             },
 
@@ -1044,7 +1004,7 @@ const Cat = {
 
 const Secret = {
 
-    input: "",
+    buffer: "",
 
     keyword: "pixel",
 
@@ -1054,23 +1014,23 @@ const Secret = {
 
             "keydown",
 
-            e => {
+            event => {
 
-                this.input +=
+                this.buffer +=
 
-                    e.key.toLowerCase();
+                    event.key.toLowerCase();
 
                 if (
 
-                    this.input.length >
+                    this.buffer.length >
 
                     this.keyword.length
 
                 ) {
 
-                    this.input =
+                    this.buffer =
 
-                        this.input.slice(
+                        this.buffer.slice(
 
                             -this.keyword.length
 
@@ -1080,7 +1040,7 @@ const Secret = {
 
                 if (
 
-                    this.input ===
+                    this.buffer ===
 
                     this.keyword
 
@@ -1136,55 +1096,17 @@ const Utils = {
 
 
 
-    createStar() {
+    createStars(total = 35) {
 
-        const star =
+        document
 
-            document.createElement(
+            .querySelectorAll(".star")
 
-                "div"
+            .forEach(
+
+                star => star.remove()
 
             );
-
-        star.className =
-
-            "star";
-
-        star.style.left =
-
-            this.random(
-
-                0,
-
-                window.innerWidth
-
-            ) + "px";
-
-        star.style.top =
-
-            this.random(
-
-                0,
-
-                window.innerHeight
-
-            ) + "px";
-
-        star.style.animationDelay =
-
-            Math.random() * 3 + "s";
-
-        document.body.appendChild(
-
-            star
-
-        );
-
-    },
-
-
-
-    createStars(total = 40) {
 
         for (
 
@@ -1196,7 +1118,47 @@ const Utils = {
 
         ) {
 
-            this.createStar();
+            const star =
+
+                document.createElement(
+
+                    "div"
+
+                );
+
+            star.className =
+
+                "star";
+
+            star.style.left =
+
+                this.random(
+
+                    0,
+
+                    window.innerWidth
+
+                ) + "px";
+
+            star.style.top =
+
+                this.random(
+
+                    0,
+
+                    window.innerHeight
+
+                ) + "px";
+
+            star.style.animationDelay =
+
+                Math.random() * 3 + "s";
+
+            document.body.appendChild(
+
+                star
+
+            );
 
         }
 
@@ -1214,9 +1176,17 @@ const PixelOS = {
 
     init() {
 
-        Utils.createStars(
+        Utils.createStars();
 
-            40
+        window.addEventListener(
+
+            "resize",
+
+            () => {
+
+                Utils.createStars();
+
+            }
 
         );
 
@@ -1227,56 +1197,20 @@ const PixelOS = {
 
 
 /* =====================================================
-   WINDOW EVENTS
-===================================================== */
-
-window.addEventListener(
-
-    "resize",
-
-    () => {
-
-        document
-
-            .querySelectorAll(
-
-                ".star"
-
-            )
-
-            .forEach(
-
-                star => star.remove()
-
-            );
-
-        Utils.createStars(
-
-            40
-
-        );
-
-    }
-
-);
-
-
-
-/* =====================================================
    UPDATE APP
 ===================================================== */
 
-App.init = function(){
+App.init = function () {
+
+    Boot.init();
 
     Clock.init();
 
     Age.init();
 
-    Boot.init();
+    Achievement.init();
 
     Watchlist.init();
-
-    Achievement.init();
 
     Panel.init();
 
