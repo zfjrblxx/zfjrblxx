@@ -6,42 +6,6 @@
 
 "use strict";
 
-/* =====================================================
-   APP
-===================================================== */
-
-const App = {
-
-    init() {
-
-    Boot.init();
-
-    Clock.init();
-
-    Age.init();
-
-    Achievement.init();
-
-    Watchlist.init();
-
-    Panel.init();
-
-    Inventory.init();
-
-    Reveal.init();
-
-    Shortcut.init();
-
-    Welcome.init();
-
-    Cat.init();
-
-    Secret.init();
-
-}
-
-};
-
 
 
 /* =====================================================
@@ -329,37 +293,26 @@ const Watchlist = {
     async init() {
 
         const container =
-
             document.getElementById(
-
                 "watchlist-container"
-
             );
 
         if (!container) {
-
             return;
-
         }
 
         try {
 
             const response =
-
                 await fetch(
-
                     "sections/watchlist.html"
-
                 );
 
             if (!response.ok) {
-
                 throw new Error();
-
             }
 
             container.innerHTML =
-
                 await response.text();
 
         }
@@ -369,7 +322,6 @@ const Watchlist = {
             console.error(error);
 
             container.innerHTML =
-
                 "<p>Failed to load watch log.</p>";
 
         }
@@ -490,21 +442,7 @@ const Achievement = {
    START
 ===================================================== */
 
-document.addEventListener(
 
-    "DOMContentLoaded",
-
-    async () => {
-
-        App.init();
-
-        Achievement.init();
-
-        await Watchlist.init();
-
-    }
-
-);
 
 /* =====================================================
    PANEL
@@ -1209,8 +1147,6 @@ App.init = function () {
     Age.init();
 
     Achievement.init();
-
-    Watchlist.init();
 
     Panel.init();
 
