@@ -1090,3 +1090,224 @@ a:focus-visible{
 }
 
 }
+
+
+/* ==========================================
+   PIXEL EXPLORER
+========================================== */
+
+.explorer{
+
+    margin-top:36px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+
+/* ==========================================
+   FOLDER
+========================================== */
+
+.folder{
+
+    border:3px solid var(--border);
+
+    background:var(--panel);
+
+    overflow:hidden;
+
+    transition:.2s;
+
+}
+
+
+
+.folder:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:6px 6px 0 #000;
+
+}
+
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.folder summary{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:18px 22px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    list-style:none;
+
+    font:12px "Press Start 2P", cursive;
+
+    color:#fff;
+
+    background:#2d2740;
+
+}
+
+
+
+.folder summary::-webkit-details-marker{
+
+    display:none;
+
+}
+
+
+
+.folder summary::after{
+
+    content:"▶";
+
+    transition:.25s;
+
+    color:#ffd966;
+
+}
+
+
+
+.folder[open] summary::after{
+
+    transform:rotate(90deg);
+
+}
+
+
+
+/* ==========================================
+   ICON
+========================================== */
+
+.folder summary::before{
+
+    content:"📁";
+
+    margin-right:14px;
+
+    font-size:18px;
+
+}
+
+
+
+.folder[open] summary::before{
+
+    content:"📂";
+
+}
+
+
+
+/* ==========================================
+   CONTENT
+========================================== */
+
+.folder-content{
+
+    padding:26px;
+
+    border-top:3px solid var(--border);
+
+    animation:folderOpen .25s ease;
+
+}
+
+
+
+@keyframes folderOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-8px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+
+
+/* ==========================================
+   WEB3
+========================================== */
+
+.folder-content h3{
+
+    margin-bottom:18px;
+
+    font:18px "Pixelify Sans", sans-serif;
+
+    color:#ffd966;
+
+}
+
+
+
+.folder-content p{
+
+    line-height:1.9;
+
+    color:var(--muted);
+
+}
+
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+.explorer{
+
+    gap:14px;
+
+}
+
+.folder summary{
+
+    padding:16px;
+
+    font-size:10px;
+
+}
+
+.folder-content{
+
+    padding:18px;
+
+}
+
+}
