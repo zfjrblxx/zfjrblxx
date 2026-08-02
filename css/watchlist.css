@@ -1,56 +1,87 @@
-/* ========================================
-   WATCHLIST FOLDER
-======================================== */
+/* =====================================================
+   PIXEL WATCHLIST
+   PART 1
+===================================================== */
 
-.watchlist-folder {
 
-    display: block;
 
-    padding: 4px 8px;
+/* =====================================================
+   BUTTON
+===================================================== */
 
-    border: 0;
-    background: transparent;
+.watch-home{
 
-    font-family: inherit;
+    display:flex;
 
-    cursor: pointer;
+    justify-content:center;
 
-}
-
-.watchlist-folder-icon {
-
-    display: block;
-
-    font-size: 28px;
-
-    transition:
-        transform .2s ease,
-        filter .2s ease;
-
-}
-
-.watchlist-folder:hover .watchlist-folder-icon {
-
-    transform: translateY(-3px);
-
-    filter: brightness(1.15);
-
-}
-
-@media (max-width:700px){
-
-    .watchlist-folder-icon{
-
-        font-size:26px;
-
-    }
+    align-items:center;
 
 }
 
 
-/* ========================================
+
+.pixel-folder{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    width:100%;
+
+    padding:18px;
+
+    background:#2b2b2b;
+
+    border:4px solid #ffffff;
+
+    color:#ffffff;
+
+    font-family:"Press Start 2P",cursive;
+
+    font-size:12px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+
+.pixel-folder:hover{
+
+    background:#3d3d3d;
+
+    transform:translateY(-2px);
+
+    box-shadow:6px 6px 0 #000;
+
+}
+
+
+
+.folder-icon{
+
+    font-size:28px;
+
+}
+
+
+
+.folder-text{
+
+    line-height:1.6;
+
+}
+
+
+
+/* =====================================================
    OVERLAY
-======================================== */
+===================================================== */
 
 .watchlist-overlay{
 
@@ -58,411 +89,513 @@
 
     inset:0;
 
-    z-index:9998;
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(3px);
+
+    z-index:9999;
+
+    padding:20px;
+
+}
+
+
+
+.watchlist-overlay.show{
+
+    display:flex;
+
+}
+
+
+
+/* =====================================================
+   WINDOW
+===================================================== */
+
+.watch-window{
+
+    width:min(920px,100%);
+
+    height:min(700px,90vh);
+
+    background:#1f1f1f;
+
+    border:5px solid #ffffff;
+
+    box-shadow:10px 10px 0 #000;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    animation:watchOpen .2s steps(2);
+
+}
+
+
+
+@keyframes watchOpen{
+
+    from{
+
+        transform:scale(.95);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.watch-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 20px;
+
+    background:#3a3a3a;
+
+    border-bottom:4px solid #ffffff;
+
+    font-family:"Press Start 2P",cursive;
+
+    font-size:12px;
+
+    color:#ffffff;
+
+}
+
+
+
+.watch-title{
 
     display:flex;
 
     align-items:center;
+
+    gap:8px;
+
+}
+
+
+
+.watch-close{
+
+    width:42px;
+
+    height:42px;
+
+    border:3px solid #ffffff;
+
+    background:#d9534f;
+
+    color:#ffffff;
+
+    cursor:pointer;
+
+    font-family:"Press Start 2P",cursive;
+
+    font-size:14px;
+
+    transition:.15s;
+
+}
+
+
+
+.watch-close:hover{
+
+    background:#ff6b6b;
+
+    transform:scale(1.05);
+
+}
+
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.watch-search{
+
+    padding:18px;
+
+    background:#252525;
+
+    border-bottom:3px solid #555;
+
+}
+
+
+
+.watch-search input{
+
+    width:100%;
+
+    padding:14px;
+
+    border:3px solid #ffffff;
+
+    background:#111;
+
+    color:#ffffff;
+
+    font-family:"Press Start 2P",cursive;
+
+    font-size:10px;
+
+    outline:none;
+
+}
+
+
+
+.watch-search input::placeholder{
+
+    color:#888;
+
+}
+
+
+
+.watch-search input:focus{
+
+    border-color:#ffe066;
+
+}
+
+
+
+/* =====================================================
+   LETTERS
+===================================================== */
+
+.watch-letters{
+
+    display:grid;
+
+    grid-template-columns:repeat(13,1fr);
+
+    gap:8px;
+
+    padding:18px;
+
+    background:#1d1d1d;
+
+    border-bottom:3px solid #444;
+
+}
+
+
+
+.watch-letter{
+
+    height:36px;
+
+    display:flex;
+
     justify-content:center;
 
-    padding:24px;
+    align-items:center;
 
-    background:rgba(17,17,27,.82);
+    background:#2b2b2b;
 
-    backdrop-filter:blur(10px);
+    border:2px solid #ffffff;
 
-    opacity:0;
-    visibility:hidden;
+    color:#ffffff;
 
-    transition:
-        opacity .25s ease,
-        visibility .25s ease;
+    font-family:"Press Start 2P",cursive;
 
-}
+    font-size:10px;
 
-.watchlist-overlay.show{
+    cursor:pointer;
 
-    opacity:1;
-
-    visibility:visible;
+    transition:.15s;
 
 }
 
 
-/* ========================================
-   WINDOW
-======================================== */
 
-.watchlist-window{
+.watch-letter:hover{
 
-    width:min(100%,620px);
+    background:#ffe066;
 
-    background:var(--surface);
+    color:#111;
 
-    border:1px solid var(--border);
-
-    border-radius:14px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.4);
-
-    transform:
-        translateY(14px)
-        scale(.98);
-
-    transition:
-        transform .25s ease;
-
-}
-
-.watchlist-overlay.show
-.watchlist-window{
-
-    transform:
-        translateY(0)
-        scale(1);
-
-}
-
-/* ========================================
-   HEADER
-======================================== */
-
-.watchlist-header {
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 14px 18px;
-
-    background: var(--surface);
-
-    border-bottom: 1px solid var(--border);
-
-    color: var(--text-muted);
-
-    font-size: 12px;
-
-}
-
-.watchlist-header button {
-
-    border: 0;
-    background: transparent;
-
-    color: var(--blue);
-
-    font-family: inherit;
-    font-size: 12px;
-
-    cursor: pointer;
-
-    transition: color .2s ease;
-
-}
-
-.watchlist-header button:hover {
-
-    color: var(--text);
+    transform:translateY(-2px);
 
 }
 
 
-/* ========================================
+
+.watch-letter.disabled{
+
+    opacity:.25;
+
+    cursor:not-allowed;
+
+}
+
+
+
+.watch-letter.active{
+
+    background:#5cb85c;
+
+}
+
+/* =====================================================
    CONTENT
-======================================== */
+===================================================== */
 
-.watchlist-content {
+.watch-content{
 
-    max-height: 60vh;
+    flex:1;
 
-    overflow-y: auto;
+    overflow-y:auto;
 
-    padding: 26px 30px;
+    padding:20px;
 
-    color: var(--text-muted);
-
-    font-size: 13px;
-
-    line-height: 1.8;
-
-}
-
-.watchlist-content p {
-
-    padding: 9px 0;
-
-    border-bottom: 1px solid var(--border);
-
-}
-
-.watchlist-content p:last-child {
-
-    border-bottom: 0;
-
-}
-
-.watchlist-loading {
-
-    color: var(--text-faint);
+    background:#181818;
 
 }
 
 
-/* ========================================
-   SCROLLBAR
-======================================== */
 
-.watchlist-content::-webkit-scrollbar {
+/* =====================================================
+   GROUP
+===================================================== */
 
-    width: 6px;
+.watch-group{
 
-}
-
-.watchlist-content::-webkit-scrollbar-track {
-
-    background: var(--surface);
-
-}
-
-.watchlist-content::-webkit-scrollbar-thumb {
-
-    background: var(--surface-2);
-
-    border-radius: 999px;
-
-}
-
-.watchlist-content::-webkit-scrollbar-thumb:hover {
-
-    background: var(--border);
+    margin-bottom:28px;
 
 }
 
 
-/* ========================================
+
+.group-title{
+
+    margin-bottom:14px;
+
+    padding:10px 14px;
+
+    background:#444;
+
+    border:3px solid #fff;
+
+    color:#ffe066;
+
+    font-family:"Press Start 2P",cursive;
+
+    font-size:11px;
+
+}
+
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.watch-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin-bottom:10px;
+
+    padding:14px;
+
+    border:3px solid #ffffff;
+
+    background:#2a2a2a;
+
+    transition:.18s;
+
+    cursor:pointer;
+
+}
+
+
+
+.watch-card:hover{
+
+    background:#3d3d3d;
+
+    transform:translateX(6px);
+
+    box-shadow:5px 5px 0 #000;
+
+}
+
+
+
+.watch-icon{
+
+    font-size:24px;
+
+}
+
+
+
+.watch-title{
+
+    flex:1;
+
+    color:#ffffff;
+
+    font-family:"Pixelify Sans",sans-serif;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.watch-loading{
+
+    text-align:center;
+
+    padding:60px 0;
+
+    color:#aaaaaa;
+
+    font-family:"Press Start 2P",cursive;
+
+    font-size:11px;
+
+}
+
+
+
+/* =====================================================
    FOOTER
-======================================== */
+===================================================== */
 
-.watchlist-footer {
+.watch-footer{
 
-    display: flex;
+    display:flex;
 
-    justify-content: space-between;
-    align-items: center;
+    justify-content:space-between;
 
-    padding: 10px 16px;
+    align-items:center;
 
-    background: var(--surface-2);
+    padding:16px 20px;
 
-    border-top: 1px solid var(--border);
+    background:#3a3a3a;
 
-    color: var(--text);
+    border-top:4px solid #ffffff;
 
-    font-size: 10px;
+    color:#ffffff;
 
-    font-weight: 600;
+    font-family:"Press Start 2P",cursive;
+
+    font-size:10px;
 
 }
 
 
-/* ========================================
-   MOBILE
-======================================== */
 
-@media (max-width:700px){
+/* =====================================================
+   SCROLLBAR
+===================================================== */
 
-    .watchlist-overlay{
+.watch-content::-webkit-scrollbar{
 
-        padding:16px;
+    width:12px;
+
+}
+
+.watch-content::-webkit-scrollbar-track{
+
+    background:#222;
+
+}
+
+.watch-content::-webkit-scrollbar-thumb{
+
+    background:#666;
+
+    border:2px solid #222;
+
+}
+
+.watch-content::-webkit-scrollbar-thumb:hover{
+
+    background:#999;
+
+}
+
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:768px){
+
+    .watch-window{
+
+        width:100%;
+
+        height:100vh;
+
+        border:none;
+
+        border-radius:0;
 
     }
 
-    .watchlist-header{
+    .watch-letters{
 
-        padding:12px 14px;
-
-        font-size:11px;
+        grid-template-columns:repeat(7,1fr);
 
     }
 
-    .watchlist-header button{
+    .watch-card{
 
-        font-size:11px;
-
-    }
-
-    .watchlist-content{
-
-        max-height:65vh;
-
-        padding:20px;
-
-        font-size:12px;
+        padding:12px;
 
     }
 
-}
+    .watch-title{
 
-/* ========================================
-   A-Z NAVIGATION
-======================================== */
-
-.watchlist-az {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 8px;
-
-    margin-bottom: 28px;
-
-    padding-bottom: 20px;
-
-    border-bottom: 1px solid var(--border);
-
-}
-
-.az-letter {
-
-    border: 0;
-
-    background: transparent;
-
-    color: var(--text-faint);
-
-    font-family: inherit;
-
-    font-size: 11px;
-
-    cursor: default;
-
-    transition: color .2s ease;
-
-}
-
-.az-letter.active {
-
-    color: var(--blue);
-
-    cursor: pointer;
-
-}
-
-.az-letter.active:hover {
-
-    color: var(--green);
-
-}
-
-.az-letter.disabled {
-
-    color: var(--text-faint);
-
-    opacity: .45;
-
-}
-
-
-/* ========================================
-   WATCH GROUP
-======================================== */
-
-.watch-group {
-
-    margin-bottom: 32px;
-
-    scroll-margin-top: 20px;
-
-}
-
-.watch-group:last-child {
-
-    margin-bottom: 0;
-
-}
-
-.watch-letter {
-
-    margin-bottom: 10px;
-
-    color: var(--green);
-
-    font-size: 18px;
-
-    font-weight: 600;
-
-}
-
-.watch-items {
-
-    padding-left: 16px;
-
-    border-left: 2px solid var(--border);
-
-}
-
-.watch-items p {
-
-    padding: 7px 0;
-
-    border: 0;
-
-    color: var(--text-muted);
-
-    font-size: 13px;
-
-    line-height: 1.7;
-
-}
-
-.watch-items p::before {
-
-    content: "> ";
-
-    color: var(--blue);
-
-}
-
-
-/* ========================================
-   MOBILE
-======================================== */
-
-@media (max-width:700px){
-
-    .watchlist-az{
-
-        gap:6px;
-
-    }
-
-    .az-letter{
-
-        font-size:10px;
-
-    }
-
-    .watch-letter{
-
-        font-size:16px;
-
-    }
-
-    .watch-items{
-
-        padding-left:14px;
-
-    }
-
-    .watch-items p{
-
-        font-size:12px;
+        font-size:15px;
 
     }
 
