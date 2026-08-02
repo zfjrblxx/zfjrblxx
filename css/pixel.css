@@ -1194,6 +1194,31 @@ a:focus-visible{
 
 }
 
+.folder summary{
+
+position:relative;
+
+transition:.2s;
+
+}
+
+
+.folder summary:hover{
+
+background:#39314f;
+
+padding-left:30px;
+
+}
+
+.folder[open]{
+
+border-color:#ffd966;
+
+box-shadow:0 0 18px rgba(255,217,102,.18);
+
+}
+
 
 
 /* ==========================================
