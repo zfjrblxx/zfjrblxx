@@ -1,68 +1,61 @@
-<!-- ============================
-     WATCHLIST
-============================ -->
+<section class="panel">
 
-<section class="terminal-section watchlist-section">
+    <div class="panel-header">
 
-    <p class="command">
-        <span>wly@home:~$</span> watch log
-    </p>
+        WATCH LOG
 
-    <button
-    class="secret-folder"
-    id="watchlistFolder"
-    aria-label="Open watchlist"
->
-    <span class="watchlist-folder-icon">🗃️</span>
-</button>
+    </div>
+
+    <div class="panel-body">
+
+        <button
+            class="pixel-folder"
+            id="watchlistFolder">
+
+            📁 Open Watch Log
+
+        </button>
+
+    </div>
 
 </section>
 
 
-<!-- ============================
-     WATCHLIST OVERLAY
-============================ -->
 
 <div
-    class="watchlist-overlay"
-    id="watchlistOverlay"
->
+id="watchlistOverlay"
+class="watchlist-overlay">
 
-    <div class="watchlist-window">
+    <div class="pixel-window watch-window">
 
-        <!-- HEADER -->
+        <div class="watch-header">
 
-        <div class="watchlist-header">
+            <span>
 
-          <span>~/watch log [<span id="watchCount">0</span>]</span>
+                WATCH LOG
+
+            </span>
 
             <button id="closeWatchlist">
-                [x]
+
+                ✕
+
             </button>
 
         </div>
 
-
-        <!-- CONTENT -->
-
         <div
-            class="watchlist-content"
-            id="watchlistContent"
-        >
-            <p class="watchlist-loading">
-                &gt; loading...
-            </p>
+        id="watchlistContent"
+        class="watch-content">
+
         </div>
 
+        <div class="watch-footer">
 
-        <!-- FOOTER -->
+            <span id="watchCount">
 
-        <div class="watchlist-footer">
+                0 Items
 
-            <span>~/watch log</span>
-
-            <span id="watchlistCount">
-                0 items
             </span>
 
         </div>
