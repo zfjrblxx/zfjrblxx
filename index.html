@@ -631,9 +631,82 @@ WATCH LOG
 
     <div class="panel-body">
 
-        <div id="watchlist-container">
+        <div class="watch-home">
+
+    <button
+        id="watchlistFolder"
+        class="pixel-folder">
+
+        <span class="folder-icon">
+            📼
+        </span>
+
+        <span class="folder-text">
+            Open Watch Log
+        </span>
+
+    </button>
+
+</div>
+
+<div
+    id="watchlistOverlay"
+    class="watchlist-overlay">
+
+    <div class="watch-window">
+
+        <div class="watch-header">
+
+            <div class="watch-title">
+
+                WATCH LOG
+                (<span id="watchCount">0</span>)
+
+            </div>
+
+            <button
+                id="closeWatchlist">
+
+                ✕
+
+            </button>
 
         </div>
+
+        <div class="watch-search">
+
+            <input
+                id="watchSearch"
+                type="text"
+                placeholder="Search...">
+
+        </div>
+
+        <div
+            id="watchLetters"
+            class="watch-letters">
+
+        </div>
+
+        <div
+            id="watchlistContent"
+            class="watch-content">
+
+        </div>
+
+        <div class="watch-footer">
+
+            <span>Pixel Library</span>
+
+            <span id="watchlistCount">
+                0 Items
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
 
     </div>
 
