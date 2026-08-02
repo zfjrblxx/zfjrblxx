@@ -1145,3 +1145,21 @@ footer{
     transform:translateY(-1px);
 
 }
+
+#catWalk{
+
+    position:absolute;
+
+    bottom:26px;
+
+    right:60px;
+
+    font-size:26px;
+
+    pointer-events:none;
+
+    opacity:0;
+
+    z-index:9999;
+
+}
