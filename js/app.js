@@ -10,53 +10,51 @@
 // ========================================
 // MUSIC PLAYER
 // ========================================
-const bgMusic = document.getElementById("bgMusic");
 
+const bgMusic =
+    document.getElementById("bgMusic");
 
 const musicButton =
-document.getElementById(
-    "musicToggle"
-);
+    document.getElementById("musicToggle");
 
-if(bgMusic && musicButton){
+if (bgMusic && musicButton) {
 
     bgMusic.volume = 0.30;
 
-    musicButton.addEventListener(
+    function updateButton() {
 
-        "click",
+        if (bgMusic.paused) {
 
-        ()=>{
+            musicButton.textContent = "▶ MUSIC";
+            musicButton.classList.remove("playing");
 
-            if(bgMusic.paused){
+        } else {
 
-                bgMusic.play();
-
-                musicButton.textContent =
-                    "⏸ PAUSE";
-
-                musicButton.classList.add(
-                    "playing"
-                );
-
-            }
-
-            else{
-
-                bgMusic.pause();
-
-                musicButton.textContent =
-                    "▶ MUSIC";
-
-                musicButton.classList.remove(
-                    "playing"
-                );
-
-            }
+            musicButton.textContent = "⏸ PAUSE";
+            musicButton.classList.add("playing");
 
         }
 
-    );
+    }
+
+    musicButton.addEventListener("click", () => {
+
+        if (bgMusic.paused) {
+
+            bgMusic.play();
+
+        } else {
+
+            bgMusic.pause();
+
+        }
+
+    });
+
+    bgMusic.addEventListener("play", updateButton);
+    bgMusic.addEventListener("pause", updateButton);
+
+    updateButton();
 
 }
 /* =====================================================
