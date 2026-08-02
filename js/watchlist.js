@@ -381,26 +381,36 @@ const Watchlist = {
    LETTER EVENT
 ===================================================== */
 
-   button.addEventListener("click", () => {
+bindLetters() {
 
-    const target =
-        document.getElementById(
-            "group-" + button.dataset.letter
-        );
+    this.letters
+        .querySelectorAll(".watch-letter[data-letter]")
+        .forEach(button => {
 
-    if (target) {
+            button.addEventListener("click", () => {
 
-        this.content.scrollTo({
+                const target =
+                    document.getElementById(
+                        "group-" + button.dataset.letter
+                    );
 
-            top: target.offsetTop - 10,
+                if (target) {
 
-            behavior: "smooth"
+                    this.content.scrollTo({
+
+                        top: target.offsetTop - 10,
+
+                        behavior: "smooth"
+
+                    });
+
+                }
+
+            });
 
         });
 
-    }
-
-});
+},
 
 
 
