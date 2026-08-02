@@ -1,1808 +1,922 @@
+
 /* ===================================================
-   PIXEL OS v2
-   PART 1
-   Base Theme
+   Pixel OS v2 - Part 1
+   Foundation
 =================================================== */
 
-/* ==========================
-   GOOGLE FONT
-========================== */
-
-/*
-Tambahkan di HTML:
-
+/* Google Fonts:
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 */
 
-
-/* ==========================
-   RESET
-========================== */
+:root{
+  --bg:#171320;
+  --bg2:#241c35;
+  --window:#302647;
+  --panel:#3b3158;
+  --border:#8f79d8;
+  --border-dark:#5d4c99;
+  --text:#f7f4ff;
+  --muted:#cdc4ef;
+  --green:#79ff8c;
+  --yellow:#ffd85c;
+  --blue:#79dcff;
+  --pink:#ff8bd8;
+  --shadow:#0d0915;
+}
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
-
-:root{
-
-    --bg:#181421;
-    --bg2:#231B33;
-
-    --window:#302645;
-    --window-dark:#261D39;
-
-    --panel:#3E315C;
-
-    --border:#6C5DAE;
-    --border-light:#A596F1;
-
-    --text:#FFFFFF;
-    --muted:#D4CDEE;
-
-    --blue:#72E7FF;
-    --green:#8AF58D;
-    --yellow:#FFD857;
-    --pink:#FF84D5;
-
-    --shadow:#0E0B16;
-
-}
-
-
-/* ==========================
-   BODY
-========================== */
 
 body{
-
-    min-height:100vh;
-
-    padding:40px;
-
-    font-family:"Pixelify Sans",sans-serif;
-
-    color:var(--text);
-
-    background-color:var(--bg);
-
-    background-image:
-
-        linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
-
-        linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-
-    background-size:32px 32px;
-
-    overflow-x:hidden;
-
+  min-height:100vh;
+  font-family:"Pixelify Sans",sans-serif;
+  color:var(--text);
+  background:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px),
+    var(--bg);
+  background-size:32px 32px;
+  padding:40px;
+  overflow-x:hidden;
 }
-
-
-/* ==========================
-   STAR BACKGROUND
-========================== */
 
 body::before{
-
-    content:"";
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    opacity:.08;
-
-    background-image:
-
-        radial-gradient(#fff 1px,transparent 1px);
-
-    background-size:28px 28px;
-
-    animation:bgMove 35s linear infinite;
-
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.06;
+  background-image:radial-gradient(#fff 1px,transparent 1px);
+  background-size:26px 26px;
+  animation:bgMove 30s linear infinite;
 }
-
 
 @keyframes bgMove{
-
-    from{
-
-        transform:translate(0,0);
-
-    }
-
-    to{
-
-        transform:translate(-28px,-28px);
-
-    }
-
+  from{transform:translate(0,0);}
+  to{transform:translate(-26px,-26px);}
 }
 
+/* Boot */
 
-/* ==========================
-   TERMINAL WINDOW
-========================== */
-
-.terminal{
-
-    width:100%;
-
-    max-width:900px;
-
-    margin:auto;
-
-    background:var(--window);
-
-    border:4px solid var(--border);
-
-    border-radius:0;
-
-    overflow:hidden;
-
-    position:relative;
-
-    box-shadow:
-
-        10px 10px 0 var(--shadow);
-
+#bootScreen{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:var(--bg);
+  z-index:9999;
 }
 
-
-/* ==========================
-   TITLE BAR
-========================== */
-
-.terminal-bar{
-
-    height:56px;
-
-    display:grid;
-
-    grid-template-columns:1fr auto 1fr;
-
-    align-items:center;
-
-    padding:0 18px;
-
-    background:var(--panel);
-
-    border-bottom:4px solid var(--border);
-
+.boot-box{
+  width:min(560px,90vw);
+  border:4px solid var(--border);
+  background:var(--window);
+  box-shadow:8px 8px 0 var(--shadow);
+  padding:32px;
+  text-align:center;
 }
 
-
-/* ==========================
-   TITLE
-========================== */
-
-.terminal-bar p{
-
-    font-family:"Press Start 2P",cursive;
-
-    font-size:11px;
-
-    color:var(--yellow);
-
-    text-shadow:
-
-        2px 2px 0 #000;
-
+.boot-box h1{
+  font:16px "Press Start 2P",cursive;
+  color:var(--yellow);
+  margin-bottom:18px;
 }
 
-
-/* ==========================
-   WINDOW BUTTON
-========================== */
-
-.terminal-dots{
-
-    display:flex;
-
-    gap:8px;
-
+.boot-box p{
+  color:var(--muted);
+  margin-top:14px;
 }
 
-.terminal-dots span{
-
-    width:14px;
-
-    height:14px;
-
-    border-radius:0;
-
-    border:2px solid #000;
-
+.boot-progress{
+  margin-top:24px;
+  height:24px;
+  border:3px solid var(--border);
+  background:var(--bg2);
+  overflow:hidden;
 }
 
-.terminal-dots span:nth-child(1){
-
-    background:#FF5E5E;
-
+#bootBar{
+  width:0%;
+  height:100%;
+  background:repeating-linear-gradient(
+      90deg,
+      var(--green) 0 12px,
+      #5ed56f 12px 24px
+  );
 }
 
-.terminal-dots span:nth-child(2){
+/* Window */
 
-    background:#FFD857;
-
+.pixel-window{
+  max-width:1100px;
+  margin:0 auto;
+  border:4px solid var(--border);
+  background:var(--window);
+  box-shadow:10px 10px 0 var(--shadow);
 }
 
-.terminal-dots span:nth-child(3){
-
-    background:#6EFF8B;
-
+.window-bar{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:12px;
+  padding:16px 20px;
+  border-bottom:4px solid var(--border);
+  background:var(--panel);
 }
 
-
-/* ==========================
-   CONTENT
-========================== */
-
-.terminal-content{
-
-    padding:42px;
-
+.window-buttons{
+  display:flex;
+  gap:8px;
 }
 
-
-/* ==========================
-   SECTION
-========================== */
-
-.terminal-section{
-
-    margin-bottom:56px;
-
+.window-buttons span{
+  width:16px;
+  height:16px;
+  border:2px solid #000;
 }
 
+.red{background:#ff6666;}
+.yellow{background:#ffd85c;}
+.green{background:#79ff8c;}
 
-/* ==========================
-   PIXEL BORDER
-========================== */
-
-.pixel-box{
-
-    border:4px solid var(--border);
-
-    background:var(--panel);
-
-    box-shadow:6px 6px 0 var(--shadow);
-
+.window-title{
+  justify-self:center;
+  font:11px "Press Start 2P",cursive;
+  color:var(--yellow);
 }
 
-
-/* ==========================
-   SCROLLBAR
-========================== */
-
-::-webkit-scrollbar{
-
-    width:18px;
-
+.window-clock{
+  justify-self:end;
+  font:10px "Press Start 2P",cursive;
+  color:var(--green);
 }
 
-::-webkit-scrollbar-track{
-
-    background:var(--bg2);
-
+.window-content{
+  padding:36px;
 }
 
-::-webkit-scrollbar-thumb{
+/* Hero */
 
-    background:var(--border);
-
-    border:4px solid var(--bg2);
-
+.hero{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:32px;
+  align-items:center;
+  margin-bottom:36px;
 }
 
-::-webkit-scrollbar-thumb:hover{
-
-    background:var(--border-light);
-
+.avatar-frame{
+  aspect-ratio:1;
+  border:4px solid var(--border);
+  background:var(--panel);
+  padding:10px;
+  box-shadow:6px 6px 0 var(--shadow);
 }
 
-
-/* ==========================
-   SELECTION
-========================== */
-
-::selection{
-
-    background:var(--yellow);
-
-    color:#000;
-
+.avatar{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  image-rendering:pixelated;
 }
 
-
-/* ==========================
-   LINKS
-========================== */
-
-a{
-
-    color:inherit;
-
-    text-decoration:none;
-
+.hero-info h1{
+  font:20px "Press Start 2P",cursive;
+  line-height:1.8;
 }
 
-
-/* ==========================
-   IMAGE
-========================== */
-
-img{
-
-    display:block;
-
-    max-width:100%;
-
+.hero-info>p{
+  margin-top:14px;
+  font-size:24px;
+  color:var(--muted);
 }
 
-
-/* ==========================
-   TRANSITION
-========================== */
-
-button,
-a{
-
-    transition:
-
-        .18s transform,
-
-        .18s background,
-
-        .18s color,
-
-        .18s border-color;
-
+.hero-stats{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  margin:24px 0;
 }
 
-
-/* ==========================
-   RESPONSIVE
-========================== */
-
-@media(max-width:768px){
-
-body{
-
-padding:18px;
-
+.stat{
+  border:3px solid var(--border);
+  background:var(--panel);
+  padding:10px 14px;
 }
 
-.terminal{
-
-max-width:100%;
-
+.stat span{
+  display:block;
+  font-size:14px;
+  color:var(--muted);
 }
 
-.terminal-content{
-
-padding:28px 22px;
-
+.stat strong{
+  font:10px "Press Start 2P",cursive;
+  color:var(--yellow);
 }
 
-.terminal-bar{
-
-height:50px;
-
-padding:0 12px;
-
+.status-bars{
+  display:grid;
+  gap:16px;
 }
 
-.terminal-bar p{
-
-font-size:8px;
-
+.bar{
+  display:grid;
+  grid-template-columns:70px 1fr;
+  gap:12px;
+  align-items:center;
 }
 
-.terminal-dots span{
-
-width:12px;
-
-height:12px;
-
+.bar label{
+  font:10px "Press Start 2P",cursive;
 }
 
+.progress{
+  height:20px;
+  border:3px solid var(--border);
+  background:var(--bg2);
+  overflow:hidden;
 }
 
-@media(max-width:480px){
-
-body{
-
-padding:12px;
-
+.fill{
+  height:100%;
 }
 
-.terminal-content{
-
-padding:22px 16px;
-
+.hp{
+  width:100%;
+  background:var(--green);
 }
+
+.exp{
+  width:65%;
+  background:var(--blue);
+}
+
+@media (max-width:768px){
+  body{padding:18px;}
+  .window-content{padding:20px;}
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .avatar-frame{
+    width:180px;
+    margin:0 auto;
+  }
+  .hero-stats{
+    justify-content:center;
+  }
+}
+
 /* ===================================================
-   PIXEL OS v2
-   PART 2
-   Typography & UI
-===================================================*/
+   Pixel OS v2 - Part 2
+   Panels • Profile • Quest • Inventory
+=================================================== */
 
-
-/* ==========================
-   COMMAND
-========================== */
-
-.command{
-
-display:inline-flex;
-
-align-items:center;
-
-gap:12px;
-
-padding:10px 16px;
-
-margin-bottom:28px;
-
-background:var(--panel);
-
-border:3px solid var(--border);
-
-box-shadow:4px 4px 0 var(--shadow);
-
-font-family:"Press Start 2P",cursive;
-
-font-size:10px;
-
-color:var(--blue);
-
-letter-spacing:1px;
-
+.panel{
+  margin-bottom:28px;
+  border:4px solid var(--border);
+  background:var(--window);
+  box-shadow:8px 8px 0 var(--shadow);
 }
 
-.command span:first-child{
-
-color:var(--green);
-
+.panel-header{
+  padding:14px 18px;
+  background:var(--panel);
+  border-bottom:4px solid var(--border);
+  font:11px "Press Start 2P",cursive;
+  color:var(--yellow);
 }
 
-
-/* ==========================
-   TOGGLE BUTTON
-========================== */
-
-.command-toggle{
-
-width:100%;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-cursor:pointer;
-
-border:3px solid var(--border);
-
-background:var(--panel);
-
-padding:14px 18px;
-
-font-family:"Press Start 2P",cursive;
-
-font-size:10px;
-
-color:var(--yellow);
-
-box-shadow:4px 4px 0 var(--shadow);
-
+.panel-body{
+  padding:22px;
 }
 
-.command-toggle:hover{
+/* PROFILE */
 
-transform:translate(-2px,-2px);
-
-box-shadow:6px 6px 0 var(--shadow);
-
-background:#493A6D;
-
+.profile-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(220px,1fr));
+  gap:18px;
 }
 
-.command-toggle:active{
-
-transform:translate(2px,2px);
-
-box-shadow:none;
-
+.profile-item{
+  border:3px solid var(--border);
+  background:var(--panel);
+  padding:16px;
 }
 
-.toggle-arrow{
-
-transition:.25s;
-
+.profile-item span{
+  display:block;
+  margin-bottom:8px;
+  color:var(--muted);
+  font-size:14px;
 }
 
-.command-toggle.active .toggle-arrow{
-
-transform:rotate(90deg);
-
+.profile-item strong{
+  font:10px "Press Start 2P",cursive;
+  color:var(--text);
+  line-height:1.8;
 }
 
-
-/* ==========================
-   COLLAPSE
-========================== */
-
-.projects-collapse{
-
-overflow:hidden;
-
-max-height:0;
-
-opacity:0;
-
-transition:
-
-max-height .45s ease,
-
-opacity .3s ease;
-
+.online{
+  color:var(--green)!important;
 }
 
-.projects-collapse.open{
+/* QUEST */
 
-max-height:3000px;
-
-opacity:1;
-
-margin-top:24px;
-
+.quest-item{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  gap:18px;
+  margin-bottom:18px;
 }
 
-
-/* ==========================
-   WHOAMI
-========================== */
-
-.identity{
-
-padding:24px;
-
-border:4px solid var(--border);
-
-background:var(--panel);
-
-box-shadow:6px 6px 0 var(--shadow);
-
+.quest-item:last-child{
+  margin-bottom:0;
 }
 
-.identity h1{
-
-font-family:"Press Start 2P",cursive;
-
-font-size:clamp(18px,3vw,32px);
-
-line-height:1.8;
-
-color:var(--yellow);
-
-text-shadow:2px 2px #000;
-
-word-break:break-word;
-
+.quest-year{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:70px;
+  border:3px solid var(--border);
+  background:var(--panel);
+  font:10px "Press Start 2P",cursive;
+  color:var(--yellow);
 }
 
-.arrow{
-
-color:var(--green);
-
-margin-right:14px;
-
+.quest-content{
+  border:3px solid var(--border);
+  background:var(--panel);
+  padding:16px;
 }
 
-
-/* ==========================
-   META
-========================== */
-
-.meta{
-
-margin-top:20px;
-
-font-size:20px;
-
-font-weight:600;
-
-color:var(--muted);
-
+.quest-content h3{
+  font:10px "Press Start 2P",cursive;
+  line-height:1.8;
+  margin-bottom:10px;
 }
 
-.dot{
+.quest-content p{
+  font-size:18px;
+  color:var(--muted);
+  line-height:1.7;
+}
 
-margin:0 14px;
+/* INVENTORY */
 
-color:var(--pink);
+.inventory-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
 
+.inventory-card{
+  display:block;
+  position:relative;
+  min-height:220px;
+  padding:20px;
+  border:4px solid var(--border);
+  background:var(--panel);
+  box-shadow:6px 6px 0 var(--shadow);
+  color:inherit;
+  text-decoration:none;
+  transition:.18s;
+}
+
+.inventory-card:hover{
+  transform:translate(-3px,-3px);
+  box-shadow:10px 10px 0 var(--shadow);
+  border-color:var(--yellow);
+}
+
+.inventory-card:active{
+  transform:translate(2px,2px);
+  box-shadow:none;
+}
+
+.inventory-number{
+  width:58px;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:18px;
+  border:3px solid var(--border);
+  background:var(--window);
+  font:12px "Press Start 2P",cursive;
+  color:var(--yellow);
+}
+
+.inventory-card h3{
+  font:11px "Press Start 2P",cursive;
+  line-height:1.8;
+  margin-bottom:12px;
+}
+
+.inventory-card p{
+  color:var(--muted);
+  line-height:1.7;
+  font-size:18px;
+}
+
+.inventory-open{
+  position:absolute;
+  left:20px;
+  bottom:18px;
+  font:10px "Press Start 2P",cursive;
+  color:var(--green);
+}
+
+@media (max-width:768px){
+
+  .profile-grid{
+    grid-template-columns:1fr;
+  }
+
+  .quest-item{
+    grid-template-columns:1fr;
+  }
+
+  .quest-year{
+    min-height:56px;
+  }
+
+  .panel-body{
+    padding:16px;
+  }
+
+  .inventory-card{
+    min-height:190px;
+  }
+
+  .inventory-card p{
+    font-size:16px;
+  }
 }
 
 
-/* ==========================
-   ABOUT
-========================== */
 
-.about-text{
+/* ===================================================
+   Pixel OS v2 - Part 3
+   Music • Watch Log • Footer • Status
+=================================================== */
 
-padding:24px;
+/* MUSIC */
 
-border:4px solid var(--border);
-
-background:var(--window-dark);
-
-box-shadow:6px 6px 0 var(--shadow);
-
-font-size:22px;
-
-line-height:1.8;
-
-color:var(--muted);
-
+.music-box{
+  display:grid;
+  gap:22px;
 }
 
-
-/* ==========================
-   EXPERIENCE
-========================== */
-
-.timeline{
-
-padding-left:28px;
-
-border-left:4px dashed var(--green);
-
-margin-left:12px;
-
+.music-info{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:16px;
+  border:3px solid var(--border);
+  background:var(--panel);
 }
 
-.timeline-item{
-
-margin-bottom:32px;
-
-position:relative;
-
+.music-info i{
+  font-size:28px;
+  color:var(--yellow);
 }
 
-.timeline-item:last-child{
-
-margin-bottom:0;
-
+.music-info h3{
+  font:10px "Press Start 2P",cursive;
+  line-height:1.8;
+  margin-bottom:8px;
 }
 
-.timeline-item::before{
-
-content:"";
-
-position:absolute;
-
-left:-38px;
-
-top:8px;
-
-width:18px;
-
-height:18px;
-
-background:var(--green);
-
-border:3px solid #000;
-
+.music-info p{
+  color:var(--muted);
+  font-size:17px;
 }
-
-.timeline-content{
-
-padding:18px 20px;
-
-background:var(--panel);
-
-border:3px solid var(--border);
-
-box-shadow:4px 4px 0 var(--shadow);
-
-transition:.2s;
-
-}
-
-.timeline-content:hover{
-
-transform:translate(-2px,-2px);
-
-box-shadow:6px 6px 0 var(--shadow);
-
-}
-
-.timeline-content h4{
-
-font-family:"Press Start 2P",cursive;
-
-font-size:12px;
-
-line-height:1.8;
-
-margin-bottom:12px;
-
-color:var(--yellow);
-
-}
-
-.timeline-content p{
-
-font-size:20px;
-
-line-height:1.7;
-
-color:var(--muted);
-
-}
-
-
-/* ==========================
-   CURSOR
-========================== */
-
-.cursor{
-
-display:inline-block;
-
-width:12px;
-
-height:20px;
-
-background:var(--green);
-
-animation:pixelBlink .8s steps(1) infinite;
-
-}
-
-@keyframes pixelBlink{
-
-0%,50%{
-
-opacity:1;
-
-}
-
-51%,100%{
-
-opacity:0;
-
-}
-
-}
-
-
-/* ==========================
-   RESPONSIVE
-========================== */
-
-@media(max-width:768px){
-
-.command{
-
-font-size:8px;
-
-padding:8px 12px;
-
-}
-
-.command-toggle{
-
-font-size:8px;
-
-padding:12px;
-
-}
-
-.identity{
-
-padding:18px;
-
-}
-
-.identity h1{
-
-font-size:18px;
-
-line-height:2;
-
-}
-
-.meta{
-
-font-size:16px;
-
-}
-
-.about-text{
-
-font-size:18px;
-
-padding:18px;
-
-}
-
-.timeline-content h4{
-
-font-size:10px;
-
-}
-
-.timeline-content p{
-
-font-size:16px;
-
-}
-
-}
-
-  /* ===================================================
-   PIXEL OS v2
-   PART 3
-   Projects • Footer • Spotify
-===================================================*/
-
-
-/* ==========================
-   PROJECT GRID
-========================== */
-
-.projects-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-
-gap:22px;
-
-}
-
-
-/* ==========================
-   PROJECT CARD
-========================== */
-
-.project-card{
-
-display:flex;
-
-flex-direction:column;
-
-gap:18px;
-
-padding:22px;
-
-background:var(--panel);
-
-border:4px solid var(--border);
-
-box-shadow:6px 6px 0 var(--shadow);
-
-transition:.15s;
-
-position:relative;
-
-min-height:190px;
-
-}
-
-
-.project-card:hover{
-
-transform:translate(-4px,-4px);
-
-box-shadow:10px 10px 0 var(--shadow);
-
-background:#4C3B73;
-
-border-color:var(--yellow);
-
-}
-
-
-.project-card:active{
-
-transform:translate(2px,2px);
-
-box-shadow:none;
-
-}
-
-
-.project-card::after{
-
-content:"▶ OPEN";
-
-position:absolute;
-
-right:18px;
-
-bottom:16px;
-
-font-family:"Press Start 2P",cursive;
-
-font-size:9px;
-
-color:var(--green);
-
-}
-
-
-.project-index{
-
-display:inline-flex;
-
-align-items:center;
-
-justify-content:center;
-
-width:70px;
-
-height:34px;
-
-background:var(--window-dark);
-
-border:3px solid var(--border);
-
-font-family:"Press Start 2P",cursive;
-
-font-size:9px;
-
-color:var(--yellow);
-
-}
-
-
-.project-content{
-
-display:flex;
-
-flex-direction:column;
-
-gap:14px;
-
-}
-
-
-.project-content h3{
-
-font-family:"Press Start 2P",cursive;
-
-font-size:13px;
-
-line-height:1.7;
-
-color:var(--text);
-
-}
-
-
-.project-content p{
-
-font-size:20px;
-
-line-height:1.7;
-
-color:var(--muted);
-
-}
-
-
-/* ==========================
-   SPOTIFY
-========================== */
 
 .spotify-wrapper{
-
-padding:14px;
-
-background:var(--panel);
-
-border:4px solid var(--border);
-
-box-shadow:6px 6px 0 var(--shadow);
-
+  border:4px solid var(--border);
+  background:var(--panel);
+  padding:10px;
+  box-shadow:6px 6px 0 var(--shadow);
 }
-
 
 .spotify-wrapper iframe{
-
-border:none;
-
-display:block;
-
-width:100%;
-
-filter:saturate(.85);
-
+  display:block;
+  width:100%;
+  border:none;
 }
 
+/* WATCH LOG */
 
-/* ==========================
-   FOOTER
-========================== */
-
-.terminal-footer{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-margin-top:70px;
-
-padding-top:26px;
-
-border-top:4px dashed var(--border);
-
+#watchlist-container{
+  display:grid;
+  gap:18px;
 }
 
-
-.terminal-footer p{
-
-font-family:"Press Start 2P",cursive;
-
-font-size:9px;
-
-color:var(--green);
-
+.watch-card{
+  border:3px solid var(--border);
+  background:var(--panel);
+  padding:16px;
+  transition:.18s;
 }
 
-
-/* ==========================
-   FOOTER ICON
-========================== */
-
-.footer-icons{
-
-display:flex;
-
-gap:18px;
-
+.watch-card:hover{
+  transform:translate(-2px,-2px);
+  border-color:var(--yellow);
 }
 
+/* STATUS PANEL */
 
-.footer-instagram,
-
-.cat-secret{
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-width:42px;
-
-height:42px;
-
-background:var(--panel);
-
-border:3px solid var(--border);
-
-box-shadow:4px 4px 0 var(--shadow);
-
-font-size:18px;
-
-color:var(--muted);
-
-transition:.15s;
-
+.status-panel{
+  display:grid;
+  grid-template-columns:1fr 1fr auto;
+  gap:18px;
+  margin:28px 0;
+  padding:20px;
+  border:4px solid var(--border);
+  background:var(--panel);
+  box-shadow:8px 8px 0 var(--shadow);
 }
 
-
-.footer-instagram:hover{
-
-background:#E4405F;
-
-color:white;
-
-border-color:white;
-
-transform:translate(-2px,-2px);
-
-box-shadow:6px 6px 0 var(--shadow);
-
+.status-item{
+  display:grid;
+  gap:10px;
 }
 
-
-.cat-secret:hover{
-
-background:var(--yellow);
-
-color:#000;
-
-transform:translate(-2px,-2px);
-
-box-shadow:6px 6px 0 var(--shadow);
-
+.status-item span,
+.status-info span{
+  font:9px "Press Start 2P",cursive;
+  color:var(--muted);
 }
 
+.status-progress{
+  height:20px;
+  border:3px solid var(--border);
+  background:var(--bg2);
+  overflow:hidden;
+}
 
-/* ==========================
-   CAT
-========================== */
+.status-fill{
+  height:100%;
+}
+
+.hp-fill{
+  width:100%;
+  background:var(--green);
+}
+
+.exp-fill{
+  width:68%;
+  background:var(--blue);
+}
+
+.status-info{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-end;
+  gap:8px;
+}
+
+.status-info strong{
+  font:10px "Press Start 2P",cursive;
+}
+
+/* FOOTER */
+
+.footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:22px 0;
+  border-top:4px solid var(--border);
+}
+
+.footer-left,
+.footer-center{
+  font:9px "Press Start 2P",cursive;
+  color:var(--muted);
+}
+
+.footer-right{
+  display:flex;
+  gap:14px;
+}
+
+.pixel-icon{
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:3px solid var(--border);
+  background:var(--panel);
+  box-shadow:4px 4px 0 var(--shadow);
+  color:var(--text);
+  text-decoration:none;
+  transition:.18s;
+  cursor:pointer;
+}
+
+.pixel-icon:hover{
+  transform:translate(-2px,-2px);
+  box-shadow:6px 6px 0 var(--shadow);
+  border-color:var(--yellow);
+}
+
+.pixel-icon:active{
+  transform:translate(2px,2px);
+  box-shadow:none;
+}
+
+.footer .fa-instagram:hover{
+  color:#E4405F;
+}
+
+/* CAT */
 
 #catWalk{
-
-position:fixed;
-
-right:-80px;
-
-bottom:32px;
-
-font-size:34px;
-
-opacity:1;
-
-pointer-events:none;
-
-animation:pixelCat 16s linear infinite;
-
-z-index:999;
-
+  position:fixed;
+  right:-80px;
+  bottom:24px;
+  font-size:34px;
+  pointer-events:none;
+  z-index:999;
 }
 
-
-@keyframes pixelCat{
-
-0%{
-
-transform:translateX(0);
-
-}
-
-100%{
-
-transform:translateX(calc(-100vw - 200px));
-
-}
-
-}
-
-
-/* ==========================
-   ACHIEVEMENT POPUP
-========================== */
-
-.pixel-popup{
-
-position:fixed;
-
-left:50%;
-
-top:50%;
-
-transform:translate(-50%,-50%);
-
-padding:18px 24px;
-
-background:var(--panel);
-
-border:4px solid var(--yellow);
-
-box-shadow:8px 8px 0 var(--shadow);
-
-font-family:"Press Start 2P",cursive;
-
-font-size:10px;
-
-line-height:2;
-
-text-align:center;
-
-z-index:99999;
-
-}
-
-
-/* ==========================
-   HOVER GLOW
-========================== */
-
-.project-card:hover h3{
-
-color:var(--yellow);
-
-}
-
-
-.project-card:hover p{
-
-color:white;
-
-}
-
-
-/* ==========================
-   RESPONSIVE
-========================== */
-
-@media(max-width:768px){
-
-.projects-grid{
-
-grid-template-columns:1fr;
-
-}
-
-.project-content h3{
-
-font-size:11px;
-
-}
-
-.project-content p{
-
-font-size:17px;
-
-}
-
-.project-card{
-
-min-height:auto;
-
-}
-
-.terminal-footer{
-
-flex-direction:column;
-
-gap:22px;
-
-align-items:flex-start;
-
-}
-
-.footer-instagram,
-
-.cat-secret{
-
-width:38px;
-
-height:38px;
-
-}
-
-#catWalk{
-
-font-size:28px;
-
-bottom:18px;
-
-}
-
-}
-
-  /* ===================================================
-   PIXEL OS v2
-   PART 4
-   Polish & Effects
-===================================================*/
-
-
-/* ==========================
-   CRT SCANLINE
-========================== */
-
-body::after{
-
-content:"";
-
-position:fixed;
-
-inset:0;
-
-pointer-events:none;
-
-background:
-
-repeating-linear-gradient(
-
-0deg,
-
-rgba(255,255,255,.025) 0px,
-
-rgba(255,255,255,.025) 2px,
-
-transparent 2px,
-
-transparent 4px
-
-);
-
-opacity:.35;
-
-animation:scanMove .25s linear infinite;
-
-z-index:9999;
-
-}
-
-@keyframes scanMove{
-
-from{
-
-transform:translateY(0);
-
-}
-
-to{
-
-transform:translateY(4px);
-
-}
-
-}
-
-
-/* ==========================
-   WINDOW FLOAT
-========================== */
-
-.terminal{
-
-animation:windowFloat 6s ease-in-out infinite;
-
-}
-
-@keyframes windowFloat{
-
-0%,100%{
-
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-6px);
-
-}
-
-}
-
-
-/* ==========================
-   WINDOW GLOW
-========================== */
-
-.terminal:hover{
-
-box-shadow:
-
-12px 12px 0 var(--shadow),
-
-0 0 25px rgba(138,245,141,.15);
-
-}
-
-
-/* ==========================
-   TITLE BLINK
-========================== */
-
-.terminal-bar p{
-
-animation:titleBlink 2s steps(1) infinite;
-
-}
-
-@keyframes titleBlink{
-
-0%,90%{
-
-opacity:1;
-
-}
-
-95%{
-
-opacity:.4;
-
-}
-
-100%{
-
-opacity:1;
-
-}
-
-}
-
-
-/* ==========================
-   COMMAND BLINK
-========================== */
-
-.command{
-
-animation:commandIdle 2s infinite;
-
-}
-
-@keyframes commandIdle{
-
-0%,100%{
-
-border-color:var(--border);
-
-}
-
-50%{
-
-border-color:var(--yellow);
-
-}
-
-}
-
-
-/* ==========================
-   BUTTON PRESS
-========================== */
-
-.command-toggle:hover{
-
-filter:brightness(1.1);
-
-}
-
-.command-toggle:active{
-
-filter:brightness(.9);
-
-}
-
-
-/* ==========================
-   PROJECT ANIMATION
-========================== */
-
-.project-card{
-
-overflow:hidden;
-
-}
-
-.project-card::before{
-
-content:"";
-
-position:absolute;
-
-left:-120%;
-
-top:0;
-
-width:60%;
-
-height:100%;
-
-background:
-
-linear-gradient(
-
-90deg,
-
-transparent,
-
-rgba(255,255,255,.25),
-
-transparent
-
-);
-
-transition:.8s;
-
-}
-
-.project-card:hover::before{
-
-left:150%;
-
-}
-
-
-/* ==========================
-   PIXEL NOISE
-========================== */
-
-.terminal::before{
-
-content:"";
-
-position:absolute;
-
-inset:0;
-
-pointer-events:none;
-
-opacity:.03;
-
-background-image:
-
-radial-gradient(#fff 1px,transparent 1px);
-
-background-size:5px 5px;
-
-}
-
-
-/* ==========================
-   FOOTER STATUS
-========================== */
-
-.terminal-footer::before{
-
-content:"STATUS : ONLINE";
-
-font-family:"Press Start 2P",cursive;
-
-font-size:8px;
-
-color:var(--green);
-
-}
-
-
-/* ==========================
-   ICON EFFECT
-========================== */
-
-.footer-instagram:hover,
-
-.cat-secret:hover{
-
-animation:iconBounce .25s;
-
-}
-
-@keyframes iconBounce{
-
-0%{
-
-transform:translateY(0);
-
-}
-
-40%{
-
-transform:translateY(-6px);
-
-}
-
-100%{
-
-transform:translateY(-2px);
-
-}
-
-}
-
-
-/* ==========================
-   CAT PIXEL WALK
-========================== */
-
-#catWalk{
-
-image-rendering:pixelated;
-
-animation:
-
-pixelCat 16s linear infinite,
-
-catJump 1s steps(2) infinite;
-
-}
-
-@keyframes catJump{
-
-0%{
-
-margin-bottom:0;
-
-}
-
-50%{
-
-margin-bottom:3px;
-
-}
-
-100%{
-
-margin-bottom:0;
-
-}
-
-}
-
-
-/* ==========================
-   ACHIEVEMENT
-========================== */
+/* ACHIEVEMENT */
 
 .achievement{
+  position:fixed;
+  top:24px;
+  right:24px;
+  width:300px;
+  padding:18px;
+  border:4px solid var(--yellow);
+  background:var(--window);
+  box-shadow:8px 8px 0 var(--shadow);
+}
 
-position:fixed;
+.hidden{
+  display:none;
+}
 
-top:30px;
+.achievement h4{
+  font:10px "Press Start 2P",cursive;
+  color:var(--yellow);
+  margin-bottom:10px;
+}
 
-right:30px;
+.achievement p{
+  color:var(--muted);
+}
 
-padding:18px;
+/* MOBILE */
 
-width:260px;
+@media (max-width:768px){
 
-background:var(--panel);
+  .music-info{
+    flex-direction:column;
+    text-align:center;
+  }
 
-border:4px solid var(--yellow);
+  .status-panel{
+    grid-template-columns:1fr;
+  }
 
-box-shadow:8px 8px 0 var(--shadow);
+  .status-info{
+    align-items:flex-start;
+  }
 
-font-family:"Press Start 2P",cursive;
+  .footer{
+    flex-direction:column;
+    text-align:center;
+  }
 
-font-size:9px;
+  .footer-right{
+    justify-content:center;
+  }
+}
 
-line-height:2;
 
-animation:
+/* ===================================================
+   Pixel OS v2 - Part 4
+   Final Polish & Effects
+=================================================== */
 
-achievementIn .4s steps(5),
+/* CRT */
 
-achievementOut .4s steps(5) 4s forwards;
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.03) 0 2px,
+    transparent 2px 4px
+  );
+  opacity:.18;
+  animation:scanline .25s linear infinite;
+}
 
-z-index:999999;
+@keyframes scanline{
+  from{transform:translateY(0);}
+  to{transform:translateY(4px);}
+}
 
+/* Window float */
+
+.pixel-window{
+  animation:floatWindow 6s ease-in-out infinite;
+}
+
+@keyframes floatWindow{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-4px);}
+}
+
+/* Stars */
+
+.star{
+  position:fixed;
+  width:2px;
+  height:2px;
+  background:#fff;
+  border-radius:0;
+  animation:twinkle 2.5s steps(2) infinite;
+}
+
+@keyframes twinkle{
+  50%{opacity:.2;}
+}
+
+/* Pixel cursor */
+
+a,
+button{
+  cursor:pointer;
+}
+
+/* Hover polish */
+
+.panel:hover,
+.avatar-frame:hover{
+  border-color:var(--yellow);
+}
+
+.panel,
+.inventory-card,
+.pixel-icon,
+.avatar-frame,
+.boot-box{
+  transition:
+    transform .18s,
+    box-shadow .18s,
+    border-color .18s;
+}
+
+/* Inventory shine */
+
+.inventory-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,.12) 50%,
+    transparent 100%
+  );
+  transform:translateX(-120%);
+  transition:transform .8s;
+  pointer-events:none;
+}
+
+.inventory-card{
+  overflow:hidden;
+}
+
+.inventory-card:hover::before{
+  transform:translateX(120%);
+}
+
+/* Boot fade */
+
+#bootScreen.hide{
+  opacity:0;
+  visibility:hidden;
+  transition:.8s;
+}
+
+/* Achievement */
+
+.achievement.show{
+  display:block;
+  animation:achievementIn .35s ease;
 }
 
 @keyframes achievementIn{
-
-from{
-
-transform:translateX(400px);
-
+  from{
+    opacity:0;
+    transform:translateX(60px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
 }
 
-to{
+/* Cat */
 
-transform:translateX(0);
-
+#catWalk.walk{
+  animation:catWalkAnim 10s linear forwards;
 }
 
+@keyframes catWalkAnim{
+  from{
+    right:-80px;
+  }
+  to{
+    right:calc(100vw + 120px);
+  }
 }
 
-@keyframes achievementOut{
+/* Scrollbar */
 
-to{
-
-transform:translateX(400px);
-
-opacity:0;
-
+::-webkit-scrollbar{
+  width:16px;
 }
 
+::-webkit-scrollbar-track{
+  background:var(--bg2);
 }
 
+::-webkit-scrollbar-thumb{
+  background:var(--border);
+  border:3px solid var(--bg2);
+}
 
-/* ==========================
-   SELECTION
-========================== */
+::-webkit-scrollbar-thumb:hover{
+  background:var(--yellow);
+}
+
+/* Selection */
 
 ::selection{
+  background:var(--yellow);
+  color:#000;
+}
 
-background:var(--yellow);
+/* Focus */
 
-color:#000;
+button:focus-visible,
+a:focus-visible{
+  outline:3px solid var(--yellow);
+  outline-offset:4px;
+}
 
+/* Mobile */
+
+@media (max-width:768px){
+
+  body{
+    background-size:24px 24px;
+  }
+
+  body::after{
+    opacity:.1;
+  }
+
+  .pixel-window{
+    animation:none;
+  }
+
+  .inventory-card:hover,
+  .panel:hover,
+  .pixel-icon:hover{
+    transform:none;
+    box-shadow:inherit;
+  }
+
+  #catWalk{
+    font-size:28px;
+  }
 }
 
 
-/* ==========================
-   FOCUS
-========================== */
-
-button:focus,
-
-a:focus{
-
-outline:4px solid var(--yellow);
-
-outline-offset:4px;
-
-}
-
-
-/* ==========================
-   PIXEL ANIMATION
-========================== */
-
-@keyframes pixelFlash{
-
-0%{
-
-filter:brightness(1);
-
-}
-
-50%{
-
-filter:brightness(1.3);
-
-}
-
-100%{
-
-filter:brightness(1);
-
-}
-
-}
-
-.project-card:hover h3{
-
-animation:pixelFlash .6s infinite;
-
-}
-
-
-/* ==========================
-   MOBILE
-========================== */
-
-@media(max-width:768px){
-
-body::after{
-
-opacity:.18;
-
-}
-
-.terminal{
-
-animation:none;
-
-}
-
-.project-card:hover{
-
-transform:none;
-
-}
-
-.command-toggle:hover{
-
-transform:none;
-
-}
-
-.footer-instagram:hover,
-
-.cat-secret:hover{
-
-transform:none;
-
-}
-
-}
-}
