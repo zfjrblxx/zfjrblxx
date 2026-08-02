@@ -182,16 +182,11 @@ const Watchlist = {
 
     open() {
 
-        this.overlay.classList.add(
-            "show"
-        );
+    this.overlay.classList.add("show");
 
-        document.body.style.overflow =
-            "hidden";
+    this.render();
 
-        this.render();
-
-    },
+}
 
 
 
@@ -201,14 +196,9 @@ const Watchlist = {
 
     close() {
 
-        this.overlay.classList.remove(
-            "show"
-        );
+    this.overlay.classList.remove("show");
 
-        document.body.style.overflow =
-            "";
-
-    },
+}
 
 
    /* =====================================================
