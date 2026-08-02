@@ -921,4 +921,172 @@ a:focus-visible{
   }
 }
 
+/* ==========================================
+   MOBILE
+========================================== */
 
+@media (max-width:768px){
+
+/* WINDOW */
+
+.pixel-window{
+
+    width:100%;
+
+    min-height:100vh;
+
+    border:none;
+
+    border-radius:0;
+
+}
+
+/* HERO */
+
+.hero{
+
+    display:flex;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    gap:24px;
+
+    padding:28px 20px;
+
+}
+
+.avatar-frame{
+
+    width:150px;
+
+    height:150px;
+
+    margin:auto;
+
+}
+
+.hero-info h1{
+
+    font-size:15px;
+
+    line-height:1.7;
+
+}
+
+.hero-info>p{
+
+    font-size:18px;
+
+}
+
+.hero-meta{
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    font-size:18px;
+
+}
+
+/* STATS */
+
+.hero-stats{
+
+    grid-template-columns:1fr;
+
+    gap:12px;
+
+}
+
+/* PROFILE */
+
+.profile-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+/* QUEST */
+
+.quest-item{
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.quest-year{
+
+    width:100%;
+
+}
+
+/* INVENTORY */
+
+.inventory-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+/* MUSIC */
+
+.music-info{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.spotify-wrapper iframe{
+
+    height:180px;
+
+}
+
+/* FOOTER */
+
+.footer{
+
+    flex-direction:column;
+
+    gap:16px;
+
+    text-align:center;
+
+}
+
+.footer-right{
+
+    justify-content:center;
+
+}
+
+/* TITLE BAR */
+
+.window-bar{
+
+    padding:10px 14px;
+
+}
+
+.window-title{
+
+    display:none;
+
+}
+
+.window-clock{
+
+    font-size:12px;
+
+}
+
+}
