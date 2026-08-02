@@ -577,31 +577,47 @@ SMALL DEVICES
 }
 
 }
+
 @media (max-width:768px){
 
-.project-card{
-
-    padding:18px;
-
-}
-
-.project-top{
+.inventory-grid{
 
     display:flex;
 
-    align-items:center;
+    flex-direction:column;
 
     gap:14px;
 
 }
 
-.project-number{
+.inventory-card{
+
+    display:grid;
+
+    grid-template-columns:50px 1fr;
+
+    grid-template-areas:
+        "number title"
+        "number desc"
+        ". open";
+
+    align-items:start;
+
+    gap:8px 14px;
+
+    padding:18px;
+
+}
+
+.inventory-number{
+
+    grid-area:number;
 
     width:42px;
 
     height:42px;
 
-    flex-shrink:0;
+    margin:0;
 
     display:flex;
 
@@ -609,43 +625,41 @@ SMALL DEVICES
 
     align-items:center;
 
-    border:3px solid var(--border);
-
-    font-size:12px;
+    font-size:11px;
 
 }
 
-.project-info{
+.inventory-card h3{
 
-    flex:1;
+    grid-area:title;
 
-}
+    margin:0;
 
-.project-title{
-
-    font-size:18px;
-
-    margin-bottom:8px;
+    font-size:17px;
 
 }
 
-.project-desc{
+.inventory-card p{
+
+    grid-area:desc;
+
+    margin:0;
 
     font-size:13px;
 
     line-height:1.6;
 
-    color:var(--muted);
-
 }
 
-.project-link{
+.inventory-open{
 
-    margin-top:18px;
+    grid-area:open;
 
-    display:flex;
+    justify-self:end;
 
-    justify-content:flex-end;
+    margin-top:10px;
+
+    font-size:11px;
 
 }
 
