@@ -1,0 +1,1808 @@
+/* ===================================================
+   PIXEL OS v2
+   PART 1
+   Base Theme
+=================================================== */
+
+/* ==========================
+   GOOGLE FONT
+========================== */
+
+/*
+Tambahkan di HTML:
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+*/
+
+
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+:root{
+
+    --bg:#181421;
+    --bg2:#231B33;
+
+    --window:#302645;
+    --window-dark:#261D39;
+
+    --panel:#3E315C;
+
+    --border:#6C5DAE;
+    --border-light:#A596F1;
+
+    --text:#FFFFFF;
+    --muted:#D4CDEE;
+
+    --blue:#72E7FF;
+    --green:#8AF58D;
+    --yellow:#FFD857;
+    --pink:#FF84D5;
+
+    --shadow:#0E0B16;
+
+}
+
+
+/* ==========================
+   BODY
+========================== */
+
+body{
+
+    min-height:100vh;
+
+    padding:40px;
+
+    font-family:"Pixelify Sans",sans-serif;
+
+    color:var(--text);
+
+    background-color:var(--bg);
+
+    background-image:
+
+        linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+
+        linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+
+    background-size:32px 32px;
+
+    overflow-x:hidden;
+
+}
+
+
+/* ==========================
+   STAR BACKGROUND
+========================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.08;
+
+    background-image:
+
+        radial-gradient(#fff 1px,transparent 1px);
+
+    background-size:28px 28px;
+
+    animation:bgMove 35s linear infinite;
+
+}
+
+
+@keyframes bgMove{
+
+    from{
+
+        transform:translate(0,0);
+
+    }
+
+    to{
+
+        transform:translate(-28px,-28px);
+
+    }
+
+}
+
+
+/* ==========================
+   TERMINAL WINDOW
+========================== */
+
+.terminal{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    background:var(--window);
+
+    border:4px solid var(--border);
+
+    border-radius:0;
+
+    overflow:hidden;
+
+    position:relative;
+
+    box-shadow:
+
+        10px 10px 0 var(--shadow);
+
+}
+
+
+/* ==========================
+   TITLE BAR
+========================== */
+
+.terminal-bar{
+
+    height:56px;
+
+    display:grid;
+
+    grid-template-columns:1fr auto 1fr;
+
+    align-items:center;
+
+    padding:0 18px;
+
+    background:var(--panel);
+
+    border-bottom:4px solid var(--border);
+
+}
+
+
+/* ==========================
+   TITLE
+========================== */
+
+.terminal-bar p{
+
+    font-family:"Press Start 2P",cursive;
+
+    font-size:11px;
+
+    color:var(--yellow);
+
+    text-shadow:
+
+        2px 2px 0 #000;
+
+}
+
+
+/* ==========================
+   WINDOW BUTTON
+========================== */
+
+.terminal-dots{
+
+    display:flex;
+
+    gap:8px;
+
+}
+
+.terminal-dots span{
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:0;
+
+    border:2px solid #000;
+
+}
+
+.terminal-dots span:nth-child(1){
+
+    background:#FF5E5E;
+
+}
+
+.terminal-dots span:nth-child(2){
+
+    background:#FFD857;
+
+}
+
+.terminal-dots span:nth-child(3){
+
+    background:#6EFF8B;
+
+}
+
+
+/* ==========================
+   CONTENT
+========================== */
+
+.terminal-content{
+
+    padding:42px;
+
+}
+
+
+/* ==========================
+   SECTION
+========================== */
+
+.terminal-section{
+
+    margin-bottom:56px;
+
+}
+
+
+/* ==========================
+   PIXEL BORDER
+========================== */
+
+.pixel-box{
+
+    border:4px solid var(--border);
+
+    background:var(--panel);
+
+    box-shadow:6px 6px 0 var(--shadow);
+
+}
+
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+
+    width:18px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:var(--bg2);
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--border);
+
+    border:4px solid var(--bg2);
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--border-light);
+
+}
+
+
+/* ==========================
+   SELECTION
+========================== */
+
+::selection{
+
+    background:var(--yellow);
+
+    color:#000;
+
+}
+
+
+/* ==========================
+   LINKS
+========================== */
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+
+/* ==========================
+   IMAGE
+========================== */
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
+}
+
+
+/* ==========================
+   TRANSITION
+========================== */
+
+button,
+a{
+
+    transition:
+
+        .18s transform,
+
+        .18s background,
+
+        .18s color,
+
+        .18s border-color;
+
+}
+
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+body{
+
+padding:18px;
+
+}
+
+.terminal{
+
+max-width:100%;
+
+}
+
+.terminal-content{
+
+padding:28px 22px;
+
+}
+
+.terminal-bar{
+
+height:50px;
+
+padding:0 12px;
+
+}
+
+.terminal-bar p{
+
+font-size:8px;
+
+}
+
+.terminal-dots span{
+
+width:12px;
+
+height:12px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+body{
+
+padding:12px;
+
+}
+
+.terminal-content{
+
+padding:22px 16px;
+
+}
+/* ===================================================
+   PIXEL OS v2
+   PART 2
+   Typography & UI
+===================================================*/
+
+
+/* ==========================
+   COMMAND
+========================== */
+
+.command{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:10px 16px;
+
+margin-bottom:28px;
+
+background:var(--panel);
+
+border:3px solid var(--border);
+
+box-shadow:4px 4px 0 var(--shadow);
+
+font-family:"Press Start 2P",cursive;
+
+font-size:10px;
+
+color:var(--blue);
+
+letter-spacing:1px;
+
+}
+
+.command span:first-child{
+
+color:var(--green);
+
+}
+
+
+/* ==========================
+   TOGGLE BUTTON
+========================== */
+
+.command-toggle{
+
+width:100%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+cursor:pointer;
+
+border:3px solid var(--border);
+
+background:var(--panel);
+
+padding:14px 18px;
+
+font-family:"Press Start 2P",cursive;
+
+font-size:10px;
+
+color:var(--yellow);
+
+box-shadow:4px 4px 0 var(--shadow);
+
+}
+
+.command-toggle:hover{
+
+transform:translate(-2px,-2px);
+
+box-shadow:6px 6px 0 var(--shadow);
+
+background:#493A6D;
+
+}
+
+.command-toggle:active{
+
+transform:translate(2px,2px);
+
+box-shadow:none;
+
+}
+
+.toggle-arrow{
+
+transition:.25s;
+
+}
+
+.command-toggle.active .toggle-arrow{
+
+transform:rotate(90deg);
+
+}
+
+
+/* ==========================
+   COLLAPSE
+========================== */
+
+.projects-collapse{
+
+overflow:hidden;
+
+max-height:0;
+
+opacity:0;
+
+transition:
+
+max-height .45s ease,
+
+opacity .3s ease;
+
+}
+
+.projects-collapse.open{
+
+max-height:3000px;
+
+opacity:1;
+
+margin-top:24px;
+
+}
+
+
+/* ==========================
+   WHOAMI
+========================== */
+
+.identity{
+
+padding:24px;
+
+border:4px solid var(--border);
+
+background:var(--panel);
+
+box-shadow:6px 6px 0 var(--shadow);
+
+}
+
+.identity h1{
+
+font-family:"Press Start 2P",cursive;
+
+font-size:clamp(18px,3vw,32px);
+
+line-height:1.8;
+
+color:var(--yellow);
+
+text-shadow:2px 2px #000;
+
+word-break:break-word;
+
+}
+
+.arrow{
+
+color:var(--green);
+
+margin-right:14px;
+
+}
+
+
+/* ==========================
+   META
+========================== */
+
+.meta{
+
+margin-top:20px;
+
+font-size:20px;
+
+font-weight:600;
+
+color:var(--muted);
+
+}
+
+.dot{
+
+margin:0 14px;
+
+color:var(--pink);
+
+}
+
+
+/* ==========================
+   ABOUT
+========================== */
+
+.about-text{
+
+padding:24px;
+
+border:4px solid var(--border);
+
+background:var(--window-dark);
+
+box-shadow:6px 6px 0 var(--shadow);
+
+font-size:22px;
+
+line-height:1.8;
+
+color:var(--muted);
+
+}
+
+
+/* ==========================
+   EXPERIENCE
+========================== */
+
+.timeline{
+
+padding-left:28px;
+
+border-left:4px dashed var(--green);
+
+margin-left:12px;
+
+}
+
+.timeline-item{
+
+margin-bottom:32px;
+
+position:relative;
+
+}
+
+.timeline-item:last-child{
+
+margin-bottom:0;
+
+}
+
+.timeline-item::before{
+
+content:"";
+
+position:absolute;
+
+left:-38px;
+
+top:8px;
+
+width:18px;
+
+height:18px;
+
+background:var(--green);
+
+border:3px solid #000;
+
+}
+
+.timeline-content{
+
+padding:18px 20px;
+
+background:var(--panel);
+
+border:3px solid var(--border);
+
+box-shadow:4px 4px 0 var(--shadow);
+
+transition:.2s;
+
+}
+
+.timeline-content:hover{
+
+transform:translate(-2px,-2px);
+
+box-shadow:6px 6px 0 var(--shadow);
+
+}
+
+.timeline-content h4{
+
+font-family:"Press Start 2P",cursive;
+
+font-size:12px;
+
+line-height:1.8;
+
+margin-bottom:12px;
+
+color:var(--yellow);
+
+}
+
+.timeline-content p{
+
+font-size:20px;
+
+line-height:1.7;
+
+color:var(--muted);
+
+}
+
+
+/* ==========================
+   CURSOR
+========================== */
+
+.cursor{
+
+display:inline-block;
+
+width:12px;
+
+height:20px;
+
+background:var(--green);
+
+animation:pixelBlink .8s steps(1) infinite;
+
+}
+
+@keyframes pixelBlink{
+
+0%,50%{
+
+opacity:1;
+
+}
+
+51%,100%{
+
+opacity:0;
+
+}
+
+}
+
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+.command{
+
+font-size:8px;
+
+padding:8px 12px;
+
+}
+
+.command-toggle{
+
+font-size:8px;
+
+padding:12px;
+
+}
+
+.identity{
+
+padding:18px;
+
+}
+
+.identity h1{
+
+font-size:18px;
+
+line-height:2;
+
+}
+
+.meta{
+
+font-size:16px;
+
+}
+
+.about-text{
+
+font-size:18px;
+
+padding:18px;
+
+}
+
+.timeline-content h4{
+
+font-size:10px;
+
+}
+
+.timeline-content p{
+
+font-size:16px;
+
+}
+
+}
+
+  /* ===================================================
+   PIXEL OS v2
+   PART 3
+   Projects • Footer • Spotify
+===================================================*/
+
+
+/* ==========================
+   PROJECT GRID
+========================== */
+
+.projects-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:22px;
+
+}
+
+
+/* ==========================
+   PROJECT CARD
+========================== */
+
+.project-card{
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+padding:22px;
+
+background:var(--panel);
+
+border:4px solid var(--border);
+
+box-shadow:6px 6px 0 var(--shadow);
+
+transition:.15s;
+
+position:relative;
+
+min-height:190px;
+
+}
+
+
+.project-card:hover{
+
+transform:translate(-4px,-4px);
+
+box-shadow:10px 10px 0 var(--shadow);
+
+background:#4C3B73;
+
+border-color:var(--yellow);
+
+}
+
+
+.project-card:active{
+
+transform:translate(2px,2px);
+
+box-shadow:none;
+
+}
+
+
+.project-card::after{
+
+content:"▶ OPEN";
+
+position:absolute;
+
+right:18px;
+
+bottom:16px;
+
+font-family:"Press Start 2P",cursive;
+
+font-size:9px;
+
+color:var(--green);
+
+}
+
+
+.project-index{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+width:70px;
+
+height:34px;
+
+background:var(--window-dark);
+
+border:3px solid var(--border);
+
+font-family:"Press Start 2P",cursive;
+
+font-size:9px;
+
+color:var(--yellow);
+
+}
+
+
+.project-content{
+
+display:flex;
+
+flex-direction:column;
+
+gap:14px;
+
+}
+
+
+.project-content h3{
+
+font-family:"Press Start 2P",cursive;
+
+font-size:13px;
+
+line-height:1.7;
+
+color:var(--text);
+
+}
+
+
+.project-content p{
+
+font-size:20px;
+
+line-height:1.7;
+
+color:var(--muted);
+
+}
+
+
+/* ==========================
+   SPOTIFY
+========================== */
+
+.spotify-wrapper{
+
+padding:14px;
+
+background:var(--panel);
+
+border:4px solid var(--border);
+
+box-shadow:6px 6px 0 var(--shadow);
+
+}
+
+
+.spotify-wrapper iframe{
+
+border:none;
+
+display:block;
+
+width:100%;
+
+filter:saturate(.85);
+
+}
+
+
+/* ==========================
+   FOOTER
+========================== */
+
+.terminal-footer{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-top:70px;
+
+padding-top:26px;
+
+border-top:4px dashed var(--border);
+
+}
+
+
+.terminal-footer p{
+
+font-family:"Press Start 2P",cursive;
+
+font-size:9px;
+
+color:var(--green);
+
+}
+
+
+/* ==========================
+   FOOTER ICON
+========================== */
+
+.footer-icons{
+
+display:flex;
+
+gap:18px;
+
+}
+
+
+.footer-instagram,
+
+.cat-secret{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+width:42px;
+
+height:42px;
+
+background:var(--panel);
+
+border:3px solid var(--border);
+
+box-shadow:4px 4px 0 var(--shadow);
+
+font-size:18px;
+
+color:var(--muted);
+
+transition:.15s;
+
+}
+
+
+.footer-instagram:hover{
+
+background:#E4405F;
+
+color:white;
+
+border-color:white;
+
+transform:translate(-2px,-2px);
+
+box-shadow:6px 6px 0 var(--shadow);
+
+}
+
+
+.cat-secret:hover{
+
+background:var(--yellow);
+
+color:#000;
+
+transform:translate(-2px,-2px);
+
+box-shadow:6px 6px 0 var(--shadow);
+
+}
+
+
+/* ==========================
+   CAT
+========================== */
+
+#catWalk{
+
+position:fixed;
+
+right:-80px;
+
+bottom:32px;
+
+font-size:34px;
+
+opacity:1;
+
+pointer-events:none;
+
+animation:pixelCat 16s linear infinite;
+
+z-index:999;
+
+}
+
+
+@keyframes pixelCat{
+
+0%{
+
+transform:translateX(0);
+
+}
+
+100%{
+
+transform:translateX(calc(-100vw - 200px));
+
+}
+
+}
+
+
+/* ==========================
+   ACHIEVEMENT POPUP
+========================== */
+
+.pixel-popup{
+
+position:fixed;
+
+left:50%;
+
+top:50%;
+
+transform:translate(-50%,-50%);
+
+padding:18px 24px;
+
+background:var(--panel);
+
+border:4px solid var(--yellow);
+
+box-shadow:8px 8px 0 var(--shadow);
+
+font-family:"Press Start 2P",cursive;
+
+font-size:10px;
+
+line-height:2;
+
+text-align:center;
+
+z-index:99999;
+
+}
+
+
+/* ==========================
+   HOVER GLOW
+========================== */
+
+.project-card:hover h3{
+
+color:var(--yellow);
+
+}
+
+
+.project-card:hover p{
+
+color:white;
+
+}
+
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:768px){
+
+.projects-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.project-content h3{
+
+font-size:11px;
+
+}
+
+.project-content p{
+
+font-size:17px;
+
+}
+
+.project-card{
+
+min-height:auto;
+
+}
+
+.terminal-footer{
+
+flex-direction:column;
+
+gap:22px;
+
+align-items:flex-start;
+
+}
+
+.footer-instagram,
+
+.cat-secret{
+
+width:38px;
+
+height:38px;
+
+}
+
+#catWalk{
+
+font-size:28px;
+
+bottom:18px;
+
+}
+
+}
+
+  /* ===================================================
+   PIXEL OS v2
+   PART 4
+   Polish & Effects
+===================================================*/
+
+
+/* ==========================
+   CRT SCANLINE
+========================== */
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+background:
+
+repeating-linear-gradient(
+
+0deg,
+
+rgba(255,255,255,.025) 0px,
+
+rgba(255,255,255,.025) 2px,
+
+transparent 2px,
+
+transparent 4px
+
+);
+
+opacity:.35;
+
+animation:scanMove .25s linear infinite;
+
+z-index:9999;
+
+}
+
+@keyframes scanMove{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(4px);
+
+}
+
+}
+
+
+/* ==========================
+   WINDOW FLOAT
+========================== */
+
+.terminal{
+
+animation:windowFloat 6s ease-in-out infinite;
+
+}
+
+@keyframes windowFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-6px);
+
+}
+
+}
+
+
+/* ==========================
+   WINDOW GLOW
+========================== */
+
+.terminal:hover{
+
+box-shadow:
+
+12px 12px 0 var(--shadow),
+
+0 0 25px rgba(138,245,141,.15);
+
+}
+
+
+/* ==========================
+   TITLE BLINK
+========================== */
+
+.terminal-bar p{
+
+animation:titleBlink 2s steps(1) infinite;
+
+}
+
+@keyframes titleBlink{
+
+0%,90%{
+
+opacity:1;
+
+}
+
+95%{
+
+opacity:.4;
+
+}
+
+100%{
+
+opacity:1;
+
+}
+
+}
+
+
+/* ==========================
+   COMMAND BLINK
+========================== */
+
+.command{
+
+animation:commandIdle 2s infinite;
+
+}
+
+@keyframes commandIdle{
+
+0%,100%{
+
+border-color:var(--border);
+
+}
+
+50%{
+
+border-color:var(--yellow);
+
+}
+
+}
+
+
+/* ==========================
+   BUTTON PRESS
+========================== */
+
+.command-toggle:hover{
+
+filter:brightness(1.1);
+
+}
+
+.command-toggle:active{
+
+filter:brightness(.9);
+
+}
+
+
+/* ==========================
+   PROJECT ANIMATION
+========================== */
+
+.project-card{
+
+overflow:hidden;
+
+}
+
+.project-card::before{
+
+content:"";
+
+position:absolute;
+
+left:-120%;
+
+top:0;
+
+width:60%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.25),
+
+transparent
+
+);
+
+transition:.8s;
+
+}
+
+.project-card:hover::before{
+
+left:150%;
+
+}
+
+
+/* ==========================
+   PIXEL NOISE
+========================== */
+
+.terminal::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+pointer-events:none;
+
+opacity:.03;
+
+background-image:
+
+radial-gradient(#fff 1px,transparent 1px);
+
+background-size:5px 5px;
+
+}
+
+
+/* ==========================
+   FOOTER STATUS
+========================== */
+
+.terminal-footer::before{
+
+content:"STATUS : ONLINE";
+
+font-family:"Press Start 2P",cursive;
+
+font-size:8px;
+
+color:var(--green);
+
+}
+
+
+/* ==========================
+   ICON EFFECT
+========================== */
+
+.footer-instagram:hover,
+
+.cat-secret:hover{
+
+animation:iconBounce .25s;
+
+}
+
+@keyframes iconBounce{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+40%{
+
+transform:translateY(-6px);
+
+}
+
+100%{
+
+transform:translateY(-2px);
+
+}
+
+}
+
+
+/* ==========================
+   CAT PIXEL WALK
+========================== */
+
+#catWalk{
+
+image-rendering:pixelated;
+
+animation:
+
+pixelCat 16s linear infinite,
+
+catJump 1s steps(2) infinite;
+
+}
+
+@keyframes catJump{
+
+0%{
+
+margin-bottom:0;
+
+}
+
+50%{
+
+margin-bottom:3px;
+
+}
+
+100%{
+
+margin-bottom:0;
+
+}
+
+}
+
+
+/* ==========================
+   ACHIEVEMENT
+========================== */
+
+.achievement{
+
+position:fixed;
+
+top:30px;
+
+right:30px;
+
+padding:18px;
+
+width:260px;
+
+background:var(--panel);
+
+border:4px solid var(--yellow);
+
+box-shadow:8px 8px 0 var(--shadow);
+
+font-family:"Press Start 2P",cursive;
+
+font-size:9px;
+
+line-height:2;
+
+animation:
+
+achievementIn .4s steps(5),
+
+achievementOut .4s steps(5) 4s forwards;
+
+z-index:999999;
+
+}
+
+@keyframes achievementIn{
+
+from{
+
+transform:translateX(400px);
+
+}
+
+to{
+
+transform:translateX(0);
+
+}
+
+}
+
+@keyframes achievementOut{
+
+to{
+
+transform:translateX(400px);
+
+opacity:0;
+
+}
+
+}
+
+
+/* ==========================
+   SELECTION
+========================== */
+
+::selection{
+
+background:var(--yellow);
+
+color:#000;
+
+}
+
+
+/* ==========================
+   FOCUS
+========================== */
+
+button:focus,
+
+a:focus{
+
+outline:4px solid var(--yellow);
+
+outline-offset:4px;
+
+}
+
+
+/* ==========================
+   PIXEL ANIMATION
+========================== */
+
+@keyframes pixelFlash{
+
+0%{
+
+filter:brightness(1);
+
+}
+
+50%{
+
+filter:brightness(1.3);
+
+}
+
+100%{
+
+filter:brightness(1);
+
+}
+
+}
+
+.project-card:hover h3{
+
+animation:pixelFlash .6s infinite;
+
+}
+
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:768px){
+
+body::after{
+
+opacity:.18;
+
+}
+
+.terminal{
+
+animation:none;
+
+}
+
+.project-card:hover{
+
+transform:none;
+
+}
+
+.command-toggle:hover{
+
+transform:none;
+
+}
+
+.footer-instagram:hover,
+
+.cat-secret:hover{
+
+transform:none;
+
+}
+
+}
+}
