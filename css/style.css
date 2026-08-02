@@ -1048,6 +1048,8 @@ footer{
 
     align-items:center;
 
+    gap:16px;
+
 }
 
 .footer-icons{
@@ -1057,6 +1059,8 @@ footer{
     align-items:center;
 
     gap:14px;
+
+    height:24px;
 
 }
 
@@ -1105,6 +1109,20 @@ footer{
     transform:translateY(-2px);
 
 }
+
+.cat-secret,
+.footer-instagram{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    height:24px;
+
+}
+
 /* ========================================
    CAT EASTER EGG
 ======================================== */
