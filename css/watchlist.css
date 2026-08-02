@@ -600,3 +600,62 @@
     }
 
 }
+
+
+/* ==========================================
+   WATCHLIST OVERLAY
+========================================== */
+
+.watchlist-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.75);
+
+    z-index:9999;
+
+}
+
+.watchlist-overlay.show{
+
+    display:flex;
+
+}
+
+.watch-window{
+
+    width:min(900px,90vw);
+
+    max-height:85vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    border:4px solid #fff;
+
+    background:#1e1b2e;
+
+    box-shadow:8px 8px 0 #000;
+
+}
+
+.watch-content{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:20px;
+
+}
