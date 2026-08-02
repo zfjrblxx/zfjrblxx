@@ -11,14 +11,19 @@
 // MUSIC PLAYER
 // ========================================
 
-const bgMusic = document.getElementById("bgMusic");
-const musicButton = document.getElementById("musicToggle");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (bgMusic && musicButton) {
+    const bgMusic =
+        document.getElementById("bgMusic");
+
+    const musicButton =
+        document.getElementById("musicToggle");
+
+    if (!bgMusic || !musicButton) return;
 
     bgMusic.volume = 0.30;
 
-    function updateButton() {
+    function updateMusicButton() {
 
         if (bgMusic.paused) {
 
@@ -48,20 +53,22 @@ if (bgMusic && musicButton) {
 
             }
 
-        } catch (err) {
+            updateMusicButton();
 
-            console.error(err);
+        } catch (error) {
+
+            console.error(error);
 
         }
 
     });
 
-    bgMusic.addEventListener("play", updateButton);
-    bgMusic.addEventListener("pause", updateButton);
+    bgMusic.addEventListener("play", updateMusicButton);
+    bgMusic.addEventListener("pause", updateMusicButton);
 
-    updateButton();
+    updateMusicButton();
 
-}
+});
 
 
 /* =====================================================
