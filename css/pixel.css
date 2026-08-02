@@ -1379,3 +1379,103 @@ box-shadow:0 0 18px rgba(255,217,102,.18);
     background:#3c7a3c;
 
 }
+
+/* ==========================================
+BOOT SCREEN
+========================================== */
+
+.boot-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#1b1730;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999999;
+
+    transition:.45s;
+
+}
+
+.boot-screen.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+.boot-box{
+
+    text-align:center;
+
+}
+
+.boot-box h1{
+
+    font:22px "Press Start 2P", cursive;
+
+    color:#fff;
+
+    margin-bottom:28px;
+
+}
+
+.boot-box p{
+
+    color:#7CFF7C;
+
+    font-size:18px;
+
+    margin-bottom:30px;
+
+}
+
+.boot-note{
+
+    font-size:54px;
+
+    color:#FFD966;
+
+    margin-bottom:26px;
+
+    animation:bootFloat 1.6s ease-in-out infinite;
+
+}
+
+.boot-box span{
+
+    color:#bbb;
+
+    font-size:15px;
+
+    animation:blink 1s infinite;
+
+}
+
+@keyframes blink{
+
+    50%{
+
+        opacity:.3;
+
+    }
+
+}
+
+@keyframes bootFloat{
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+}
