@@ -1,7 +1,7 @@
 /* =====================================================
-   Pixel OS v2
-   app.js
-   Part 1
+   PIXEL OS v2
+   APP.JS
+   PART 1A
 ===================================================== */
 
 "use strict";
@@ -12,19 +12,33 @@
 
 const App = {
 
-    init() {
+    init(){
 
-        Clock.init();
+    Clock.init();
 
-        Age.init();
+    Age.init();
 
-        Boot.init();
+    Boot.init();
 
-        Achievement.init();
+    Watchlist.init();
 
-        Watchlist.init();
+    Achievement.init();
 
-    }
+    Panel.init();
+
+    Inventory.init();
+
+    Reveal.init();
+
+    Shortcut.init();
+
+    Welcome.init();
+
+    Cat.init();
+
+    Secret.init();
+
+}
 
 };
 
@@ -38,33 +52,68 @@ const Clock = {
 
     element: null,
 
+    timer: null,
+
     init() {
 
-        this.element = document.getElementById("clock");
-
-        this.update();
-
-        setInterval(() => {
-
-            this.update();
-
-        }, 1000);
-
-    },
-
-    update() {
+        this.element =
+            document.getElementById(
+                "clock"
+            );
 
         if (!this.element) return;
 
-        const now = new Date();
+        this.update();
+
+        this.timer = setInterval(
+
+            () => {
+
+                this.update();
+
+            },
+
+            1000
+
+        );
+
+    },
+
+
+
+    update() {
+
+        const now =
+            new Date();
 
         const hour =
-            String(now.getHours()).padStart(2, "0");
+            String(
+
+                now.getHours()
+
+            ).padStart(
+
+                2,
+
+                "0"
+
+            );
 
         const minute =
-            String(now.getMinutes()).padStart(2, "0");
+            String(
+
+                now.getMinutes()
+
+            ).padStart(
+
+                2,
+
+                "0"
+
+            );
 
         this.element.textContent =
+
             `${hour}:${minute}`;
 
     }
@@ -87,17 +136,28 @@ const Age = {
 
     init() {
 
-        const age =
-            document.getElementById("age");
+        const element =
 
-        if (!age) return;
+            document.getElementById(
 
-        const today = new Date();
+                "age"
 
-        let current =
-            today.getFullYear() - this.year;
+            );
+
+        if (!element) return;
+
+        const today =
+
+            new Date();
+
+        let age =
+
+            today.getFullYear()
+
+            - this.year;
 
         const birthday =
+
             new Date(
 
                 today.getFullYear(),
@@ -108,17 +168,22 @@ const Age = {
 
             );
 
-        if (today < birthday) {
+        if (
 
-            current--;
+            today < birthday
+
+        ) {
+
+            age--;
 
         }
 
-        age.textContent = current;
+        element.textContent = age;
 
     }
 
 };
+
 
 
 
@@ -128,83 +193,112 @@ const Age = {
 
 const Boot = {
 
+    screen: null,
+
+    bar: null,
+
+    text: null,
+
     progress: 0,
+
+    messages: [
+
+        "Loading Assets...",
+
+        "Loading Portfolio...",
+
+        "Loading Projects...",
+
+        "Loading Playlist...",
+
+        "Loading Watch Log...",
+
+        "Welcome."
+
+    ],
 
     init() {
 
-        const screen =
+        this.screen =
             document.getElementById("bootScreen");
 
-        const bar =
+        this.bar =
             document.getElementById("bootBar");
 
-        const text =
+        this.text =
             document.getElementById("bootText");
 
-        if (!screen) return;
+        if (!this.screen) return;
 
-        const steps = [
+        this.start();
 
-            "Loading Assets...",
+    },
 
-            "Loading Portfolio...",
 
-            "Loading Projects...",
 
-            "Loading Music...",
+    start() {
 
-            "Loading Watch Log...",
+        let step = 0;
 
-            "Ready."
+        const timer = setInterval(() => {
 
-        ];
+            this.progress = Math.min(
 
-        let index = 0;
+                this.progress + 20,
 
-        const timer =
-            setInterval(() => {
+                100
 
-                this.progress += 20;
+            );
 
-                if (bar) {
+            if (this.bar) {
 
-                    bar.style.width =
-                        this.progress + "%";
+                this.bar.style.width =
 
-                }
+                    this.progress + "%";
 
-                if (
+            }
 
-                    text &&
+            if (
 
-                    steps[index]
+                this.text &&
 
-                ) {
+                this.messages[step]
 
-                    text.textContent =
-                        steps[index];
+            ) {
 
-                }
+                this.text.textContent =
 
-                index++;
+                    this.messages[step];
 
-                if (
+            }
 
-                    this.progress >= 100
+            step++;
 
-                ) {
+            if (this.progress >= 100) {
 
-                    clearInterval(timer);
+                clearInterval(timer);
 
-                    setTimeout(() => {
+                setTimeout(() => {
 
-                        screen.classList.add("hide");
+                    this.finish();
 
-                    }, 600);
+                }, 500);
 
-                }
+            }
 
-            }, 400);
+        }, 400);
+
+    },
+
+
+
+    finish() {
+
+        this.screen.classList.add(
+
+            "hide"
+
+        );
 
     }
 
@@ -221,6 +315,7 @@ const Watchlist = {
     async init() {
 
         const container =
+
             document.getElementById(
 
                 "watchlist-container"
@@ -232,13 +327,21 @@ const Watchlist = {
         try {
 
             const response =
+
                 await fetch(
 
                     "sections/watchlist.html"
 
                 );
 
+            if (!response.ok) {
+
+                throw new Error();
+
+            }
+
             container.innerHTML =
+
                 await response.text();
 
         }
@@ -246,6 +349,7 @@ const Watchlist = {
         catch {
 
             container.innerHTML =
+
                 "<p>Failed to load watch log.</p>";
 
         }
@@ -264,11 +368,12 @@ const Achievement = {
 
     element: null,
 
-    storage: "pixel-achievements",
+    key: "pixel-achievement",
 
     init() {
 
         this.element =
+
             document.getElementById(
 
                 "achievement"
@@ -277,16 +382,19 @@ const Achievement = {
 
     },
 
+
+
     unlock(title) {
 
         if (!this.element) return;
 
-        const list =
+        const cache =
+
             JSON.parse(
 
                 localStorage.getItem(
 
-                    this.storage
+                    this.key
 
                 ) || "[]"
 
@@ -294,7 +402,7 @@ const Achievement = {
 
         if (
 
-            list.includes(title)
+            cache.includes(title)
 
         ) {
 
@@ -302,30 +410,55 @@ const Achievement = {
 
         }
 
-        list.push(title);
+        cache.push(title);
 
         localStorage.setItem(
 
-            this.storage,
+            this.key,
 
-            JSON.stringify(list)
+            JSON.stringify(cache)
 
         );
 
-        this.element.querySelector("p").textContent =
-            title;
+        const text =
 
-        this.element.classList.remove("hidden");
+            this.element.querySelector("p");
 
-        this.element.classList.add("show");
+        if (text) {
+
+            text.textContent =
+
+                title;
+
+        }
+
+        this.element.classList.remove(
+
+            "hidden"
+
+        );
+
+        this.element.classList.add(
+
+            "show"
+
+        );
 
         setTimeout(() => {
 
-            this.element.classList.remove("show");
+            this.element.classList.remove(
 
-            this.element.classList.add("hidden");
+                "show"
 
-        }, 3500);
+            );
+
+            this.element.classList.add(
+
+                "hidden"
+
+            );
+
+        }, 3000);
 
     }
 
@@ -343,11 +476,40 @@ document.addEventListener(
 
     () => {
 
-        App.init();
+       init(){
+
+    Clock.init();
+
+    Age.init();
+
+    Boot.init();
+
+    Watchlist.init();
+
+    Achievement.init();
+
+    Panel.init();
+
+    Inventory.init();
+
+    Reveal.init();
+
+    Shortcut.init();
+
+    Welcome.init();
+
+}
+
+        Watchlist.init();
+
+        Achievement.init();
 
     }
 
 );
+
+
+
 
 /* =====================================================
    PANEL
@@ -355,12 +517,14 @@ document.addEventListener(
 
 const Panel = {
 
+    items: [],
+
     init() {
 
-        const panels =
+        this.items =
             document.querySelectorAll(".panel");
 
-        panels.forEach((panel, index) => {
+        this.items.forEach((panel, index) => {
 
             panel.style.opacity = "0";
 
@@ -378,6 +542,38 @@ const Panel = {
                     "translateY(0)";
 
             }, index * 150);
+
+            panel.addEventListener(
+
+                "mouseenter",
+
+                () => {
+
+                    panel.classList.add(
+
+                        "panel-hover"
+
+                    );
+
+                }
+
+            );
+
+            panel.addEventListener(
+
+                "mouseleave",
+
+                () => {
+
+                    panel.classList.remove(
+
+                        "panel-hover"
+
+                    );
+
+                }
+
+            );
 
         });
 
@@ -398,75 +594,78 @@ const Inventory = {
     init() {
 
         this.cards =
+
             document.querySelectorAll(
+
                 ".inventory-card"
+
             );
 
         this.cards.forEach(card => {
 
             card.addEventListener(
+
                 "mouseenter",
+
                 () => {
 
-                    this.hover(card);
+                    card.classList.add(
+
+                        "inventory-hover"
+
+                    );
 
                 }
+
             );
 
             card.addEventListener(
+
                 "mouseleave",
+
                 () => {
 
-                    this.leave(card);
+                    card.classList.remove(
+
+                        "inventory-hover"
+
+                    );
 
                 }
+
             );
 
             card.addEventListener(
-                "click",
-                () => {
 
-                    this.open(card);
+                "click",
+
+                e => {
+
+                    const title =
+
+                        card.querySelector(
+
+                            "h3"
+
+                        );
+
+                    if (title) {
+
+                        Achievement.unlock(
+
+                            "Opened " +
+
+                            title.textContent
+
+                        );
+
+                    }
 
                 }
+
             );
 
         });
-
-    },
-
-
-
-    hover(card){
-
-        card.classList.add("hover");
-
-    },
-
-
-
-    leave(card){
-
-        card.classList.remove("hover");
-
-    },
-
-
-
-    open(card){
-
-        const title =
-            card.querySelector("h3");
-
-        if(!title) return;
-
-        Achievement.unlock(
-
-            "Opened " +
-
-            title.textContent
-
-        );
 
     }
 
@@ -475,12 +674,48 @@ const Inventory = {
 
 
 /* =====================================================
-   PANEL EFFECT
+   PANEL REVEAL
 ===================================================== */
 
-const PanelEffect = {
+const Reveal = {
 
-    init(){
+    observer: null,
+
+    init() {
+
+        this.observer =
+
+            new IntersectionObserver(
+
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (
+
+                            entry.isIntersecting
+
+                        ) {
+
+                            entry.target.classList.add(
+
+                                "show-panel"
+
+                            );
+
+                        }
+
+                    });
+
+                },
+
+                {
+
+                    threshold:0.15
+
+                }
+
+            );
 
         document
 
@@ -490,91 +725,13 @@ const PanelEffect = {
 
             )
 
-            .forEach(panel=>{
+            .forEach(panel => {
 
-                panel.addEventListener(
+                this.observer.observe(
 
-                    "mouseenter",
-
-                    ()=>{
-
-                        panel.style.borderColor=
-
-                            "var(--yellow)";
-
-                    }
+                    panel
 
                 );
-
-
-
-                panel.addEventListener(
-
-                    "mouseleave",
-
-                    ()=>{
-
-                        panel.style.borderColor=
-
-                            "var(--border)";
-
-                    }
-
-                );
-
-            });
-
-    }
-
-};
-
-/* =====================================================
-   REVEAL
-===================================================== */
-
-const Reveal = {
-
-    observer: null,
-
-    init() {
-
-        this.observer = new IntersectionObserver(
-
-            entries => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add(
-                            "show-panel"
-                        );
-
-                        this.observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                });
-
-            },
-
-            {
-
-                threshold:0.15
-
-            }
-
-        );
-
-        document
-
-            .querySelectorAll(".panel")
-
-            .forEach(panel=>{
-
-                this.observer.observe(panel);
 
             });
 
@@ -590,18 +747,19 @@ const Reveal = {
 
 const Shortcut = {
 
-    init(){
+    init() {
 
         document.addEventListener(
 
             "keydown",
 
-            e=>{
+            e => {
 
                 const key =
+
                     e.key.toLowerCase();
 
-                switch(key){
+                switch (key) {
 
                     case "h":
 
@@ -678,20 +836,56 @@ const Shortcut = {
 
 
 /* =====================================================
-   SMOOTH BUTTON
+   STORAGE
 ===================================================== */
 
-const Scroll = {
+const Storage = {
 
-    top(){
+    key:"pixel-os",
 
-        window.scrollTo({
+    get(name,fallback=null){
 
-            top:0,
+        const data=
 
-            behavior:"smooth"
+            JSON.parse(
 
-        });
+                localStorage.getItem(
+
+                    this.key
+
+                )||"{}"
+
+            );
+
+        return data[name] ?? fallback;
+
+    },
+
+
+
+    set(name,value){
+
+        const data=
+
+            JSON.parse(
+
+                localStorage.getItem(
+
+                    this.key
+
+                )||"{}"
+
+            );
+
+        data[name]=value;
+
+        localStorage.setItem(
+
+            this.key,
+
+            JSON.stringify(data)
+
+        );
 
     }
 
@@ -700,43 +894,52 @@ const Scroll = {
 
 
 /* =====================================================
-   UPDATE APP
+   WELCOME
 ===================================================== */
 
-/*
-Di Part 1
+const Welcome = {
 
-Cari
+    init(){
 
-App.init()
+        if(
 
-Lalu ubah menjadi
+            Storage.get(
 
-init(){
+                "visited",
 
-    Clock.init();
+                false
 
-    Age.init();
+            )
 
-    Boot.init();
+        ){
 
-    Achievement.init();
+            return;
 
-    Watchlist.init();
+        }
 
-    Panel.init();
+        Storage.set(
 
-    Inventory.init();
+            "visited",
 
-    PanelEffect.init();
+            true
 
-    Reveal.init();
+        );
 
-    Shortcut.init();
+        setTimeout(()=>{
 
-}
+            Achievement.unlock(
 
-*//* =====================================================
+                "Welcome to Pixel OS"
+
+            );
+
+        },1200);
+
+    }
+
+};
+
+/* =====================================================
    CAT
 ===================================================== */
 
@@ -763,15 +966,20 @@ const Cat = {
         if (
             !this.button ||
             !this.cat
-        ) return;
+        ) {
+            return;
+        }
 
         this.button.addEventListener(
+
             "click",
+
             () => {
 
                 this.walk();
 
             }
+
         );
 
     },
@@ -780,14 +988,24 @@ const Cat = {
 
     walk() {
 
-        if (this.walking) return;
+        if (this.walking) {
+
+            return;
+
+        }
 
         this.walking = true;
 
-        this.cat.classList.add("walk");
+        this.cat.classList.add(
+
+            "walk"
+
+        );
 
         Achievement.unlock(
+
             "Cat Lover"
+
         );
 
         this.cat.addEventListener(
@@ -797,7 +1015,9 @@ const Cat = {
             () => {
 
                 this.cat.classList.remove(
+
                     "walk"
+
                 );
 
                 this.walking = false;
@@ -806,7 +1026,7 @@ const Cat = {
 
             {
 
-                once:true
+                once: true
 
             }
 
@@ -819,52 +1039,52 @@ const Cat = {
 
 
 /* =====================================================
-   SECRET CODE
+   SECRET
 ===================================================== */
 
 const Secret = {
 
-    code:"",
+    input: "",
 
-    keyword:"pixel",
+    keyword: "pixel",
 
-    init(){
+    init() {
 
         document.addEventListener(
 
             "keydown",
 
-            e=>{
+            e => {
 
-                this.code +=
+                this.input +=
 
                     e.key.toLowerCase();
 
-                if(
+                if (
 
-                    this.code.length>
+                    this.input.length >
 
                     this.keyword.length
 
-                ){
+                ) {
 
-                    this.code=
+                    this.input =
 
-                    this.code.slice(
+                        this.input.slice(
 
-                        -this.keyword.length
+                            -this.keyword.length
 
-                    );
+                        );
 
                 }
 
-                if(
+                if (
 
-                    this.code===
+                    this.input ===
 
                     this.keyword
 
-                ){
+                ) {
 
                     this.unlock();
 
@@ -878,7 +1098,7 @@ const Secret = {
 
 
 
-    unlock(){
+    unlock() {
 
         document.body.classList.add(
 
@@ -895,106 +1115,6 @@ const Secret = {
     }
 
 };
-
-/* =====================================================
-   STORAGE
-===================================================== */
-
-const Storage = {
-
-    key: "pixel-os",
-
-    save(name, value) {
-
-        const data =
-            JSON.parse(
-
-                localStorage.getItem(
-
-                    this.key
-
-                ) || "{}"
-
-            );
-
-        data[name] = value;
-
-        localStorage.setItem(
-
-            this.key,
-
-            JSON.stringify(data)
-
-        );
-
-    },
-
-
-
-    get(name, fallback = null) {
-
-        const data =
-            JSON.parse(
-
-                localStorage.getItem(
-
-                    this.key
-
-                ) || "{}"
-
-            );
-
-        return data[name] ?? fallback;
-
-    }
-
-};
-
-
-
-/* =====================================================
-   WELCOME
-===================================================== */
-
-const Welcome = {
-
-    init() {
-
-        const visited =
-
-            Storage.get(
-
-                "visited",
-
-                false
-
-            );
-
-        if (visited) return;
-
-        setTimeout(() => {
-
-            Achievement.unlock(
-
-                "Welcome to Pixel OS"
-
-            );
-
-        }, 1200);
-
-        Storage.save(
-
-            "visited",
-
-            true
-
-        );
-
-    }
-
-};
-
-
 
 /* =====================================================
    UTILS
@@ -1016,17 +1136,87 @@ const Utils = {
 
 
 
-    sleep(ms) {
+    createStar() {
 
-        return new Promise(resolve =>
+        const star =
 
-            setTimeout(
+            document.createElement(
 
-                resolve,
+                "div"
 
-                ms
+            );
 
-            )
+        star.className =
+
+            "star";
+
+        star.style.left =
+
+            this.random(
+
+                0,
+
+                window.innerWidth
+
+            ) + "px";
+
+        star.style.top =
+
+            this.random(
+
+                0,
+
+                window.innerHeight
+
+            ) + "px";
+
+        star.style.animationDelay =
+
+            Math.random() * 3 + "s";
+
+        document.body.appendChild(
+
+            star
+
+        );
+
+    },
+
+
+
+    createStars(total = 40) {
+
+        for (
+
+            let i = 0;
+
+            i < total;
+
+            i++
+
+        ) {
+
+            this.createStar();
+
+        }
+
+    }
+
+};
+
+
+
+/* =====================================================
+   PIXEL OS
+===================================================== */
+
+const PixelOS = {
+
+    init() {
+
+        Utils.createStars(
+
+            40
 
         );
 
@@ -1037,16 +1227,46 @@ const Utils = {
 
 
 /* =====================================================
+   WINDOW EVENTS
+===================================================== */
+
+window.addEventListener(
+
+    "resize",
+
+    () => {
+
+        document
+
+            .querySelectorAll(
+
+                ".star"
+
+            )
+
+            .forEach(
+
+                star => star.remove()
+
+            );
+
+        Utils.createStars(
+
+            40
+
+        );
+
+    }
+
+);
+
+
+
+/* =====================================================
    UPDATE APP
 ===================================================== */
 
-/*
-
-Ganti App.init()
-
-menjadi
-
-init(){
+App.init = function(){
 
     Clock.init();
 
@@ -1054,29 +1274,27 @@ init(){
 
     Boot.init();
 
-    Achievement.init();
-
     Watchlist.init();
+
+    Achievement.init();
 
     Panel.init();
 
     Inventory.init();
 
-    PanelEffect.init();
-
     Reveal.init();
 
     Shortcut.init();
+
+    Welcome.init();
 
     Cat.init();
 
     Secret.init();
 
-    Welcome.init();
+    PixelOS.init();
 
-}
-
-*/
+};
 
 
 
