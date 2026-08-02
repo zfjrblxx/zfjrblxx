@@ -11,10 +11,7 @@
 // MUSIC PLAYER
 // ========================================
 
-const bgMusic =
-document.getElementById(
-    "bgMusic"
-);
+const bootScreen = document.getElementById("bootScreen");
 
 const musicButton =
 document.getElementById(
