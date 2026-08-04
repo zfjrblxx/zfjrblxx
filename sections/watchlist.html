@@ -1,124 +1,68 @@
-<!-- =========================================
-WATCHLIST BUTTON
-========================================= -->
+<!-- ============================
+     WATCHLIST
+============================ -->
 
-<div class="watch-home">
+<section class="terminal-section watchlist-section">
+
+    <p class="command">
+        <span>wly@home:~$</span> watch log
+    </p>
 
     <button
-        id="watchlistFolder"
-        class="pixel-folder"
-        aria-label="Open Watch Log">
+    class="secret-folder"
+    id="watchlistFolder"
+    aria-label="Open watchlist"
+>
+    <span class="watchlist-folder-icon">🗃️</span>
+</button>
 
-        <span class="folder-icon">
-
-            📼
-
-        </span>
-
-        <span class="folder-text">
-
-            Open Watch Log
-
-        </span>
-
-    </button>
-
-</div>
+</section>
 
 
-
-<!-- =========================================
-WATCHLIST OVERLAY
-========================================= -->
+<!-- ============================
+     WATCHLIST OVERLAY
+============================ -->
 
 <div
+    class="watchlist-overlay"
     id="watchlistOverlay"
-    class="watchlist-overlay">
+>
 
-    <div class="watch-window">
+    <div class="watchlist-window">
 
         <!-- HEADER -->
 
-        <div class="watch-header">
+        <div class="watchlist-header">
 
-            <div class="watch-title">
+          <span>~/watch log [<span id="watchCount">0</span>]</span>
 
-                WATCH LOG
-
-                (<span id="watchCount">0</span>)
-
-            </div>
-
-            <button
-                id="closeWatchlist"
-                class="watch-close">
-
-                ✕
-
+            <button id="closeWatchlist">
+                [x]
             </button>
 
         </div>
 
 
-
-        <!-- SEARCH -->
-
-        <div class="watch-search">
-
-            <input
-
-                id="watchSearch"
-
-                type="text"
-
-                placeholder="Search movie or series..."
-
-                autocomplete="off">
-
-        </div>
-
-
-
-        <!-- A-Z -->
-
-        <div
-            id="watchLetters"
-            class="watch-letters">
-
-        </div>
-
-
-
         <!-- CONTENT -->
 
         <div
+            class="watchlist-content"
             id="watchlistContent"
-            class="watch-content">
-
-            <div class="watch-loading">
-
-                Loading...
-
-            </div>
-
+        >
+            <p class="watchlist-loading">
+                &gt; loading...
+            </p>
         </div>
-
 
 
         <!-- FOOTER -->
 
-        <div class="watch-footer">
+        <div class="watchlist-footer">
 
-            <span>
-
-                Pixel Library
-
-            </span>
+            <span>~/watch log</span>
 
             <span id="watchlistCount">
-
-                0 Items
-
+                0 items
             </span>
 
         </div>
