@@ -2,156 +2,197 @@
 <html lang="en">
 
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
-<title>Fajar Putra Waluya</title>
-
-<!-- =========================================
-FAVICON
-========================================= -->
-
 <link
-    rel="icon"
-    type="image/png"
-    href="images/ico.png">
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link
+        rel="icon"
+        type="image/png"
+        href="images/ico.png"
+    >
 
-<!-- =========================================
-FONT AWESOME
-========================================= -->
+    <meta charset="UTF-8">
 
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<!-- =========================================
-GOOGLE FONT
-========================================= -->
+    <title>Fajar Putra Waluya</title>
 
-<link
-    rel="preconnect"
-    href="https://fonts.googleapis.com">
+    <!-- ==========================
+         FONT
+    ========================== -->
 
-<link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin>
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-<link
-href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400;500;600;700&display=swap"
-rel="stylesheet">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-<!-- =========================================
-CSS
-========================================= -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
 
-<link
-    rel="stylesheet"
-    href="css/pixel.css">
-<link rel="stylesheet" href="css/mobile.css">
-<link
-    rel="stylesheet"
-    href="css/watchlist.css">
+    <!-- ==========================
+         CSS
+    ========================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/watchlist.css"
+    >
 
 </head>
 
 <body>
 
+    <!-- ==========================
+         TERMINAL
+    ========================== -->
 
-<!-- =========================================
-WINDOW
-========================================= -->
+    <main class="terminal">
 
-<main class="pixel-window">
+        <!-- ==========================
+             TERMINAL BAR
+        ========================== -->
 
-<!-- =========================================
-TITLE BAR
-========================================= -->
+        <div class="terminal-bar">
 
-<header class="window-bar">
+            <div class="terminal-dots">
 
-    <div class="window-buttons">
+                <span></span>
+                <span></span>
+                <span></span>
 
-        <span class="red"></span>
+            </div>
 
-        <span class="yellow"></span>
+            <p>
+                wly@home:~
+            </p>
 
-        <span class="green"></span>
-
-    </div>
-
-    <div class="window-title">
-
-        PIXEL OS v2
-
-    </div>
-
-    <div
-        class="window-clock"
-        id="clock">
-
-        00:00
-
-    </div>
-
-</header>
-
-<!-- =========================================
-CONTENT
-========================================= -->
-
-<div class="window-content"><!-- =========================================
-HERO
-========================================= -->
-
-<section class="hero">
-
-    <div class="avatar-frame">
-
-        <img
-            src="images/pfp.jpg"
-            alt="Profile"
-            class="avatar">
-
-    </div>
-
-    <div class="hero-info">
-
-        <h1>
-
-            FAJAR PUTRA WALUYA
-
-        </h1>
-
-        <p>
-
-            Nothing much. Just me, doing what I enjoy.
-
-        </p>
-
-        <div class="hero-stats">
-
-            <div class="hero-meta">
-
-    <span>26</span>
-
-    <span class="dot">•</span>
-
-    <span>Leo</span>
-
-    <span class="dot">•</span>
-
-    <span>Indonesia</span>
-
-</div>
+            <div></div>
 
         </div>
 
-        
+        <!-- ==========================
+             CONTENT
+        ========================== -->
+
+        <div class="terminal-content">
+
+      <!-- ==============================
+     WHOAMI
+============================== -->
+
+<section class="terminal-section">
+
+    <p class="command">
+
+        <span>wly@home:~$</span>
+
+        whoami
+
+    </p>
+
+    <div class="identity">
+
+        <h1>
+
+            <span class="arrow">&gt;</span>
+
+            Fajar Putra Waluya
+
+        </h1>
+
+        <p class="meta">
+
+            <span class="arrow">&gt;</span>
+
+            <span id="age"></span> y.o
+
+            <span class="dot">•</span>
+
+            ♌ Leo
+
+            <span class="dot">•</span>
+
+            Indonesia
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     ABOUT
+============================== -->
+
+<section class="terminal-section">
+
+    <p class="command">
+
+        <span>wly@home:~$</span>
+
+        about
+
+    </p>
+
+    <p class="about-text">
+
+        Nothing much. Just me, doing what I enjoy.
+
+    </p>
+
+</section>
+
+
+<section class="terminal-section">
+
+    <button class="command command-toggle">
+
+        <span class="toggle-arrow">▸</span>
+
+        experience
+
+    </button>
+
+    <div class="projects-collapse">
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                
+
+                <div class="timeline-content">
+
+                    <h4>Web3 Experience</h4>
+
+                    <p>
+    Pada tahun <strong>2022–2024</strong>, aktif mengikuti berbagai program
+    testnet blockchain seperti Aptos, Arbitrum, Sui, dan Celestia, menjalankan
+    node dan validator, serta mengeksplorasi berbagai ekosistem Web3.
+</p>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -159,365 +200,203 @@ HERO
 
 
 
+<!-- ==============================
+     THINGS I'VE BUILT
+============================== -->
 
-<!-- =========================================
-EXPLORER
-========================================= -->
+<section class="terminal-section">
 
-<section class="explorer">
+    <button
+        class="command command-toggle"
+        id="projectToggle"
+    >
 
+        <span>▸</span>
 
-<!-- =========================================
-WEB3 EXPERIENCE
-========================================= -->
+        things i've built
 
-<details class="folder">
+    </button>
 
-<summary>
+    <div
+        class="projects-collapse"
+        id="projectsCollapse"
+    >
 
-EXPERIENCE
+        <!-- Projects -->
+<div class="projects-grid">
+ <a
+        href="https://ingfobengkel.vercel.app"
+        target="_blank"
+        class="project-card">
 
-</summary>
+        <span class="project-index">[01]</span>
 
-<div class="folder-content">
+        <div class="project-content">
 
-<h3>Blockchain Testnet & Validator</h3>
+            <h3>Ingfo Bengkel</h3>
 
-<p>
-
-Pada tahun 2022–2024, aktif mengikuti berbagai program testnet blockchain seperti Aptos, Arbitrum, Sui, dan Celestia. Berpengalaman menjalankan node dan validator,berpartisipasi dalam pengujian ekosistem, serta mengeksplorasi berbagai teknologi Web3.
-
-</p>
-
-</div>
-
-</details>
-
-
-
-<!-- =========================================
-PROJECTS
-========================================= -->
-
-<details class="folder">
-
-<summary>
-
-THINGS I'VE BUILT
-
-</summary>
-
-<div class="folder-content">
-
-<div class="inventory-grid">
-
-<a
-href="https://ingfobengkel.vercel.app"
-target="_blank"
-class="inventory-card">
-
-<div class="inventory-number">
-
-01
-
-</div>
-
-<h3>
-
-Ingfo Bengkel
-
-</h3>
-
-<p>
-
-Vehicle maintenance tracker.
-
-</p>
-
-<div class="inventory-open">
-
-OPEN →
-
-</div>
-
-</a>
-
-
-
-<a
-href="https://ingfopass.vercel.app"
-target="_blank"
-class="inventory-card">
-
-<div class="inventory-number">
-
-02
-
-</div>
-
-<h3>
-
-Ingfo Pass
-
-</h3>
-
-<p>
-
-Secure password generator.
-
-</p>
-
-<div class="inventory-open">
-
-OPEN →
-
-</div>
-
-</a>
-
-
-
-<a
-href="https://ingfowarna.vercel.app"
-target="_blank"
-class="inventory-card">
-
-<div class="inventory-number">
-
-03
-
-</div>
-
-<h3>
-
-Ingfo Warna
-
-</h3>
-
-<p>
-
-Color palette & Gradient tools.
-
-</p>
-
-<div class="inventory-open">
-
-OPEN →
-
-</div>
-
-</a>
-
-</div>
-
-</div>
-
-</details>
-
-
-
-<!-- =========================================
-PLAYLIST
-========================================= -->
-
-<details class="folder">
-
-<summary>
-
-MY PLAYLIST
-
-</summary>
-
-<div class="folder-content">
-
-
-<div class="spotify-wrapper">
-<iframe
-
-src="https://open.spotify.com/embed/playlist/4eYOC6VMzhOV1BsfBUgeb6?utm_source=generator"
-
-width="100%"
-
-height="352"
-
-loading="lazy"
-
-allowfullscreen
-
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-
-</iframe>
-</div>
-</div>
-
-</details>
-
-
-
-<!-- =========================================
-WATCH LOG
-========================================= -->
-
-<details class="folder">
-
-    <summary>
-
-        WATCH LOG
-
-    </summary>
-
-    <div class="folder-content">
-
-        <div class="watch-home">
-
-            <button
-                id="watchlistFolder"
-                class="pixel-folder">
-
-                <span class="folder-icon">
-                    📼
-                </span>
-
-                <span class="folder-text">
-
-                    Open Watch Log
-
-                </span>
-
-            </button>
-
-        </div>
-
-    </div>
-
-</details>
-    <!-- =========================================
-WATCH LOG OVERLAY
-========================================= -->
-
-<div
-    id="watchlistOverlay"
-    class="watchlist-overlay">
-
-    <div class="watch-window">
-
-        <!-- HEADER -->
-
-        <div class="watch-header">
-
-            <div class="watch-title">
-
-                WATCH LOG
-                (<span id="watchCount">0</span>)
-
-            </div>
-
-            <button
-                id="closeWatchlist">
-
-                ✕
-
-            </button>
-
-        </div>
-
-        <!-- SEARCH -->
-
-        <div class="watch-search">
-
-            <input
-                id="watchSearch"
-                type="text"
-                placeholder="Search...">
-
-        </div>
-
-        <!-- LETTERS -->
-
-        <div
-            id="watchLetters"
-            class="watch-letters">
-
-        </div>
-
-        <!-- CONTENT -->
-
-        <div
-            id="watchlistContent"
-            class="watch-content">
-
-            <p class="watch-loading">
-
-                Loading...
-
+            <p>
+                Mencatat riwayat servis,
+                penggantian oli, dan perawatan kendaraan.
             </p>
 
         </div>
 
-        <!-- FOOTER -->
+    </a>
+    
 
-        <div class="watch-footer">
 
-            <span>
+    <a
+        href="https://ingfopass.vercel.app"
+        target="_blank"
+        class="project-card">
 
-                Pixel Library
+        <span class="project-index">[02]</span>
 
-            </span>
+        <div class="project-content">
 
-            <span id="watchlistCount">
+            <h3>Ingfo Pass</h3>
 
-                0 Items
+            <p>
+                Generator kata sandi yang aman
+                dengan berbagai pilihan pengaturan.
+            </p>
 
-            </span>
+        </div>
+
+    </a>
+
+
+    <a
+        href="https://ingfowarna.vercel.app"
+        target="_blank"
+        class="project-card">
+
+        <span class="project-index">[03]</span>
+
+        <div class="project-content">
+
+            <h3>Ingfo Warna</h3>
+
+            <p>
+                Kumpulan alat warna seperti
+                konverter, palet, dan pembuat gradasi.
+            </p>
+
+        </div>
+
+    </a>
+
+
+   
+
+</div>
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     SPOTIFY
+============================== -->
+
+<section class="terminal-section">
+
+    <button
+        class="command command-toggle"
+        id="spotifyToggle"
+    >
+
+        <span>▸</span>
+
+        my playlist music
+
+    </button>
+
+    <div
+        class="projects-collapse"
+        id="spotifyCollapse"
+    >
+
+        <div class="spotify-wrapper">
+
+            <iframe
+                src="https://open.spotify.com/embed/playlist/4eYOC6VMzhOV1BsfBUgeb6?utm_source=generator"
+                width="100%"
+                height="352"
+                loading="lazy"
+            ></iframe>
 
         </div>
 
     </div>
 
-</div>
+</section>
 
 
+<!-- ==============================
+     WATCH LOG
+============================== -->
+
+<section class="terminal-section">
+
+    <button
+        class="command command-toggle"
+        id="watchToggle"
+    >
+
+        <span>▸</span>
+
+        watch log
+
+    </button>
+
+    <div
+        class="projects-collapse"
+        id="watchCollapse"
+    >
+
+        <div id="watchlist-container"></div>
 
 
-
-
-
-<!-- =========================================
-FOOTER
-========================================= -->
-
-<footer class="footer">
-
-    <div class="footer-left">
-
-        PIXEL OS v2
 
     </div>
+</section>
 
-    
+<section class="terminal-section">
 
-    <div class="footer-right">
+        <p class="command">
+        <span>wly@home:~$</span>
+    <span class="cursor">█</span></p>
+
+</section>
+
+
+
+
+            <!-- ==========================
+                 FOOTER
+            ========================== -->
+
+            <footer class="terminal-footer">
+
+    <p>// end of file</p>
+
+    <div class="footer-icons">
 
         <button
-
             id="catSecret"
-
-            class="pixel-icon"
-
-            aria-label="Cat">
+            class="cat-secret"
+            aria-label="Secret">
 
             🐱
 
         </button>
 
         <a
-
             href="https://instagram.com/zfjrblxx"
-
             target="_blank"
-
-            class="pixel-icon"
-
+            class="footer-instagram"
             aria-label="Instagram">
 
             <i class="fa-brands fa-instagram"></i>
@@ -528,122 +407,24 @@ FOOTER
 
 </footer>
 
-</div>
-
-</main>
-
-
-
-<!-- =========================================
-CAT
-========================================= -->
-
 <div id="catWalk">
 
     🐈
 
 </div>
 
-
-
-<!-- =========================================
-ACHIEVEMENT
-========================================= -->
-
-<div
-
-    id="achievement"
-
-    class="achievement hidden">
-
-    <h4>
-
-        Achievement Unlocked
-
-    </h4>
-
-    <p>
-
-        Welcome
-
-    </p>
-
 </div>
+<!-- terminal-content -->
 
+</main>
 
-
-<!-- =========================================
-JAVASCRIPT
-========================================= -->
-
+<!-- ==========================
+     JAVASCRIPT
+========================== -->
 
 <script src="js/watchlist.js"></script>
-<script src="js/app.js"></script>
+<script src="js/main.js"></script>
 
-    
-<!-- =========================================
-BACKGROUND MUSIC
-========================================= -->
-
-<audio
-    id="bgMusic"
-    loop
-    preload="auto">
-
-    <source
-        src="music/pixel-theme.mp3"
-        type="audio/mpeg">
-
-</audio>
-
-<!-- =========================================
-MUSIC BUTTON
-========================================= -->
-
-<button
-    id="musicToggle"
-    class="music-toggle">
-
-    ▶ MUSIC
-
-</button>
-
-<!-- =========================================
-BOOT SCREEN
-========================================= -->
-
-<div id="bootScreen" class="boot-screen">
-
-    <div class="boot-box">
-
-        <h1>
-
-            PIXEL OS v3
-
-        </h1>
-
-        <p>
-
-            Boot Complete ✓
-
-        </p>
-
-        <div class="boot-note">
-
-            ♪
-
-        </div>
-
-        <span>
-
-            Click Anywhere to Enter
-
-        </span>
-
-    </div>
-
-</div>
-    
 </body>
 
 </html>
